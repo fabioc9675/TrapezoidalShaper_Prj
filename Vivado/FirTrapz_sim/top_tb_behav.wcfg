@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="top_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="5,999,994 ps"></ZoomStartTime>
+      <ZoomEndTime time="6,000,002 ps"></ZoomEndTime>
+      <Cursor1Time time="6,000,000 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="160"></NameColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/top_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/clk_au" type="logic">
+      <obj_property name="ElementShortName">clk_au</obj_property>
+      <obj_property name="ObjectShortName">clk_au</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/n_rst" type="logic">
+      <obj_property name="ElementShortName">n_rst</obj_property>
+      <obj_property name="ObjectShortName">n_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/dut/pynq_fir_i/fir_fab_0/U0/x" type="array">
+      <obj_property name="ElementShortName">x[31:0]</obj_property>
+      <obj_property name="ObjectShortName">x[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/dut/pynq_fir_i/trapz_klm_0/U0/x" type="array">
+      <obj_property name="ElementShortName">x[31:0]</obj_property>
+      <obj_property name="ObjectShortName">x[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/dut/pynq_fir_i/trapz_klm_0/U0/y" type="array">
+      <obj_property name="ElementShortName">y[31:0]</obj_property>
+      <obj_property name="ObjectShortName">y[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/cha" type="array">
+      <obj_property name="ElementShortName">cha[15:0]</obj_property>
+      <obj_property name="ObjectShortName">cha[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/datai" type="array">
+      <obj_property name="ElementShortName">datai[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datai[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/datao" type="array">
+      <obj_property name="ElementShortName">datao[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datao[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/stop" type="other">
+      <obj_property name="ElementShortName">stop</obj_property>
+      <obj_property name="ObjectShortName">stop</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/start" type="logic">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject fp_name="/top_tb/N_SAMPL" type="other">
+      <obj_property name="ElementShortName">N_SAMPL</obj_property>
+      <obj_property name="ObjectShortName">N_SAMPL</obj_property>
+   </wvobject>
+</wave_config>

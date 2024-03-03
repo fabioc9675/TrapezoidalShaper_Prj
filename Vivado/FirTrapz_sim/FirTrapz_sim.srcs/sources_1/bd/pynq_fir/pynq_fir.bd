@@ -1,0 +1,192 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xA7886C2923659CC2",
+      "device": "xc7z020clg400-1",
+      "gen_directory": "../../../../FirTrapz_sim.gen/sources_1/bd/pynq_fir",
+      "name": "pynq_fir",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "None",
+      "tool_version": "2022.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "fir_fab_0": "",
+      "trapz_klm_0": ""
+    },
+    "ports": {
+      "ap_rst": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "ap_clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "ap_rst",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "pynq_fir_ap_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "x_0": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "y_0": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      }
+    },
+    "components": {
+      "fir_fab_0": {
+        "vlnv": "xilinx.com:module_ref:fir_fab:1.0",
+        "xci_name": "pynq_fir_fir_fab_0_0",
+        "xci_path": "ip\\pynq_fir_fir_fab_0_0\\pynq_fir_fir_fab_0_0.xci",
+        "inst_hier_path": "fir_fab_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "fir_fab",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "ap_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "ap_rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "pynq_fir_ap_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "ap_rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "x": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "y": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "trapz_klm_0": {
+        "vlnv": "xilinx.com:module_ref:trapz_klm:1.0",
+        "xci_name": "pynq_fir_trapz_klm_0_0",
+        "xci_path": "ip\\pynq_fir_trapz_klm_0_0\\pynq_fir_trapz_klm_0_0.xci",
+        "inst_hier_path": "trapz_klm_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "trapz_klm",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "ap_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "ap_rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "pynq_fir_ap_clk_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "ap_rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "x": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "y": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      }
+    },
+    "nets": {
+      "ap_clk_0_1": {
+        "ports": [
+          "ap_clk",
+          "fir_fab_0/ap_clk",
+          "trapz_klm_0/ap_clk"
+        ]
+      },
+      "ap_rst_0_1": {
+        "ports": [
+          "ap_rst",
+          "fir_fab_0/ap_rst",
+          "trapz_klm_0/ap_rst"
+        ]
+      },
+      "fir_fab_0_y": {
+        "ports": [
+          "fir_fab_0/y",
+          "trapz_klm_0/x"
+        ]
+      },
+      "trapz_klm_0_y": {
+        "ports": [
+          "trapz_klm_0/y",
+          "y_0"
+        ]
+      },
+      "x_0_1": {
+        "ports": [
+          "x_0",
+          "fir_fab_0/x"
+        ]
+      }
+    }
+  }
+}
