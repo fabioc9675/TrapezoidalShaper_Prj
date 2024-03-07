@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="40">
   <CompositeFile CompositeFileTopName="pynq_fir" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1709433413"/>
-    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1709433413"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1709433414"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1709433414"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1709830544"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1709830544"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1709830544"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1709830544"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="synth\pynq_fir.vhd" Type="VHDL">
         <Properties IsEditable="false" IsVisible="true" IsNetlistSimulation="false" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>

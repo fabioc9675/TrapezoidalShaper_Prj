@@ -143,5 +143,6 @@ begin
     end process;
     
     y <= B"0000000000000" & out_sample(31 downto 13);
+    -- y <= out_sample;
 
 end Behavioral;
