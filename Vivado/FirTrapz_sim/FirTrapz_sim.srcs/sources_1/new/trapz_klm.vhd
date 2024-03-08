@@ -121,6 +121,7 @@ begin
     end process;
     
     -- assign the output
-    y <= B"000000" & out_sample(31 downto 6);
+    --y <= B"000000" & out_sample(31 downto 6);
+    y <= out_sample;
 
 end Behavioral;

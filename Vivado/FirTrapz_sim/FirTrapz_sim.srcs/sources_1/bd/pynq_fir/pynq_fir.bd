@@ -11,9 +11,8 @@
       "validated": "true"
     },
     "design_tree": {
-      "steplike_0": "",
       "fir_fab_0": "",
-      "trapz_rm_0": ""
+      "trapz_klm_0": ""
     },
     "ports": {
       "ap_rst": {
@@ -72,47 +71,6 @@
       }
     },
     "components": {
-      "steplike_0": {
-        "vlnv": "xilinx.com:module_ref:steplike:1.0",
-        "xci_name": "pynq_fir_steplike_0_0",
-        "xci_path": "ip\\pynq_fir_steplike_0_0\\pynq_fir_steplike_0_0.xci",
-        "inst_hier_path": "steplike_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "steplike",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "ap_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "ap_rst",
-                "value_src": "constant"
-              },
-              "CLK_DOMAIN": {
-                "value": "pynq_fir_ap_clk_0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "ap_rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "x": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "y": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          }
-        }
-      },
       "fir_fab_0": {
         "vlnv": "xilinx.com:module_ref:fir_fab:1.0",
         "xci_name": "pynq_fir_fir_fab_0_0",
@@ -154,14 +112,14 @@
           }
         }
       },
-      "trapz_rm_0": {
-        "vlnv": "xilinx.com:module_ref:trapz_rm:1.0",
-        "xci_name": "pynq_fir_trapz_rm_0_0",
-        "xci_path": "ip\\pynq_fir_trapz_rm_0_0\\pynq_fir_trapz_rm_0_0.xci",
-        "inst_hier_path": "trapz_rm_0",
+      "trapz_klm_0": {
+        "vlnv": "xilinx.com:module_ref:trapz_klm:1.0",
+        "xci_name": "pynq_fir_trapz_klm_0_0",
+        "xci_path": "ip\\pynq_fir_trapz_klm_0_0\\pynq_fir_trapz_klm_0_0.xci",
+        "inst_hier_path": "trapz_klm_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "trapz_rm",
+          "ref_name": "trapz_klm",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -200,34 +158,26 @@
       "ap_clk_0_1": {
         "ports": [
           "ap_clk",
-          "steplike_0/ap_clk",
           "fir_fab_0/ap_clk",
-          "trapz_rm_0/ap_clk"
+          "trapz_klm_0/ap_clk"
         ]
       },
       "ap_rst_0_1": {
         "ports": [
           "ap_rst",
-          "steplike_0/ap_rst",
           "fir_fab_0/ap_rst",
-          "trapz_rm_0/ap_rst"
+          "trapz_klm_0/ap_rst"
         ]
       },
       "fir_fab_0_y": {
         "ports": [
           "fir_fab_0/y",
-          "steplike_0/x"
+          "trapz_klm_0/x"
         ]
       },
-      "steplike_0_y": {
+      "trapz_klm_0_y": {
         "ports": [
-          "steplike_0/y",
-          "trapz_rm_0/x"
-        ]
-      },
-      "trapz_rm_0_y": {
-        "ports": [
-          "trapz_rm_0/y",
+          "trapz_klm_0/y",
           "y_0"
         ]
       },

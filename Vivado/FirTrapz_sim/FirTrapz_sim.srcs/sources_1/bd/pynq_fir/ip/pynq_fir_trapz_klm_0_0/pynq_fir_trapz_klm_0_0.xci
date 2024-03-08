@@ -1,14 +1,14 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "pynq_fir_trapz_rm_0_0",
-    "cell_name": "trapz_rm_0",
-    "component_reference": "xilinx.com:module_ref:trapz_rm:1.0",
+    "xci_name": "pynq_fir_trapz_klm_0_0",
+    "cell_name": "trapz_klm_0",
+    "component_reference": "xilinx.com:module_ref:trapz_klm:1.0",
     "ip_revision": "1",
-    "gen_directory": "../../../../../../FirTrapz_sim.gen/sources_1/bd/pynq_fir/ip/pynq_fir_trapz_rm_0_0",
+    "gen_directory": "../../../../../../FirTrapz_sim.gen/sources_1/bd/pynq_fir/ip/pynq_fir_trapz_klm_0_0",
     "parameters": {
       "component_parameters": {
-        "Component_Name": [ { "value": "pynq_fir_trapz_rm_0_0", "resolve_type": "user", "usage": "all" } ]
+        "Component_Name": [ { "value": "pynq_fir_trapz_klm_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
@@ -29,7 +29,7 @@
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "1" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../FirTrapz_sim.gen/sources_1/bd/pynq_fir/ip/pynq_fir_trapz_rm_0_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../FirTrapz_sim.gen/sources_1/bd/pynq_fir/ip/pynq_fir_trapz_klm_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2022.2" } ],

@@ -46,33 +46,33 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:module_ref:trapz_rm:1.0
+-- IP VLNV: xilinx.com:module_ref:trapz_klm:1.0
 -- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY pynq_fir_trapz_rm_0_0 IS
+ENTITY pynq_fir_trapz_klm_0_0 IS
   PORT (
     ap_clk : IN STD_LOGIC;
     ap_rst : IN STD_LOGIC;
     x : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     y : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
-END pynq_fir_trapz_rm_0_0;
+END pynq_fir_trapz_klm_0_0;
 
-ARCHITECTURE pynq_fir_trapz_rm_0_0_arch OF pynq_fir_trapz_rm_0_0 IS
+ARCHITECTURE pynq_fir_trapz_klm_0_0_arch OF pynq_fir_trapz_klm_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF pynq_fir_trapz_rm_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT trapz_rm IS
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF pynq_fir_trapz_klm_0_0_arch: ARCHITECTURE IS "yes";
+  COMPONENT trapz_klm IS
     PORT (
       ap_clk : IN STD_LOGIC;
       ap_rst : IN STD_LOGIC;
       x : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       y : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
-  END COMPONENT trapz_rm;
+  END COMPONENT trapz_klm;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF ap_clk: SIGNAL IS "XIL_INTERFACENAME ap_clk, ASSOCIATED_RESET ap_rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN pynq_fir_ap_clk_0, INSERT_VIP 0";
@@ -80,11 +80,11 @@ ARCHITECTURE pynq_fir_trapz_rm_0_0_arch OF pynq_fir_trapz_rm_0_0 IS
   ATTRIBUTE X_INTERFACE_PARAMETER OF ap_rst: SIGNAL IS "XIL_INTERFACENAME ap_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF ap_rst: SIGNAL IS "xilinx.com:signal:reset:1.0 ap_rst RST";
 BEGIN
-  U0 : trapz_rm
+  U0 : trapz_klm
     PORT MAP (
       ap_clk => ap_clk,
       ap_rst => ap_rst,
       x => x,
       y => y
     );
-END pynq_fir_trapz_rm_0_0_arch;
+END pynq_fir_trapz_klm_0_0_arch;
