@@ -58,7 +58,9 @@ ENTITY pynq_fir_dpp_counter_0_0 IS
     ap_clk : IN STD_LOGIC;
     ap_rst : IN STD_LOGIC;
     x : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    y : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+    y : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    fifo_en : IN STD_LOGIC;
+    fifo_o : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
   );
 END pynq_fir_dpp_counter_0_0;
 
@@ -66,11 +68,16 @@ ARCHITECTURE pynq_fir_dpp_counter_0_0_arch OF pynq_fir_dpp_counter_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF pynq_fir_dpp_counter_0_0_arch: ARCHITECTURE IS "yes";
   COMPONENT dpp_counter IS
+    GENERIC (
+      fifo_len : INTEGER
+    );
     PORT (
       ap_clk : IN STD_LOGIC;
       ap_rst : IN STD_LOGIC;
       x : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      y : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+      y : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+      fifo_en : IN STD_LOGIC;
+      fifo_o : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
     );
   END COMPONENT dpp_counter;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -81,10 +88,15 @@ ARCHITECTURE pynq_fir_dpp_counter_0_0_arch OF pynq_fir_dpp_counter_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF ap_rst: SIGNAL IS "xilinx.com:signal:reset:1.0 ap_rst RST";
 BEGIN
   U0 : dpp_counter
+    GENERIC MAP (
+      fifo_len => 10
+    )
     PORT MAP (
       ap_clk => ap_clk,
       ap_rst => ap_rst,
       x => x,
-      y => y
+      y => y,
+      fifo_en => fifo_en,
+      fifo_o => fifo_o
     );
 END pynq_fir_dpp_counter_0_0_arch;

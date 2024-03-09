@@ -8,7 +8,11 @@
     "gen_directory": "../../../../../../FirTrapz_sim.gen/sources_1/bd/pynq_fir/ip/pynq_fir_dpp_counter_0_0",
     "parameters": {
       "component_parameters": {
+        "fifo_len": [ { "value": "10", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "pynq_fir_dpp_counter_0_0", "resolve_type": "user", "usage": "all" } ]
+      },
+      "model_parameters": {
+        "fifo_len": [ { "value": "10", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
@@ -41,7 +45,9 @@
         "ap_clk": [ { "direction": "in" } ],
         "ap_rst": [ { "direction": "in" } ],
         "x": [ { "direction": "in", "size_left": "31", "size_right": "0" } ],
-        "y": [ { "direction": "out", "size_left": "31", "size_right": "0" } ]
+        "y": [ { "direction": "out", "size_left": "31", "size_right": "0" } ],
+        "fifo_en": [ { "direction": "in" } ],
+        "fifo_o": [ { "direction": "out", "size_left": "31", "size_right": "0" } ]
       },
       "interfaces": {
         "ap_rst": {

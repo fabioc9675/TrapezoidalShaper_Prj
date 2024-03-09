@@ -20,11 +20,13 @@ architecture Behavioral of top_tb is
    signal clk_au   : std_logic;
    signal rst      : std_logic;
    signal n_rst    : std_logic;
+   signal f_en     : std_logic;
    --signal valid    : std_logic:='0';
    --signal ena      : std_logic:='0';
    signal cha      : std_logic_vector(15 downto 0):= (others=>'0');
    signal datai    : std_logic_vector(31 downto 0):= (others=>'0');
    signal datao    : std_logic_vector(31 downto 0):= (others=>'0');
+   signal fifoo    : std_logic_vector(31 downto 0):= (others=>'0');
    signal stop     : boolean := FALSE;
    signal start    : std_logic := '1';
    constant N_SAMPL: integer := 1; 
@@ -55,7 +57,9 @@ begin
         y_0 => datao, 
         -- ap_start => start,
         ap_clk => clk,
-        ap_rst => rst
+        ap_rst => rst,
+        fifo_en_0 => f_en,
+        fifo_o_0 => fifoo
    );
    
    test_dut : process
@@ -64,6 +68,7 @@ begin
         variable a_read : t_int_array(1 to N_SAMPL);    
    begin
         rst <= '0';
+        f_en <= '0';
         wait for 1000 ns;
         rst <= '1';
         wait for 2000 ns;
@@ -87,7 +92,8 @@ begin
             end loop;
         end loop;
         
-        wait for 20 us;
+        f_en <= '1';
+        wait for 200 us;
         rst <= '1';
         wait for 20 us;
         rst <= '0';

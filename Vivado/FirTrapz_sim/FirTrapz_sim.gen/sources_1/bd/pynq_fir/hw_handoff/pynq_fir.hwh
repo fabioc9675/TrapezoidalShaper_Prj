@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Mar  8 19:31:50 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Mar  9 12:29:01 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="pynq_fir" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -28,6 +28,16 @@
         <CONNECTION INSTANCE="dpp_counter_0" PORT="y"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" NAME="fifo_en_0" SIGIS="undef" SIGNAME="External_Ports_fifo_en_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dpp_counter_0" PORT="fifo_en"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="fifo_o_0" RIGHT="0" SIGIS="undef" SIGNAME="dpp_counter_0_fifo_o">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dpp_counter_0" PORT="fifo_o"/>
+      </CONNECTIONS>
+    </PORT>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES/>
@@ -36,6 +46,7 @@
     <MODULE COREREVISION="1" FULLNAME="/dpp_counter_0" HWVERSION="1.0" INSTANCE="dpp_counter_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dpp_counter" VLNV="xilinx.com:module_ref:dpp_counter:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
+        <PARAMETER NAME="fifo_len" VALUE="10"/>
         <PARAMETER NAME="Component_Name" VALUE="pynq_fir_dpp_counter_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -58,6 +69,16 @@
         <PORT DIR="O" LEFT="31" NAME="y" RIGHT="0" SIGIS="undef" SIGNAME="dpp_counter_0_y">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="y_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="fifo_en" SIGIS="undef" SIGNAME="External_Ports_fifo_en_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="fifo_en_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="fifo_o" RIGHT="0" SIGIS="undef" SIGNAME="dpp_counter_0_fifo_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="fifo_o_0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

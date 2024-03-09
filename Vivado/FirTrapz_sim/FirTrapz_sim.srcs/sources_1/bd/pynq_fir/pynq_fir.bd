@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA7886C2923659CC2",
+      "boundary_crc": "0x9294F99E20CD2D0F",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../FirTrapz_sim.gen/sources_1/bd/pynq_fir",
       "name": "pynq_fir",
@@ -66,6 +66,14 @@
         "right": "0"
       },
       "y_0": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "fifo_en_0": {
+        "direction": "I"
+      },
+      "fifo_o_0": {
         "direction": "O",
         "left": "31",
         "right": "0"
@@ -192,6 +200,14 @@
             "direction": "O",
             "left": "31",
             "right": "0"
+          },
+          "fifo_en": {
+            "direction": "I"
+          },
+          "fifo_o": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
           }
         }
       }
@@ -213,10 +229,22 @@
           "dpp_counter_0/ap_rst"
         ]
       },
+      "dpp_counter_0_fifo_o": {
+        "ports": [
+          "dpp_counter_0/fifo_o",
+          "fifo_o_0"
+        ]
+      },
       "dpp_counter_0_y": {
         "ports": [
           "dpp_counter_0/y",
           "y_0"
+        ]
+      },
+      "fifo_en_0_1": {
+        "ports": [
+          "fifo_en_0",
+          "dpp_counter_0/fifo_en"
         ]
       },
       "fir_fab_0_y": {
