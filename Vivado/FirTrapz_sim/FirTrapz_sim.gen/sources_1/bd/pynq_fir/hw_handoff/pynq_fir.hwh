@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar  7 20:58:38 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Mar  8 19:31:50 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="pynq_fir" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -8,12 +8,14 @@
       <CONNECTIONS>
         <CONNECTION INSTANCE="fir_fab_0" PORT="ap_rst"/>
         <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_rst"/>
+        <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_rst"/>
       </CONNECTIONS>
     </PORT>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="External_Ports_ap_clk">
       <CONNECTIONS>
         <CONNECTION INSTANCE="fir_fab_0" PORT="ap_clk"/>
         <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_clk"/>
+        <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_clk"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="31" NAME="x_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_x_0">
@@ -21,9 +23,9 @@
         <CONNECTION INSTANCE="fir_fab_0" PORT="x"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="31" NAME="y_0" RIGHT="0" SIGIS="undef" SIGNAME="trapz_klm_0_y">
+    <PORT DIR="O" LEFT="31" NAME="y_0" RIGHT="0" SIGIS="undef" SIGNAME="dpp_counter_0_y">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="trapz_klm_0" PORT="y"/>
+        <CONNECTION INSTANCE="dpp_counter_0" PORT="y"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -31,6 +33,36 @@
   <EXTERNALINTERFACES/>
 
   <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/dpp_counter_0" HWVERSION="1.0" INSTANCE="dpp_counter_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dpp_counter" VLNV="xilinx.com:module_ref:dpp_counter:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="pynq_fir_dpp_counter_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="External_Ports_ap_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ap_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_ap_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ap_rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="x" RIGHT="0" SIGIS="undef" SIGNAME="trapz_klm_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="trapz_klm_0" PORT="y"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="y" RIGHT="0" SIGIS="undef" SIGNAME="dpp_counter_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="y_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/fir_fab_0" HWVERSION="1.0" INSTANCE="fir_fab_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="fir_fab" VLNV="xilinx.com:module_ref:fir_fab:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -85,7 +117,7 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="y" RIGHT="0" SIGIS="undef" SIGNAME="trapz_klm_0_y">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="y_0"/>
+            <CONNECTION INSTANCE="dpp_counter_0" PORT="x"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

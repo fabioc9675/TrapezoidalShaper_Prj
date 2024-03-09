@@ -88,6 +88,10 @@ begin
         end loop;
         
         wait for 20 us;
+        rst <= '1';
+        wait for 20 us;
+        rst <= '0';
+        wait for 20 us;
         
         file_close(cha_file);
         wait;
