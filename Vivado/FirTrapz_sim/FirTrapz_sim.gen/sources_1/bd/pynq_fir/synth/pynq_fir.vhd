@@ -1,8 +1,8 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Sat Mar  9 12:29:00 2024
---Host        : fabiancastano running 64-bit major release  (build 9200)
+--Date        : Mon Mar 11 13:21:01 2024
+--Host        : DESKTOP-3FHD9AF running 64-bit major release  (build 9200)
 --Command     : generate_target pynq_fir.bd
 --Design      : pynq_fir
 --Purpose     : IP block netlist
@@ -35,14 +35,6 @@ architecture STRUCTURE of pynq_fir is
     y : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component pynq_fir_fir_fab_0_0;
-  component pynq_fir_trapz_klm_0_0 is
-  port (
-    ap_clk : in STD_LOGIC;
-    ap_rst : in STD_LOGIC;
-    x : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    y : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component pynq_fir_trapz_klm_0_0;
   component pynq_fir_dpp_counter_0_0 is
   port (
     ap_clk : in STD_LOGIC;
@@ -53,6 +45,14 @@ architecture STRUCTURE of pynq_fir is
     fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component pynq_fir_dpp_counter_0_0;
+  component pynq_fir_trapz_klm_0_0 is
+  port (
+    ap_clk : in STD_LOGIC;
+    ap_rst : in STD_LOGIC;
+    x : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    y : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component pynq_fir_trapz_klm_0_0;
   signal ap_clk_0_1 : STD_LOGIC;
   signal ap_rst_0_1 : STD_LOGIC;
   signal dpp_counter_0_fifo_o : STD_LOGIC_VECTOR ( 31 downto 0 );
