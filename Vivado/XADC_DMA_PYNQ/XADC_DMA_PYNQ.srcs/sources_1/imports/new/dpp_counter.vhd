@@ -83,7 +83,7 @@ begin
             counter     <= 0; 
             out_counter <= conv_std_logic_vector(counter, 32);
         else
-            if rising_edge(ap_clk) then
+            if falling_edge(ap_clk) then
                 in_sample <= conv_integer(signed(x)); 
                 diff <= conv_integer(signed(x)) - in_sample;
                 -- verify if there is a rissing edge
@@ -128,7 +128,7 @@ begin
             fifo_o <= X"00000000";
             pos := 0;
         else
-            if rising_edge(ap_clk) then
+            if falling_edge(ap_clk) then
                 if (fifo_en = '1') and (pos < fifo_len) then
                     fifo_o <= conv_std_logic_vector(fifoy(pos),32);
                     pos := pos + 1;

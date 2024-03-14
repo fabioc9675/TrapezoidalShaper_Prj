@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar 13 13:55:20 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar 13 22:48:58 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="pynq_bd" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -4806,28 +4806,6 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/clock_div_0" HWVERSION="1.0" INSTANCE="clock_div_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="clock_div" VLNV="xilinx.com:module_ref:clock_div:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="Component_Name" VALUE="pynq_bd_clock_div_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" NAME="clk_in" SIGIS="undef" SIGNAME="processing_system7_0_FCLK_CLK0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="clk_out" SIGIS="undef" SIGNAME="clock_div_0_clk_out">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="fir_fab_0" PORT="ap_clk"/>
-            <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_clk"/>
-            <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_clk"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/dpp_counter_0" HWVERSION="1.0" INSTANCE="dpp_counter_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dpp_counter" VLNV="xilinx.com:module_ref:dpp_counter:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -4836,9 +4814,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="1000000" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="clock_div_0_clk_out">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="xadc_wiz_0_drdy_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clock_div_0" PORT="clk_out"/>
+            <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="xlconstant_1_dout">
@@ -4853,8 +4831,8 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="y" RIGHT="0" SIGIS="undef" SIGNAME="dpp_counter_0_y">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dpp_leds_0" PORT="x"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe3"/>
+            <CONNECTION INSTANCE="dpp_leds_0" PORT="x"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="led" SIGIS="undef"/>
@@ -4899,9 +4877,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="1000000" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="clock_div_0_clk_out">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="xadc_wiz_0_drdy_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clock_div_0" PORT="clk_out"/>
+            <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="xlconstant_1_dout">
@@ -4916,8 +4894,8 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="y" RIGHT="0" SIGIS="undef" SIGNAME="fir_fab_0_y">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="trapz_klm_0" PORT="x"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
+            <CONNECTION INSTANCE="trapz_klm_0" PORT="x"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -9417,7 +9395,6 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M01_ACLK"/>
             <CONNECTION INSTANCE="axi_gpio_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
-            <CONNECTION INSTANCE="clock_div_0" PORT="clk_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="10000000" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
@@ -10805,9 +10782,9 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="1000000" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="clock_div_0_clk_out">
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="ap_clk" SIGIS="clk" SIGNAME="xadc_wiz_0_drdy_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clock_div_0" PORT="clk_out"/>
+            <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="xlconstant_1_dout">
@@ -10822,8 +10799,8 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="y" RIGHT="0" SIGIS="undef" SIGNAME="trapz_klm_0_y">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dpp_counter_0" PORT="x"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
+            <CONNECTION INSTANCE="dpp_counter_0" PORT="x"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -11130,7 +11107,13 @@
             <CONNECTION INSTANCE="leds_0" PORT="d_we_en"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="drdy_out" SIGIS="undef"/>
+        <PORT DIR="O" NAME="drdy_out" SIGIS="undef" SIGNAME="xadc_wiz_0_drdy_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="fir_fab_0" PORT="ap_clk"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="15" NAME="do_out" RIGHT="0" SIGIS="undef" SIGNAME="xadc_wiz_0_do_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_0" PORT="In0"/>
@@ -11354,8 +11337,8 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_0_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fir_fab_0" PORT="x"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe0"/>
+            <CONNECTION INSTANCE="fir_fab_0" PORT="x"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -11389,9 +11372,9 @@
       <PORTS>
         <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="fir_fab_0" PORT="ap_rst"/>
-            <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_rst"/>
             <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_rst"/>
+            <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_rst"/>
+            <CONNECTION INSTANCE="fir_fab_0" PORT="ap_rst"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

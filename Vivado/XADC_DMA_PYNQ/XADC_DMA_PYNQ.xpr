@@ -66,13 +66,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="23"/>
-    <Option Name="WTModelSimExportSim" Val="23"/>
-    <Option Name="WTQuestaExportSim" Val="23"/>
+    <Option Name="WTXSimExportSim" Val="26"/>
+    <Option Name="WTModelSimExportSim" Val="26"/>
+    <Option Name="WTQuestaExportSim" Val="26"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="23"/>
-    <Option Name="WTRivieraExportSim" Val="23"/>
-    <Option Name="WTActivehdlExportSim" Val="23"/>
+    <Option Name="WTVcsExportSim" Val="26"/>
+    <Option Name="WTRivieraExportSim" Val="26"/>
+    <Option Name="WTActivehdlExportSim" Val="26"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -99,22 +99,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/new/fir_fab.vhd">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../FirTrapz_sim/FirTrapz_sim.srcs/sources_1/new/fir_fab.vhd"/>
-          <Attr Name="ImportTime" Val="1709918211"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/new/trapz_klm.vhd">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../FirTrapz_sim/FirTrapz_sim.srcs/sources_1/new/trapz_klm.vhd"/>
-          <Attr Name="ImportTime" Val="1709921326"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/new/dpp_leds.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -129,10 +113,18 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/new/clock_div.vhd">
+      <File Path="$PSRCDIR/sources_1/imports/new/trapz_klm.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../KRIA_Starter_Guide/Kria_Test/XADC_DMA_PYNQ/XADC_DMA_PYNQ.srcs/sources_1/imports/sources_1/new/clock_div.vhd"/>
-          <Attr Name="ImportTime" Val="1708970973"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../FirTrapz_sim/FirTrapz_sim.srcs/sources_1/new/trapz_klm.vhd"/>
+          <Attr Name="ImportTime" Val="1709921326"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/new/fir_fab.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../FirTrapz_sim/FirTrapz_sim.srcs/sources_1/new/fir_fab.vhd"/>
+          <Attr Name="ImportTime" Val="1709918211"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -148,6 +140,15 @@
       </File>
       <File Path="$PGENDIR/sources_1/bd/pynq_bd/hdl/pynq_bd_wrapper.vhd">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/new/clock_div.vhd">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../KRIA_Starter_Guide/Kria_Test/XADC_DMA_PYNQ/XADC_DMA_PYNQ.srcs/sources_1/imports/sources_1/new/clock_div.vhd"/>
+          <Attr Name="ImportTime" Val="1708970973"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>

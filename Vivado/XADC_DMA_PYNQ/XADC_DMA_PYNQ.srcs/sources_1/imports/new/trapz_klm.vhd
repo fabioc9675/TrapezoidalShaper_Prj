@@ -50,7 +50,7 @@ begin
             -- var reset          
             in_sample    <= X"0000";
         else 
-            if rising_edge(ap_clk) then
+            if falling_edge(ap_clk) then
                 -- new sample
                 in_sample  <= x(15 downto 0);
                 -- flags enable
@@ -68,7 +68,7 @@ begin
             for i in buffx'high downto 0 loop
                 buffx(i) <= X"0000";
             end loop;
-        elsif rising_edge(ap_clk) then
+        elsif falling_edge(ap_clk) then
             if en_buffx = '1' then
                 -- registering buffx
                 buffx(0) <= in_sample;
@@ -97,7 +97,7 @@ begin
             -- accumulators initialization
             acc0 <= 0;
             out_sample   <= X"00000000";
-        elsif rising_edge(ap_clk) then
+        elsif falling_edge(ap_clk) then
             if en_trapz = '1' then      
                 -- Calculation of the division in the equation     
                 Acc_1          := conv_integer(signed(buffx(0)));

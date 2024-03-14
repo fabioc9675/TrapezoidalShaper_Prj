@@ -78,7 +78,7 @@ begin
             en_buff   <= '0';
             in_sample <= X"0000";
         else
-            if rising_edge(ap_clk) then
+            if falling_edge(ap_clk) then
                 in_sample <= x(15 downto 0);
                 en_fir    <= '1';
                 en_buff   <= '1';
@@ -94,7 +94,7 @@ begin
             for i in buff'high downto 0 loop
                 buff(i) <= X"0000";
             end loop;
-        elsif rising_edge(ap_clk) then
+        elsif falling_edge(ap_clk) then
             if en_buff = '1' then
                 buff(0) <= in_sample;
                 for i in buff'high-1 downto 0 loop
@@ -116,7 +116,7 @@ begin
             for i in acc'high downto 0 loop
                 acc(i) <= X"00000000";
             end loop;
-        elsif rising_edge(ap_clk) then
+        elsif falling_edge(ap_clk) then
             if en_fir = '1' then
                 for i in acc'high downto 0 loop
                     acc(i) <= conv_std_logic_vector(signed(tap(i)) * signed(buff(i)), 32);
@@ -130,7 +130,7 @@ begin
     begin
         if (ap_rst = '0') then
             out_sample <= X"00000000";  
-        elsif rising_edge(ap_clk) then
+        elsif falling_edge(ap_clk) then
             if en_fir = '1' then
                 out_sample <= acc(0) + acc(1) + acc(2) + acc(3) + acc(4) + acc(5) + acc(6) + acc(7) + acc(8) + acc(9) +
                      acc(10) + acc(11) + acc(12) + acc(13) + acc(14) + acc(15) + acc(16) + acc(17) + acc(18) + acc(19) +
