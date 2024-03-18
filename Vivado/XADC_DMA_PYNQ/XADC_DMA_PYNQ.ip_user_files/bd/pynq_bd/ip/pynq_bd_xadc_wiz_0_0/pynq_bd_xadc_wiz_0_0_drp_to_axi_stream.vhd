@@ -230,7 +230,7 @@ begin
   FIFO18E1_inst_data : FIFO18E1
   generic map (
     ALMOST_EMPTY_OFFSET => X"0006", -- Sets the almost empty threshold
-    ALMOST_FULL_OFFSET => X"03F8", -- Sets almost full threshold
+    ALMOST_FULL_OFFSET => X"0300", -- Sets almost full threshold
     DATA_WIDTH => 18, -- Sets data width to 4-36
     DO_REG => 1, -- Enable output register (1-0) Must be 1 if EN_SYN = FALSE
     EN_SYN => FALSE, -- Specifies FIFO as dual-clock (FALSE) or Synchronous (TRUE)
@@ -271,7 +271,7 @@ begin
   FIFO18E1_inst_tid : FIFO18E1
   generic map (
     ALMOST_EMPTY_OFFSET => X"0006", -- Sets the almost empty threshold
-    ALMOST_FULL_OFFSET => X"03F8", -- Sets almost full threshold
+    ALMOST_FULL_OFFSET => X"0300", -- Sets almost full threshold
     DATA_WIDTH => 18, -- Sets data width to 4-36
     DO_REG => 1, -- Enable output register (1-0) Must be 1 if EN_SYN = FALSE
     EN_SYN => FALSE, -- Specifies FIFO as dual-clock (FALSE) or Synchronous (TRUE)

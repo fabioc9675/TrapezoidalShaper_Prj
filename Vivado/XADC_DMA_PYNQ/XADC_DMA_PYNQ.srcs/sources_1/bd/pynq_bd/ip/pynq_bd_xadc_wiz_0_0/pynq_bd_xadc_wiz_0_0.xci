@@ -10,12 +10,12 @@
       "component_parameters": {
         "Component_Name": [ { "value": "pynq_bd_xadc_wiz_0_0", "resolve_type": "user", "usage": "all" } ],
         "INTERFACE_SELECTION": [ { "value": "ENABLE_DRP", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
-        "SIM_FILE_SEL": [ { "value": "Default", "resolve_type": "user", "usage": "all" } ],
+        "SIM_FILE_SEL": [ { "value": "Default", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "SIM_FILE_REL_PATH": [ { "value": "./", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "NUM_WAVE": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "NUM_WAVE": [ { "value": "500", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "SIM_FILE_NAME": [ { "value": "design", "resolve_type": "user", "usage": "all" } ],
-        "WAVEFORM_TYPE": [ { "value": "CONSTANT", "resolve_type": "user", "usage": "all" } ],
-        "STIMULUS_FREQ": [ { "value": "1.0", "resolve_type": "user", "format": "float", "enabled": false, "usage": "all" } ],
+        "WAVEFORM_TYPE": [ { "value": "SIN", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
+        "STIMULUS_FREQ": [ { "value": "400", "value_src": "user", "resolve_type": "user", "format": "float", "usage": "all" } ],
         "TIMING_MODE": [ { "value": "Continuous", "resolve_type": "user", "usage": "all" } ],
         "STARTUP_CHANNEL_SELECTION": [ { "value": "single_channel", "resolve_type": "user", "usage": "all" } ],
         "XADC_STARUP_SELECTION": [ { "value": "single_channel", "resolve_type": "user", "usage": "all" } ],
@@ -164,7 +164,7 @@
         "ACQUISITION_TIME": [ { "value": "4", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "ENABLE_TEMP_BUS": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "ENABLE_AXI4STREAM": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "FIFO_DEPTH": [ { "value": "8", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "FIFO_DEPTH": [ { "value": "256", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "POWER_DOWN_ADCA": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "POWER_DOWN_ADCB": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ]
       },
@@ -246,7 +246,7 @@
         "C_HAS_AXI": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_AXI4STREAM": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_TEMP_BUS": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_FIFO_DEPTH": [ { "value": "8", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_FIFO_DEPTH": [ { "value": "256", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_INCLUDE_INTR": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {

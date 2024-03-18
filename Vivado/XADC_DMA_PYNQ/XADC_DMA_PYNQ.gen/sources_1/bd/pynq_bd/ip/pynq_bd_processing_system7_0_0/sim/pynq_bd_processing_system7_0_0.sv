@@ -1232,7 +1232,7 @@ output bit S_AXI_HP0_RVALID
      FCLK_CLK1 = 1'b0;
   end
 
-  always #(50.0) FCLK_CLK1 <= ~FCLK_CLK1;
+  always #(250.0) FCLK_CLK1 <= ~FCLK_CLK1;
 
   always@(posedge FCLK_CLK1)
   begin

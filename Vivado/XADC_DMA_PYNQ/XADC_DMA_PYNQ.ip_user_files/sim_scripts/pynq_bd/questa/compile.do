@@ -29,7 +29,6 @@ vlib questa_lib/msim/interrupt_control_v3_1_4
 vlib questa_lib/msim/axi_gpio_v2_0_29
 vlib questa_lib/msim/xlconstant_v1_1_7
 vlib questa_lib/msim/xlslice_v1_0_2
-vlib questa_lib/msim/xlconcat_v2_1_4
 vlib questa_lib/msim/axi_protocol_converter_v2_1_27
 vlib questa_lib/msim/axi_clock_converter_v2_1_26
 vlib questa_lib/msim/blk_mem_gen_v8_4_5
@@ -63,7 +62,6 @@ vmap interrupt_control_v3_1_4 questa_lib/msim/interrupt_control_v3_1_4
 vmap axi_gpio_v2_0_29 questa_lib/msim/axi_gpio_v2_0_29
 vmap xlconstant_v1_1_7 questa_lib/msim/xlconstant_v1_1_7
 vmap xlslice_v1_0_2 questa_lib/msim/xlslice_v1_0_2
-vmap xlconcat_v2_1_4 questa_lib/msim/xlconcat_v2_1_4
 vmap axi_protocol_converter_v2_1_27 questa_lib/msim/axi_protocol_converter_v2_1_27
 vmap axi_clock_converter_v2_1_26 questa_lib/msim/axi_clock_converter_v2_1_26
 vmap blk_mem_gen_v8_4_5 questa_lib/msim/blk_mem_gen_v8_4_5
@@ -208,8 +206,6 @@ vcom -work axi_gpio_v2_0_29  -93  \
 vcom -work xil_defaultlib  -93  \
 "../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_0_0/sim/pynq_bd_axi_gpio_0_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_leds_0_0/sim/pynq_bd_leds_0_0.vhd" \
-"../../../bd/pynq_bd/ip/pynq_bd_fir_fab_0_0/sim/pynq_bd_fir_fab_0_0.vhd" \
-"../../../bd/pynq_bd/ip/pynq_bd_trapz_klm_0_0/sim/pynq_bd_trapz_klm_0_0.vhd" \
 
 vlog -work xlconstant_v1_1_7  -incr -mfcu  "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/8713/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/1b7e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/122e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/b205/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/fd26/hdl/verilog" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/badb/hdl/xlconstant_v1_1_vl_rfs.v" \
@@ -217,27 +213,26 @@ vlog -work xlconstant_v1_1_7  -incr -mfcu  "+incdir+../../../../XADC_DMA_PYNQ.ge
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/8713/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/1b7e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/122e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/b205/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/fd26/hdl/verilog" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../bd/pynq_bd/ip/pynq_bd_xlconstant_0_0/sim/pynq_bd_xlconstant_0_0.v" \
 
-vcom -work xil_defaultlib  -93  \
-"../../../bd/pynq_bd/ip/pynq_bd_dpp_leds_0_0/sim/pynq_bd_dpp_leds_0_0.vhd" \
-"../../../bd/pynq_bd/ip/pynq_bd_dpp_counter_0_0/sim/pynq_bd_dpp_counter_0_0.vhd" \
-
 vlog -work xlslice_v1_0_2  -incr -mfcu  "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/8713/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/1b7e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/122e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/b205/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/fd26/hdl/verilog" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
 
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/8713/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/1b7e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/122e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/b205/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/fd26/hdl/verilog" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../bd/pynq_bd/ip/pynq_bd_xlslice_0_0/sim/pynq_bd_xlslice_0_0.v" \
 "../../../bd/pynq_bd/ip/pynq_bd_xlslice_0_1/sim/pynq_bd_xlslice_0_1.v" \
-"../../../bd/pynq_bd/ip/pynq_bd_xlconstant_0_1/sim/pynq_bd_xlconstant_0_1.v" \
 
 vcom -work xil_defaultlib  -93  \
 "../../../bd/pynq_bd/ip/pynq_bd_ila_0_0/sim/pynq_bd_ila_0_0.vhd" \
-
-vlog -work xlconcat_v2_1_4  -incr -mfcu  "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/8713/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/1b7e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/122e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/b205/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/fd26/hdl/verilog" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
-"../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/4b67/hdl/xlconcat_v2_1_vl_rfs.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_dpp_leds_0_0/sim/pynq_bd_dpp_leds_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_dpp_counter_0_0/sim/pynq_bd_dpp_counter_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_trapz_klm_0_0/sim/pynq_bd_trapz_klm_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_fir_fab_0_0/sim/pynq_bd_fir_fab_0_0.vhd" \
 
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/8713/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/1b7e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/122e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/b205/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/fd26/hdl/verilog" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
-"../../../bd/pynq_bd/ip/pynq_bd_xlconcat_0_0/sim/pynq_bd_xlconcat_0_0.v" \
-"../../../bd/pynq_bd/ip/pynq_bd_xlconstant_2_0/sim/pynq_bd_xlconstant_2_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlconstant_0_1/sim/pynq_bd_xlconstant_0_1.v" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/pynq_bd/ip/pynq_bd_xadc_buffer_0_0/sim/pynq_bd_xadc_buffer_0_0.vhd" \
+"../../../bd/pynq_bd/sim/pynq_bd.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_27  -incr -mfcu  "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/8713/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/1b7e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/122e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/b205/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/fd26/hdl/verilog" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/aeb3/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
@@ -257,9 +252,6 @@ vlog -work axi_dwidth_converter_v2_1_27  -incr -mfcu  "+incdir+../../../../XADC_
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/8713/hdl" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/1b7e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/122e/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/b205/hdl/verilog" "+incdir+../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/fd26/hdl/verilog" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../bd/pynq_bd/ip/pynq_bd_auto_us_0/sim/pynq_bd_auto_us_0.v" \
 "../../../bd/pynq_bd/ip/pynq_bd_auto_pc_1/sim/pynq_bd_auto_pc_1.v" \
-
-vcom -work xil_defaultlib  -93  \
-"../../../bd/pynq_bd/sim/pynq_bd.vhd" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

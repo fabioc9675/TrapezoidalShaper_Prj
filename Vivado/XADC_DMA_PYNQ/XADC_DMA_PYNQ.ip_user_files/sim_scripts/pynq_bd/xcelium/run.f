@@ -137,8 +137,6 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_0_0/sim/pynq_bd_axi_gpio_0_0.vhd" \
   "../../../bd/pynq_bd/ip/pynq_bd_leds_0_0/sim/pynq_bd_leds_0_0.vhd" \
-  "../../../bd/pynq_bd/ip/pynq_bd_fir_fab_0_0/sim/pynq_bd_fir_fab_0_0.vhd" \
-  "../../../bd/pynq_bd/ip/pynq_bd_trapz_klm_0_0/sim/pynq_bd_trapz_klm_0_0.vhd" \
 -endlib
 -makelib xcelium_lib/xlconstant_v1_1_7 \
   "../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/badb/hdl/xlconstant_v1_1_vl_rfs.v" \
@@ -146,27 +144,26 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/pynq_bd/ip/pynq_bd_xlconstant_0_0/sim/pynq_bd_xlconstant_0_0.v" \
 -endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/pynq_bd/ip/pynq_bd_dpp_leds_0_0/sim/pynq_bd_dpp_leds_0_0.vhd" \
-  "../../../bd/pynq_bd/ip/pynq_bd_dpp_counter_0_0/sim/pynq_bd_dpp_counter_0_0.vhd" \
--endlib
 -makelib xcelium_lib/xlslice_v1_0_2 \
   "../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/pynq_bd/ip/pynq_bd_xlslice_0_0/sim/pynq_bd_xlslice_0_0.v" \
   "../../../bd/pynq_bd/ip/pynq_bd_xlslice_0_1/sim/pynq_bd_xlslice_0_1.v" \
-  "../../../bd/pynq_bd/ip/pynq_bd_xlconstant_0_1/sim/pynq_bd_xlconstant_0_1.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/pynq_bd/ip/pynq_bd_ila_0_0/sim/pynq_bd_ila_0_0.vhd" \
--endlib
--makelib xcelium_lib/xlconcat_v2_1_4 \
-  "../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/4b67/hdl/xlconcat_v2_1_vl_rfs.v" \
+  "../../../bd/pynq_bd/ip/pynq_bd_dpp_leds_0_0/sim/pynq_bd_dpp_leds_0_0.vhd" \
+  "../../../bd/pynq_bd/ip/pynq_bd_dpp_counter_0_0/sim/pynq_bd_dpp_counter_0_0.vhd" \
+  "../../../bd/pynq_bd/ip/pynq_bd_trapz_klm_0_0/sim/pynq_bd_trapz_klm_0_0.vhd" \
+  "../../../bd/pynq_bd/ip/pynq_bd_fir_fab_0_0/sim/pynq_bd_fir_fab_0_0.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/pynq_bd/ip/pynq_bd_xlconcat_0_0/sim/pynq_bd_xlconcat_0_0.v" \
-  "../../../bd/pynq_bd/ip/pynq_bd_xlconstant_2_0/sim/pynq_bd_xlconstant_2_0.v" \
+  "../../../bd/pynq_bd/ip/pynq_bd_xlconstant_0_1/sim/pynq_bd_xlconstant_0_1.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/pynq_bd/ip/pynq_bd_xadc_buffer_0_0/sim/pynq_bd_xadc_buffer_0_0.vhd" \
+  "../../../bd/pynq_bd/sim/pynq_bd.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_27 \
   "../../../../XADC_DMA_PYNQ.gen/sources_1/bd/pynq_bd/ipshared/aeb3/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
@@ -186,9 +183,6 @@
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/pynq_bd/ip/pynq_bd_auto_us_0/sim/pynq_bd_auto_us_0.v" \
   "../../../bd/pynq_bd/ip/pynq_bd_auto_pc_1/sim/pynq_bd_auto_pc_1.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/pynq_bd/sim/pynq_bd.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v
