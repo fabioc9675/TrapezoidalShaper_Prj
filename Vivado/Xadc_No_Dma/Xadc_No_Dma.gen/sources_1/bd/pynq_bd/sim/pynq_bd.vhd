@@ -1,8 +1,8 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Sun Mar 17 21:22:26 2024
---Host        : fabiancastano running 64-bit major release  (build 9200)
+--Date        : Tue Mar 19 19:45:47 2024
+--Host        : DESKTOP-3FHD9AF running 64-bit major release  (build 9200)
 --Command     : generate_target pynq_bd.bd
 --Design      : pynq_bd
 --Purpose     : IP block netlist
@@ -1449,7 +1449,7 @@ entity pynq_bd is
     sw : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of pynq_bd : entity is "pynq_bd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=pynq_bd,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=23,numReposBlks=18,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_axi4_s2mm_cnt=2,da_board_cnt=1,da_clkrst_cnt=6,da_ps7_cnt=1,synth_mode=Global}";
+  attribute CORE_GENERATION_INFO of pynq_bd : entity is "pynq_bd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=pynq_bd,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=23,numReposBlks=18,numNonXlnxBlks=0,numHierBlks=5,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=7,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=7,da_axi4_s2mm_cnt=2,da_board_cnt=1,da_clkrst_cnt=6,da_ps7_cnt=1,synth_mode=Global}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of pynq_bd : entity is "pynq_bd.hwdef";
 end pynq_bd;
@@ -1620,11 +1620,6 @@ architecture STRUCTURE of pynq_bd is
     d_we_en : out STD_LOGIC
   );
   end component pynq_bd_leds_0_0;
-  component pynq_bd_xlconstant_0_0 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  end component pynq_bd_xlconstant_0_0;
   component pynq_bd_xlslice_0_0 is
   port (
     Din : in STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -1653,6 +1648,30 @@ architecture STRUCTURE of pynq_bd is
     led : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   end component pynq_bd_dpp_leds_0_0;
+  component pynq_bd_fir_fab_0_0 is
+  port (
+    ap_clk : in STD_LOGIC;
+    ap_rst : in STD_LOGIC;
+    x : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    y : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component pynq_bd_fir_fab_0_0;
+  component pynq_bd_trapz_klm_0_0 is
+  port (
+    ap_clk : in STD_LOGIC;
+    ap_rst : in STD_LOGIC;
+    x : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    y : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component pynq_bd_trapz_klm_0_0;
+  component pynq_bd_xadc_buffer_0_0 is
+  port (
+    ap_clk : in STD_LOGIC;
+    ap_rst : in STD_LOGIC;
+    x : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    y : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component pynq_bd_xadc_buffer_0_0;
   component pynq_bd_dpp_counter_0_0 is
   port (
     ap_clk : in STD_LOGIC;
@@ -1665,33 +1684,16 @@ architecture STRUCTURE of pynq_bd is
     fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component pynq_bd_dpp_counter_0_0;
-  component pynq_bd_fir_fab_0_0 is
+  component pynq_bd_inv_sw_0_0 is
   port (
-    ap_clk : in STD_LOGIC;
-    ap_rst : in STD_LOGIC;
-    x : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    y : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    in_s : in STD_LOGIC;
+    out_s : out STD_LOGIC
   );
-  end component pynq_bd_fir_fab_0_0;
-  component pynq_bd_xadc_buffer_0_0 is
-  port (
-    ap_clk : in STD_LOGIC;
-    ap_rst : in STD_LOGIC;
-    x : in STD_LOGIC_VECTOR ( 15 downto 0 );
-    y : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component pynq_bd_xadc_buffer_0_0;
-  component pynq_bd_trapz_klm_0_0 is
-  port (
-    ap_clk : in STD_LOGIC;
-    ap_rst : in STD_LOGIC;
-    x : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    y : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component pynq_bd_trapz_klm_0_0;
+  end component pynq_bd_inv_sw_0_0;
   signal Vaux1_0_1_V_N : STD_LOGIC;
   signal Vaux1_0_1_V_P : STD_LOGIC;
   signal ap_rst_0_1 : STD_LOGIC;
+  signal ap_rst_0_2 : STD_LOGIC;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal clk_wiz_0_clk_out1 : STD_LOGIC;
   signal clk_wiz_0_locked : STD_LOGIC;
@@ -1788,7 +1790,6 @@ architecture STRUCTURE of pynq_bd is
   signal xadc_wiz_0_do_out1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal xadc_wiz_0_drdy_out : STD_LOGIC;
   signal xadc_wiz_0_eoc_out : STD_LOGIC;
-  signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlslice_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_gpio_0_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_dpp_counter_0_led_UNCONNECTED : STD_LOGIC;
@@ -1866,7 +1867,7 @@ architecture STRUCTURE of pynq_bd is
 begin
   Vaux1_0_1_V_N <= Vaux1_0_v_n;
   Vaux1_0_1_V_P <= Vaux1_0_v_p;
-  ap_rst_0_1 <= ap_rst_0;
+  ap_rst_0_2 <= ap_rst_0;
   led_0(7 downto 0) <= dpp_leds_0_led(7 downto 0);
   led_1(0) <= xlslice_0_Dout(0);
   led_rst_0 <= dpp_counter_0_led_rst;
@@ -1907,7 +1908,7 @@ dpp_counter_0: component pynq_bd_dpp_counter_0_0
      port map (
       ap_clk => xadc_wiz_0_drdy_out,
       ap_rst => ap_rst_0_1,
-      fifo_en => xlconstant_0_dout(0),
+      fifo_en => ap_rst_0_2,
       fifo_o(31 downto 0) => NLW_dpp_counter_0_fifo_o_UNCONNECTED(31 downto 0),
       led => NLW_dpp_counter_0_led_UNCONNECTED,
       led_rst => dpp_counter_0_led_rst,
@@ -1934,6 +1935,11 @@ ila_0: component pynq_bd_ila_0_0
       probe2(31 downto 0) => fir_fab_0_y(31 downto 0),
       probe3(31 downto 0) => trapz_klm_0_y(31 downto 0),
       probe4(0) => xadc_wiz_0_drdy_out
+    );
+inv_sw_0: component pynq_bd_inv_sw_0_0
+     port map (
+      in_s => ap_rst_0_2,
+      out_s => ap_rst_0_1
     );
 leds_0: component pynq_bd_leds_0_0
      port map (
@@ -2180,10 +2186,6 @@ xadc_wiz_0: component pynq_bd_xadc_wiz_0_0
       vauxp1 => Vaux1_0_1_V_P,
       vn_in => '0',
       vp_in => '0'
-    );
-xlconstant_0: component pynq_bd_xlconstant_0_0
-     port map (
-      dout(0) => xlconstant_0_dout(0)
     );
 xlslice_0: component pynq_bd_xlslice_0_0
      port map (

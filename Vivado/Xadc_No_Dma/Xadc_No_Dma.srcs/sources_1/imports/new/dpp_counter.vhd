@@ -42,7 +42,7 @@ architecture Behavioral of dpp_counter is
     type buffer_fifo is array (integer range <>) of integer;
     signal fifoy           : buffer_fifo(0 to fifo_len);
     signal comp_buff       : buffer_fifo(0 to fifo_len);
-    constant comparator    : integer     := 32767;  -- comparator level
+    constant comparator    : integer     := 50000; -- 32767;  -- comparator level
     constant comp_high     : integer     := 1000000;  -- comparator level
     
 
@@ -129,7 +129,7 @@ begin
             pos := 0;
         else
             if rising_edge(ap_clk) then
-                if (fifo_en = '1') and (pos < fifo_len) then
+                if (fifo_en = '0') and (pos < fifo_len) then
                     fifo_o <= conv_std_logic_vector(fifoy(pos),32);
                     pos := pos + 1;
                 end if;                  

@@ -27,15 +27,15 @@
       "rst_ps7_0_100M": "",
       "axi_gpio_0": "",
       "leds_0": "",
-      "xlconstant_0": "",
       "xlslice_0": "",
       "xlslice_1": "",
       "ila_0": "",
       "dpp_leds_0": "",
-      "dpp_counter_0": "",
       "fir_fab_0": "",
+      "trapz_klm_0": "",
       "xadc_buffer_0": "",
-      "trapz_klm_0": ""
+      "dpp_counter_0": "",
+      "inv_sw_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -299,7 +299,7 @@
             "value": "100.000000"
           },
           "PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ": {
-            "value": "2.000000"
+            "value": "10.000000"
           },
           "PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ": {
             "value": "10.000000"
@@ -383,7 +383,7 @@
             "value": "100000000"
           },
           "PCW_CLK1_FREQ": {
-            "value": "2000000"
+            "value": "10000000"
           },
           "PCW_CLK2_FREQ": {
             "value": "10000000"
@@ -698,7 +698,7 @@
             "value": "100"
           },
           "PCW_FPGA1_PERIPHERAL_FREQMHZ": {
-            "value": "2"
+            "value": "10"
           },
           "PCW_FPGA2_PERIPHERAL_FREQMHZ": {
             "value": "50"
@@ -1524,6 +1524,9 @@
           },
           "PCW_SPI_PERIPHERAL_VALID": {
             "value": "0"
+          },
+          "PCW_S_AXI_HP0_DATA_WIDTH": {
+            "value": "64"
           },
           "PCW_S_AXI_HP1_DATA_WIDTH": {
             "value": "64"
@@ -2729,17 +2732,6 @@
           }
         }
       },
-      "xlconstant_0": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "pynq_bd_xlconstant_0_0",
-        "xci_path": "ip\\pynq_bd_xlconstant_0_0\\pynq_bd_xlconstant_0_0.xci",
-        "inst_hier_path": "xlconstant_0",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0"
-          }
-        }
-      },
       "xlslice_0": {
         "vlnv": "xilinx.com:ip:xlslice:1.0",
         "xci_name": "pynq_bd_xlslice_0_0",
@@ -2783,23 +2775,47 @@
           "C_NUM_OF_PROBES": {
             "value": "5"
           },
+          "C_PROBE0_TYPE": {
+            "value": "0"
+          },
           "C_PROBE0_WIDTH": {
             "value": "32"
+          },
+          "C_PROBE1_TYPE": {
+            "value": "1"
           },
           "C_PROBE1_WIDTH": {
             "value": "32"
           },
+          "C_PROBE2_TYPE": {
+            "value": "1"
+          },
           "C_PROBE2_WIDTH": {
             "value": "32"
+          },
+          "C_PROBE3_TYPE": {
+            "value": "1"
           },
           "C_PROBE3_WIDTH": {
             "value": "32"
           },
+          "C_PROBE4_TYPE": {
+            "value": "1"
+          },
           "C_PROBE4_WIDTH": {
+            "value": "1"
+          },
+          "C_PROBE5_TYPE": {
             "value": "1"
           },
           "C_PROBE5_WIDTH": {
             "value": "1"
+          },
+          "C_TRIGIN_EN": {
+            "value": "false"
+          },
+          "C_TRIGOUT_EN": {
+            "value": "false"
           }
         }
       },
@@ -2822,58 +2838,6 @@
           "led": {
             "direction": "O",
             "left": "7",
-            "right": "0"
-          }
-        }
-      },
-      "dpp_counter_0": {
-        "vlnv": "xilinx.com:module_ref:dpp_counter:1.0",
-        "xci_name": "pynq_bd_dpp_counter_0_0",
-        "xci_path": "ip\\pynq_bd_dpp_counter_0_0\\pynq_bd_dpp_counter_0_0.xci",
-        "inst_hier_path": "dpp_counter_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "dpp_counter",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "ap_clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "ap_rst",
-                "value_src": "constant"
-              }
-            }
-          },
-          "ap_rst": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "x": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "y": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "led": {
-            "direction": "O"
-          },
-          "led_rst": {
-            "type": "rst",
-            "direction": "O"
-          },
-          "fifo_en": {
-            "direction": "I"
-          },
-          "fifo_o": {
-            "direction": "O",
-            "left": "31",
             "right": "0"
           }
         }
@@ -2913,6 +2877,43 @@
                 "value_src": "ip_prop"
               }
             }
+          },
+          "y": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "trapz_klm_0": {
+        "vlnv": "xilinx.com:module_ref:trapz_klm:1.0",
+        "xci_name": "pynq_bd_trapz_klm_0_0",
+        "xci_path": "ip\\pynq_bd_trapz_klm_0_0\\pynq_bd_trapz_klm_0_0.xci",
+        "inst_hier_path": "trapz_klm_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "trapz_klm",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "ap_clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "ap_rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "ap_rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "x": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
           },
           "y": {
             "direction": "O",
@@ -2964,14 +2965,14 @@
           }
         }
       },
-      "trapz_klm_0": {
-        "vlnv": "xilinx.com:module_ref:trapz_klm:1.0",
-        "xci_name": "pynq_bd_trapz_klm_0_0",
-        "xci_path": "ip\\pynq_bd_trapz_klm_0_0\\pynq_bd_trapz_klm_0_0.xci",
-        "inst_hier_path": "trapz_klm_0",
+      "dpp_counter_0": {
+        "vlnv": "xilinx.com:module_ref:dpp_counter:1.0",
+        "xci_name": "pynq_bd_dpp_counter_0_0",
+        "xci_path": "ip\\pynq_bd_dpp_counter_0_0\\pynq_bd_dpp_counter_0_0.xci",
+        "inst_hier_path": "dpp_counter_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "trapz_klm",
+          "ref_name": "dpp_counter",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -2998,6 +2999,52 @@
             "direction": "O",
             "left": "31",
             "right": "0"
+          },
+          "led": {
+            "direction": "O"
+          },
+          "led_rst": {
+            "type": "rst",
+            "direction": "O"
+          },
+          "fifo_en": {
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "fifo_o": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        }
+      },
+      "inv_sw_0": {
+        "vlnv": "xilinx.com:module_ref:inv_sw:1.0",
+        "xci_name": "pynq_bd_inv_sw_0_0",
+        "xci_path": "ip\\pynq_bd_inv_sw_0_0\\pynq_bd_inv_sw_0_0.xci",
+        "inst_hier_path": "inv_sw_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "inv_sw",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "in_s": {
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "out_s": {
+            "direction": "O"
           }
         }
       }
@@ -3037,11 +3084,18 @@
     "nets": {
       "ap_rst_0_1": {
         "ports": [
-          "ap_rst_0",
-          "dpp_counter_0/ap_rst",
+          "inv_sw_0/out_s",
           "fir_fab_0/ap_rst",
+          "trapz_klm_0/ap_rst",
           "xadc_buffer_0/ap_rst",
-          "trapz_klm_0/ap_rst"
+          "dpp_counter_0/ap_rst"
+        ]
+      },
+      "ap_rst_0_2": {
+        "ports": [
+          "ap_rst_0",
+          "inv_sw_0/in_s",
+          "dpp_counter_0/fifo_en"
         ]
       },
       "axi_gpio_0_gpio_io_o": {
@@ -3178,23 +3232,17 @@
       "xadc_wiz_0_drdy_out": {
         "ports": [
           "xadc_wiz_0/drdy_out",
-          "dpp_counter_0/ap_clk",
           "fir_fab_0/ap_clk",
-          "xadc_buffer_0/ap_clk",
           "trapz_klm_0/ap_clk",
-          "ila_0/probe4"
+          "ila_0/probe4",
+          "xadc_buffer_0/ap_clk",
+          "dpp_counter_0/ap_clk"
         ]
       },
       "xadc_wiz_0_eoc_out": {
         "ports": [
           "xadc_wiz_0/eoc_out",
           "xadc_wiz_0/den_in"
-        ]
-      },
-      "xlconstant_0_dout": {
-        "ports": [
-          "xlconstant_0/dout",
-          "dpp_counter_0/fifo_en"
         ]
       },
       "xlslice_0_Dout": {

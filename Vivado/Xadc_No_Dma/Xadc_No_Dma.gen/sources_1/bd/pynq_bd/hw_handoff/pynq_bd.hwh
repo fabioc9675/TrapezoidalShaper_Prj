@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Mar 17 21:22:27 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 19 19:45:50 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="pynq_bd" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -141,10 +141,8 @@
     </PORT>
     <PORT DIR="I" NAME="ap_rst_0" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_ap_rst_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_rst"/>
-        <CONNECTION INSTANCE="fir_fab_0" PORT="ap_rst"/>
-        <CONNECTION INSTANCE="xadc_buffer_0" PORT="ap_rst"/>
-        <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_rst"/>
+        <CONNECTION INSTANCE="inv_sw_0" PORT="in_s"/>
+        <CONNECTION INSTANCE="dpp_counter_0" PORT="fifo_en"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -1182,9 +1180,9 @@
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_ap_rst_0">
+        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_s">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ap_rst_0"/>
+            <CONNECTION INSTANCE="inv_sw_0" PORT="out_s"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="x" RIGHT="0" SIGIS="undef" SIGNAME="trapz_klm_0_y">
@@ -1204,9 +1202,9 @@
             <CONNECTION INSTANCE="External_Ports" PORT="led_rst_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="fifo_en" SIGIS="undef" SIGNAME="xlconstant_0_dout">
+        <PORT DIR="I" NAME="fifo_en" POLARITY="ACTIVE_LOW" SIGIS="undef" SIGNAME="External_Ports_ap_rst_0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconstant_0" PORT="dout"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ap_rst_0"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="fifo_o" RIGHT="0" SIGIS="undef"/>
@@ -1245,9 +1243,9 @@
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_ap_rst_0">
+        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_s">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ap_rst_0"/>
+            <CONNECTION INSTANCE="inv_sw_0" PORT="out_s"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="x" RIGHT="0" SIGIS="undef" SIGNAME="xadc_buffer_0_y">
@@ -2333,11 +2331,11 @@
         <PARAMETER NAME="C_PROBE1022_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE1023_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE0_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE1_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE2_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE3_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE4_TYPE" VALUE="0"/>
-        <PARAMETER NAME="C_PROBE5_TYPE" VALUE="0"/>
+        <PARAMETER NAME="C_PROBE1_TYPE" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE2_TYPE" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE3_TYPE" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE4_TYPE" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE5_TYPE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE6_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE7_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE8_TYPE" VALUE="0"/>
@@ -4404,7 +4402,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="2000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
+        <PORT CLKFREQUENCY="10000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
           </CONNECTIONS>
@@ -4432,6 +4430,29 @@
         <PORT DIR="I" LEFT="0" NAME="probe4" RIGHT="0" SIGIS="undef" SIGNAME="xadc_wiz_0_drdy_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/inv_sw_0" HWVERSION="1.0" INSTANCE="inv_sw_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="inv_sw" VLNV="xilinx.com:module_ref:inv_sw:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="pynq_bd_inv_sw_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="in_s" POLARITY="ACTIVE_LOW" SIGIS="undef" SIGNAME="External_Ports_ap_rst_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ap_rst_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="out_s" SIGIS="undef" SIGNAME="inv_sw_0_out_s">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fir_fab_0" PORT="ap_rst"/>
+            <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_rst"/>
+            <CONNECTION INSTANCE="xadc_buffer_0" PORT="ap_rst"/>
+            <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_rst"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4669,7 +4690,7 @@
         <PARAMETER NAME="PCW_PCAP_PERIPHERAL_FREQMHZ" VALUE="200"/>
         <PARAMETER NAME="PCW_TPIU_PERIPHERAL_FREQMHZ" VALUE="200"/>
         <PARAMETER NAME="PCW_FPGA0_PERIPHERAL_FREQMHZ" VALUE="100"/>
-        <PARAMETER NAME="PCW_FPGA1_PERIPHERAL_FREQMHZ" VALUE="2"/>
+        <PARAMETER NAME="PCW_FPGA1_PERIPHERAL_FREQMHZ" VALUE="10"/>
         <PARAMETER NAME="PCW_FPGA2_PERIPHERAL_FREQMHZ" VALUE="50"/>
         <PARAMETER NAME="PCW_FPGA3_PERIPHERAL_FREQMHZ" VALUE="50"/>
         <PARAMETER NAME="PCW_ACT_APU_PERIPHERAL_FREQMHZ" VALUE="650.000000"/>
@@ -4693,7 +4714,7 @@
         <PARAMETER NAME="PCW_ACT_PCAP_PERIPHERAL_FREQMHZ" VALUE="200.000000"/>
         <PARAMETER NAME="PCW_ACT_TPIU_PERIPHERAL_FREQMHZ" VALUE="200.000000"/>
         <PARAMETER NAME="PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ" VALUE="100.000000"/>
-        <PARAMETER NAME="PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ" VALUE="2.000000"/>
+        <PARAMETER NAME="PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
         <PARAMETER NAME="PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
         <PARAMETER NAME="PCW_ACT_FPGA3_PERIPHERAL_FREQMHZ" VALUE="10.000000"/>
         <PARAMETER NAME="PCW_ACT_TTC0_CLK0_PERIPHERAL_FREQMHZ" VALUE="108.333336"/>
@@ -4703,7 +4724,7 @@
         <PARAMETER NAME="PCW_ACT_TTC1_CLK1_PERIPHERAL_FREQMHZ" VALUE="108.333336"/>
         <PARAMETER NAME="PCW_ACT_TTC1_CLK2_PERIPHERAL_FREQMHZ" VALUE="108.333336"/>
         <PARAMETER NAME="PCW_CLK0_FREQ" VALUE="100000000"/>
-        <PARAMETER NAME="PCW_CLK1_FREQ" VALUE="2000000"/>
+        <PARAMETER NAME="PCW_CLK1_FREQ" VALUE="10000000"/>
         <PARAMETER NAME="PCW_CLK2_FREQ" VALUE="10000000"/>
         <PARAMETER NAME="PCW_CLK3_FREQ" VALUE="10000000"/>
         <PARAMETER NAME="PCW_OVERRIDE_BASIC_CLOCK" VALUE="0"/>
@@ -4717,11 +4738,11 @@
         <PARAMETER NAME="PCW_CAN_PERIPHERAL_DIVISOR0" VALUE="1"/>
         <PARAMETER NAME="PCW_CAN_PERIPHERAL_DIVISOR1" VALUE="1"/>
         <PARAMETER NAME="PCW_FCLK0_PERIPHERAL_DIVISOR0" VALUE="5"/>
-        <PARAMETER NAME="PCW_FCLK1_PERIPHERAL_DIVISOR0" VALUE="25"/>
+        <PARAMETER NAME="PCW_FCLK1_PERIPHERAL_DIVISOR0" VALUE="10"/>
         <PARAMETER NAME="PCW_FCLK2_PERIPHERAL_DIVISOR0" VALUE="1"/>
         <PARAMETER NAME="PCW_FCLK3_PERIPHERAL_DIVISOR0" VALUE="1"/>
         <PARAMETER NAME="PCW_FCLK0_PERIPHERAL_DIVISOR1" VALUE="2"/>
-        <PARAMETER NAME="PCW_FCLK1_PERIPHERAL_DIVISOR1" VALUE="20"/>
+        <PARAMETER NAME="PCW_FCLK1_PERIPHERAL_DIVISOR1" VALUE="10"/>
         <PARAMETER NAME="PCW_FCLK2_PERIPHERAL_DIVISOR1" VALUE="1"/>
         <PARAMETER NAME="PCW_FCLK3_PERIPHERAL_DIVISOR1" VALUE="1"/>
         <PARAMETER NAME="PCW_ENET0_PERIPHERAL_DIVISOR0" VALUE="8"/>
@@ -5632,7 +5653,7 @@
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="2000000" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
+        <PORT CLKFREQUENCY="10000000" DIR="O" NAME="FCLK_CLK1" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK1">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="clk"/>
           </CONNECTIONS>
@@ -6793,9 +6814,9 @@
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_ap_rst_0">
+        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_s">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ap_rst_0"/>
+            <CONNECTION INSTANCE="inv_sw_0" PORT="out_s"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="x" RIGHT="0" SIGIS="undef" SIGNAME="fir_fab_0_y">
@@ -6824,9 +6845,9 @@
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_ap_rst_0">
+        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_s">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ap_rst_0"/>
+            <CONNECTION INSTANCE="inv_sw_0" PORT="out_s"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="x" RIGHT="0" SIGIS="undef" SIGNAME="xadc_wiz_0_do_out">
@@ -7111,11 +7132,11 @@
         </PORT>
         <PORT DIR="O" NAME="drdy_out" SIGIS="undef" SIGNAME="xadc_wiz_0_drdy_out">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="fir_fab_0" PORT="ap_clk"/>
-            <CONNECTION INSTANCE="xadc_buffer_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe4"/>
+            <CONNECTION INSTANCE="xadc_buffer_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="do_out" RIGHT="0" SIGIS="undef" SIGNAME="xadc_wiz_0_do_out">
@@ -7176,23 +7197,6 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
-    </MODULE>
-    <MODULE COREREVISION="7" FULLNAME="/xlconstant_0" HWVERSION="1.1" INSTANCE="xlconstant_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
-        <PARAMETER NAME="Component_Name" VALUE="pynq_bd_xlconstant_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_0_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="dpp_counter_0" PORT="fifo_en"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="2" FULLNAME="/xlslice_0" HWVERSION="1.0" INSTANCE="xlslice_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
