@@ -38,8 +38,8 @@
     },
     "boundary": {
       "ports": {
-        "in_s": [ { "direction": "in" } ],
-        "out_s": [ { "direction": "out" } ]
+        "in_sig": [ { "direction": "in" } ],
+        "out_sig": [ { "direction": "out" } ]
       }
     }
   }

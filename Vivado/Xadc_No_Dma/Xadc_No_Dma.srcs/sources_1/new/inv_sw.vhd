@@ -32,14 +32,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity inv_sw is
-    Port ( in_s : in STD_LOGIC;
-           out_s : out STD_LOGIC);
+    Port ( in_sig : in STD_LOGIC;
+           out_sig : out STD_LOGIC);
 end inv_sw;
 
 architecture Behavioral of inv_sw is
 
 begin
 
-    out_s <= not in_s;
+    out_sig <= not in_sig;
     
 end Behavioral;

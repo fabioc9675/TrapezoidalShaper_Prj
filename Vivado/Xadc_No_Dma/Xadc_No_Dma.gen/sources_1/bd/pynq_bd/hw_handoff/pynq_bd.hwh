@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 19 19:45:50 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 26 10:30:08 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="pynq_bd" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -139,10 +139,14 @@
         <CONNECTION INSTANCE="xlslice_0" PORT="Dout"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="ap_rst_0" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_ap_rst_0">
+    <PORT DIR="I" NAME="fifo_en_0" POLARITY="ACTIVE_LOW" SIGIS="undef" SIGNAME="External_Ports_fifo_en_0">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="inv_sw_0" PORT="in_s"/>
         <CONNECTION INSTANCE="dpp_counter_0" PORT="fifo_en"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="in_sig_0" SIGIS="undef" SIGNAME="External_Ports_in_sig_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="inv_sw_0" PORT="in_sig"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -1180,9 +1184,9 @@
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_s">
+        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_sig">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="inv_sw_0" PORT="out_s"/>
+            <CONNECTION INSTANCE="inv_sw_0" PORT="out_sig"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="x" RIGHT="0" SIGIS="undef" SIGNAME="trapz_klm_0_y">
@@ -1202,12 +1206,16 @@
             <CONNECTION INSTANCE="External_Ports" PORT="led_rst_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="fifo_en" POLARITY="ACTIVE_LOW" SIGIS="undef" SIGNAME="External_Ports_ap_rst_0">
+        <PORT DIR="I" NAME="fifo_en" POLARITY="ACTIVE_LOW" SIGIS="undef" SIGNAME="External_Ports_fifo_en_0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ap_rst_0"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="fifo_en_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="31" NAME="fifo_o" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="fifo_o" RIGHT="0" SIGIS="undef" SIGNAME="dpp_counter_0_fifo_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe5"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -1243,9 +1251,9 @@
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_s">
+        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_sig">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="inv_sw_0" PORT="out_s"/>
+            <CONNECTION INSTANCE="inv_sw_0" PORT="out_sig"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="x" RIGHT="0" SIGIS="undef" SIGNAME="xadc_buffer_0_y">
@@ -1282,8 +1290,8 @@
         <PARAMETER NAME="C_SLOT_0_AXI_PROTOCOL" VALUE="AXI4"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="5"/>
-        <PARAMETER NAME="C_DATA_DEPTH" VALUE="32768"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="6"/>
+        <PARAMETER NAME="C_DATA_DEPTH" VALUE="16384"/>
         <PARAMETER NAME="C_MAJOR_VERSION" VALUE="2022"/>
         <PARAMETER NAME="C_MINOR_VERSION" VALUE="2"/>
         <PARAMETER NAME="C_BUILD_REVISION" VALUE="0"/>
@@ -1297,7 +1305,7 @@
         <PARAMETER NAME="C_RAM_STYLE" VALUE="SUBCORE"/>
         <PARAMETER NAME="C_TRIGOUT_EN" VALUE="0"/>
         <PARAMETER NAME="C_TRIGIN_EN" VALUE="0"/>
-        <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TDEST_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TID_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_ID_WIDTH" VALUE="1"/>
@@ -1311,7 +1319,7 @@
         <PARAMETER NAME="C_PROBE2_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_PROBE3_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_PROBE4_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE5_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_PROBE6_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE7_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE8_WIDTH" VALUE="1"/>
@@ -2335,7 +2343,7 @@
         <PARAMETER NAME="C_PROBE2_TYPE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE3_TYPE" VALUE="1"/>
         <PARAMETER NAME="C_PROBE4_TYPE" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE5_TYPE" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE5_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE6_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE7_TYPE" VALUE="0"/>
         <PARAMETER NAME="C_PROBE8_TYPE" VALUE="0"/>
@@ -4432,6 +4440,11 @@
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="31" NAME="probe5" RIGHT="0" SIGIS="undef" SIGNAME="dpp_counter_0_fifo_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="dpp_counter_0" PORT="fifo_o"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -4442,12 +4455,12 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" NAME="in_s" POLARITY="ACTIVE_LOW" SIGIS="undef" SIGNAME="External_Ports_ap_rst_0">
+        <PORT DIR="I" NAME="in_sig" SIGIS="undef" SIGNAME="External_Ports_in_sig_0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ap_rst_0"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="in_sig_0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="out_s" SIGIS="undef" SIGNAME="inv_sw_0_out_s">
+        <PORT DIR="O" NAME="out_sig" SIGIS="undef" SIGNAME="inv_sw_0_out_sig">
           <CONNECTIONS>
             <CONNECTION INSTANCE="fir_fab_0" PORT="ap_rst"/>
             <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_rst"/>
@@ -6814,9 +6827,9 @@
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_s">
+        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_sig">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="inv_sw_0" PORT="out_s"/>
+            <CONNECTION INSTANCE="inv_sw_0" PORT="out_sig"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="x" RIGHT="0" SIGIS="undef" SIGNAME="fir_fab_0_y">
@@ -6845,9 +6858,9 @@
             <CONNECTION INSTANCE="xadc_wiz_0" PORT="drdy_out"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_s">
+        <PORT DIR="I" NAME="ap_rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="inv_sw_0_out_sig">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="inv_sw_0" PORT="out_s"/>
+            <CONNECTION INSTANCE="inv_sw_0" PORT="out_sig"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="x" RIGHT="0" SIGIS="undef" SIGNAME="xadc_wiz_0_do_out">

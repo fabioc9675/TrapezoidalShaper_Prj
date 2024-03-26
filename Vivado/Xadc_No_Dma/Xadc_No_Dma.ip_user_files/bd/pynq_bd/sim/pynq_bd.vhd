@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Tue Mar 19 19:45:47 2024
+--Date        : Tue Mar 26 10:30:03 2024
 --Host        : DESKTOP-3FHD9AF running 64-bit major release  (build 9200)
 --Command     : generate_target pynq_bd.bd
 --Design      : pynq_bd
@@ -1442,7 +1442,8 @@ entity pynq_bd is
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     Vaux1_0_v_n : in STD_LOGIC;
     Vaux1_0_v_p : in STD_LOGIC;
-    ap_rst_0 : in STD_LOGIC;
+    fifo_en_0 : in STD_LOGIC;
+    in_sig_0 : in STD_LOGIC;
     led_0 : out STD_LOGIC_VECTOR ( 7 downto 0 );
     led_1 : out STD_LOGIC_VECTOR ( 0 to 0 );
     led_rst_0 : out STD_LOGIC;
@@ -1639,7 +1640,8 @@ architecture STRUCTURE of pynq_bd is
     probe1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe2 : in STD_LOGIC_VECTOR ( 31 downto 0 );
     probe3 : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 )
+    probe4 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    probe5 : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component pynq_bd_ila_0_0;
   component pynq_bd_dpp_leds_0_0 is
@@ -1686,21 +1688,23 @@ architecture STRUCTURE of pynq_bd is
   end component pynq_bd_dpp_counter_0_0;
   component pynq_bd_inv_sw_0_0 is
   port (
-    in_s : in STD_LOGIC;
-    out_s : out STD_LOGIC
+    in_sig : in STD_LOGIC;
+    out_sig : out STD_LOGIC
   );
   end component pynq_bd_inv_sw_0_0;
   signal Vaux1_0_1_V_N : STD_LOGIC;
   signal Vaux1_0_1_V_P : STD_LOGIC;
   signal ap_rst_0_1 : STD_LOGIC;
-  signal ap_rst_0_2 : STD_LOGIC;
   signal axi_gpio_0_gpio_io_o : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal clk_wiz_0_clk_out1 : STD_LOGIC;
   signal clk_wiz_0_locked : STD_LOGIC;
+  signal dpp_counter_0_fifo_o : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal dpp_counter_0_led_rst : STD_LOGIC;
   signal dpp_counter_0_y : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal dpp_leds_0_led : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal fifo_en_0_1 : STD_LOGIC;
   signal fir_fab_0_y : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal in_sig_0_1 : STD_LOGIC;
   signal leds_0_addr : STD_LOGIC_VECTOR ( 6 downto 0 );
   signal leds_0_d_in : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal leds_0_d_we_en : STD_LOGIC;
@@ -1793,7 +1797,6 @@ architecture STRUCTURE of pynq_bd is
   signal xlslice_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_axi_gpio_0_gpio_io_t_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_dpp_counter_0_led_UNCONNECTED : STD_LOGIC;
-  signal NLW_dpp_counter_0_fifo_o_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_leds_0_led_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_processing_system7_0_USB0_VBUS_PWRSELECT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_USB0_PORT_INDCTL_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -1852,8 +1855,6 @@ architecture STRUCTURE of pynq_bd is
   attribute X_INTERFACE_INFO of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
   attribute X_INTERFACE_INFO of Vaux1_0_v_n : signal is "xilinx.com:interface:diff_analog_io:1.0 Vaux1_0 V_N";
   attribute X_INTERFACE_INFO of Vaux1_0_v_p : signal is "xilinx.com:interface:diff_analog_io:1.0 Vaux1_0 V_P";
-  attribute X_INTERFACE_INFO of ap_rst_0 : signal is "xilinx.com:signal:reset:1.0 RST.AP_RST_0 RST";
-  attribute X_INTERFACE_PARAMETER of ap_rst_0 : signal is "XIL_INTERFACENAME RST.AP_RST_0, INSERT_VIP 0, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of led_rst_0 : signal is "xilinx.com:signal:reset:1.0 RST.LED_RST_0 RST";
   attribute X_INTERFACE_PARAMETER of led_rst_0 : signal is "XIL_INTERFACENAME RST.LED_RST_0, INSERT_VIP 0, POLARITY ACTIVE_LOW";
   attribute X_INTERFACE_INFO of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
@@ -1867,7 +1868,8 @@ architecture STRUCTURE of pynq_bd is
 begin
   Vaux1_0_1_V_N <= Vaux1_0_v_n;
   Vaux1_0_1_V_P <= Vaux1_0_v_p;
-  ap_rst_0_2 <= ap_rst_0;
+  fifo_en_0_1 <= fifo_en_0;
+  in_sig_0_1 <= in_sig_0;
   led_0(7 downto 0) <= dpp_leds_0_led(7 downto 0);
   led_1(0) <= xlslice_0_Dout(0);
   led_rst_0 <= dpp_counter_0_led_rst;
@@ -1908,8 +1910,8 @@ dpp_counter_0: component pynq_bd_dpp_counter_0_0
      port map (
       ap_clk => xadc_wiz_0_drdy_out,
       ap_rst => ap_rst_0_1,
-      fifo_en => ap_rst_0_2,
-      fifo_o(31 downto 0) => NLW_dpp_counter_0_fifo_o_UNCONNECTED(31 downto 0),
+      fifo_en => fifo_en_0_1,
+      fifo_o(31 downto 0) => dpp_counter_0_fifo_o(31 downto 0),
       led => NLW_dpp_counter_0_led_UNCONNECTED,
       led_rst => dpp_counter_0_led_rst,
       x(31 downto 0) => trapz_klm_0_y(31 downto 0),
@@ -1934,12 +1936,13 @@ ila_0: component pynq_bd_ila_0_0
       probe1(31 downto 0) => xadc_buffer_0_y(31 downto 0),
       probe2(31 downto 0) => fir_fab_0_y(31 downto 0),
       probe3(31 downto 0) => trapz_klm_0_y(31 downto 0),
-      probe4(0) => xadc_wiz_0_drdy_out
+      probe4(0) => xadc_wiz_0_drdy_out,
+      probe5(31 downto 0) => dpp_counter_0_fifo_o(31 downto 0)
     );
 inv_sw_0: component pynq_bd_inv_sw_0_0
      port map (
-      in_s => ap_rst_0_2,
-      out_s => ap_rst_0_1
+      in_sig => in_sig_0_1,
+      out_sig => ap_rst_0_1
     );
 leds_0: component pynq_bd_leds_0_0
      port map (

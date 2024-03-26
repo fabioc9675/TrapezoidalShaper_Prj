@@ -55,8 +55,8 @@ USE ieee.numeric_std.ALL;
 
 ENTITY pynq_bd_inv_sw_0_0 IS
   PORT (
-    in_s : IN STD_LOGIC;
-    out_s : OUT STD_LOGIC
+    in_sig : IN STD_LOGIC;
+    out_sig : OUT STD_LOGIC
   );
 END pynq_bd_inv_sw_0_0;
 
@@ -65,14 +65,14 @@ ARCHITECTURE pynq_bd_inv_sw_0_0_arch OF pynq_bd_inv_sw_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings OF pynq_bd_inv_sw_0_0_arch: ARCHITECTURE IS "yes";
   COMPONENT inv_sw IS
     PORT (
-      in_s : IN STD_LOGIC;
-      out_s : OUT STD_LOGIC
+      in_sig : IN STD_LOGIC;
+      out_sig : OUT STD_LOGIC
     );
   END COMPONENT inv_sw;
 BEGIN
   U0 : inv_sw
     PORT MAP (
-      in_s => in_s,
-      out_s => out_s
+      in_sig => in_sig,
+      out_sig => out_sig
     );
 END pynq_bd_inv_sw_0_0_arch;

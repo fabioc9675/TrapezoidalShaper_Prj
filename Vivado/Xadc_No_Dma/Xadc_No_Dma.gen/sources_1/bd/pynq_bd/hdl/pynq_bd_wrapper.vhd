@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Tue Mar 19 19:45:47 2024
+--Date        : Tue Mar 26 10:30:03 2024
 --Host        : DESKTOP-3FHD9AF running 64-bit major release  (build 9200)
 --Command     : generate_target pynq_bd_wrapper.bd
 --Design      : pynq_bd_wrapper
@@ -36,7 +36,8 @@ entity pynq_bd_wrapper is
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     Vaux1_0_v_n : in STD_LOGIC;
     Vaux1_0_v_p : in STD_LOGIC;
-    ap_rst_0 : in STD_LOGIC;
+    fifo_en_0 : in STD_LOGIC;
+    in_sig_0 : in STD_LOGIC;
     led_0 : out STD_LOGIC_VECTOR ( 7 downto 0 );
     led_1 : out STD_LOGIC_VECTOR ( 0 to 0 );
     led_rst_0 : out STD_LOGIC;
@@ -74,7 +75,8 @@ architecture STRUCTURE of pynq_bd_wrapper is
     led_0 : out STD_LOGIC_VECTOR ( 7 downto 0 );
     led_rst_0 : out STD_LOGIC;
     led_1 : out STD_LOGIC_VECTOR ( 0 to 0 );
-    ap_rst_0 : in STD_LOGIC
+    fifo_en_0 : in STD_LOGIC;
+    in_sig_0 : in STD_LOGIC
   );
   end component pynq_bd;
 begin
@@ -103,7 +105,8 @@ pynq_bd_i: component pynq_bd
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
       Vaux1_0_v_n => Vaux1_0_v_n,
       Vaux1_0_v_p => Vaux1_0_v_p,
-      ap_rst_0 => ap_rst_0,
+      fifo_en_0 => fifo_en_0,
+      in_sig_0 => in_sig_0,
       led_0(7 downto 0) => led_0(7 downto 0),
       led_1(0) => led_1(0),
       led_rst_0 => led_rst_0,

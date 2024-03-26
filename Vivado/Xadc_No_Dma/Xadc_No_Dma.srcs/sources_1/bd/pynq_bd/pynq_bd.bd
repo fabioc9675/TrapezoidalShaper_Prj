@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x1EE746D22AA88C2C",
+      "boundary_crc": "0x74C8EA4D12F06DAB",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../Xadc_No_Dma.gen/sources_1/bd/pynq_bd",
       "name": "pynq_bd",
@@ -252,19 +252,17 @@
         "left": "0",
         "right": "0"
       },
-      "ap_rst_0": {
-        "type": "rst",
+      "fifo_en_0": {
         "direction": "I",
         "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
           "POLARITY": {
             "value": "ACTIVE_LOW",
-            "value_src": "default"
+            "value_src": "default_prop"
           }
         }
+      },
+      "in_sig_0": {
+        "direction": "I"
       }
     },
     "components": {
@@ -2767,13 +2765,13 @@
         "inst_hier_path": "ila_0",
         "parameters": {
           "C_DATA_DEPTH": {
-            "value": "32768"
+            "value": "16384"
           },
           "C_MONITOR_TYPE": {
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "5"
+            "value": "6"
           },
           "C_PROBE0_TYPE": {
             "value": "0"
@@ -2806,10 +2804,10 @@
             "value": "1"
           },
           "C_PROBE5_TYPE": {
-            "value": "1"
+            "value": "0"
           },
           "C_PROBE5_WIDTH": {
-            "value": "1"
+            "value": "32"
           },
           "C_TRIGIN_EN": {
             "value": "false"
@@ -3034,16 +3032,10 @@
           "boundary_crc": "0x0"
         },
         "ports": {
-          "in_s": {
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "default_prop"
-              }
-            }
+          "in_sig": {
+            "direction": "I"
           },
-          "out_s": {
+          "out_sig": {
             "direction": "O"
           }
         }
@@ -3084,18 +3076,11 @@
     "nets": {
       "ap_rst_0_1": {
         "ports": [
-          "inv_sw_0/out_s",
+          "inv_sw_0/out_sig",
           "fir_fab_0/ap_rst",
           "trapz_klm_0/ap_rst",
           "xadc_buffer_0/ap_rst",
           "dpp_counter_0/ap_rst"
-        ]
-      },
-      "ap_rst_0_2": {
-        "ports": [
-          "ap_rst_0",
-          "inv_sw_0/in_s",
-          "dpp_counter_0/fifo_en"
         ]
       },
       "axi_gpio_0_gpio_io_o": {
@@ -3119,6 +3104,12 @@
           "rst_clk_wiz_0_104M/dcm_locked"
         ]
       },
+      "dpp_counter_0_fifo_o": {
+        "ports": [
+          "dpp_counter_0/fifo_o",
+          "ila_0/probe5"
+        ]
+      },
       "dpp_counter_0_led_rst": {
         "ports": [
           "dpp_counter_0/led_rst",
@@ -3138,11 +3129,23 @@
           "led_0"
         ]
       },
+      "fifo_en_0_1": {
+        "ports": [
+          "fifo_en_0",
+          "dpp_counter_0/fifo_en"
+        ]
+      },
       "fir_fab_0_y": {
         "ports": [
           "fir_fab_0/y",
           "ila_0/probe2",
           "trapz_klm_0/x"
+        ]
+      },
+      "in_sig_0_1": {
+        "ports": [
+          "in_sig_0",
+          "inv_sw_0/in_sig"
         ]
       },
       "leds_0_addr": {
