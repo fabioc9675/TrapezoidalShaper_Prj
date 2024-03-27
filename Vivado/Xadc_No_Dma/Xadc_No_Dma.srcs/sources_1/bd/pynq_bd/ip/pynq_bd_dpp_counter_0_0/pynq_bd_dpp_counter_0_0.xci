@@ -8,11 +8,11 @@
     "gen_directory": "../../../../../../Xadc_No_Dma.gen/sources_1/bd/pynq_bd/ip/pynq_bd_dpp_counter_0_0",
     "parameters": {
       "component_parameters": {
-        "fifo_len": [ { "value": "10", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "fifo_len": [ { "value": "100", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "pynq_bd_dpp_counter_0_0", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
-        "fifo_len": [ { "value": "10", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "fifo_len": [ { "value": "100", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],

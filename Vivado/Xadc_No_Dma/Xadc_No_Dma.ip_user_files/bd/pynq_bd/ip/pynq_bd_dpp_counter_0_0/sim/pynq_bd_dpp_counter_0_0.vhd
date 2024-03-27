@@ -95,7 +95,7 @@ ARCHITECTURE pynq_bd_dpp_counter_0_0_arch OF pynq_bd_dpp_counter_0_0 IS
 BEGIN
   U0 : dpp_counter
     GENERIC MAP (
-      fifo_len => 10
+      fifo_len => 100
     )
     PORT MAP (
       ap_clk => ap_clk,

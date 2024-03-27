@@ -1,8 +1,8 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Tue Mar 26 10:30:03 2024
---Host        : DESKTOP-3FHD9AF running 64-bit major release  (build 9200)
+--Date        : Wed Mar 27 15:43:42 2024
+--Host        : fabiancastano running 64-bit major release  (build 9200)
 --Command     : generate_target pynq_bd.bd
 --Design      : pynq_bd
 --Purpose     : IP block netlist
@@ -1674,6 +1674,12 @@ architecture STRUCTURE of pynq_bd is
     y : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component pynq_bd_xadc_buffer_0_0;
+  component pynq_bd_inv_sw_0_0 is
+  port (
+    in_sig : in STD_LOGIC;
+    out_sig : out STD_LOGIC
+  );
+  end component pynq_bd_inv_sw_0_0;
   component pynq_bd_dpp_counter_0_0 is
   port (
     ap_clk : in STD_LOGIC;
@@ -1686,12 +1692,6 @@ architecture STRUCTURE of pynq_bd is
     fifo_o : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component pynq_bd_dpp_counter_0_0;
-  component pynq_bd_inv_sw_0_0 is
-  port (
-    in_sig : in STD_LOGIC;
-    out_sig : out STD_LOGIC
-  );
-  end component pynq_bd_inv_sw_0_0;
   signal Vaux1_0_1_V_N : STD_LOGIC;
   signal Vaux1_0_1_V_P : STD_LOGIC;
   signal ap_rst_0_1 : STD_LOGIC;

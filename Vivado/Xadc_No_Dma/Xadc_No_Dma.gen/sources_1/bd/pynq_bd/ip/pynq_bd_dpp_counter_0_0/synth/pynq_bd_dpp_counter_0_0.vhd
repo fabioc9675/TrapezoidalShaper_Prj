@@ -89,7 +89,7 @@ ARCHITECTURE pynq_bd_dpp_counter_0_0_arch OF pynq_bd_dpp_counter_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF pynq_bd_dpp_counter_0_0_arch : ARCHITECTURE IS "pynq_bd_dpp_counter_0_0,dpp_counter,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF pynq_bd_dpp_counter_0_0_arch: ARCHITECTURE IS "pynq_bd_dpp_counter_0_0,dpp_counter,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=dpp_counter,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,fifo_len=10}";
+  ATTRIBUTE CORE_GENERATION_INFO OF pynq_bd_dpp_counter_0_0_arch: ARCHITECTURE IS "pynq_bd_dpp_counter_0_0,dpp_counter,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=dpp_counter,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,fifo_len=100}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF pynq_bd_dpp_counter_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -103,7 +103,7 @@ ARCHITECTURE pynq_bd_dpp_counter_0_0_arch OF pynq_bd_dpp_counter_0_0 IS
 BEGIN
   U0 : dpp_counter
     GENERIC MAP (
-      fifo_len => 10
+      fifo_len => 100
     )
     PORT MAP (
       ap_clk => ap_clk,

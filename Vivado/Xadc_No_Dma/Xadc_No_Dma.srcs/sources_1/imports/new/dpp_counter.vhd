@@ -12,7 +12,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- Entity creation
 entity dpp_counter is
     generic ( 
-           fifo_len   : integer := 10
+           fifo_len   : integer := 100
         );
     Port ( ap_clk     :  in  std_logic;
            ap_rst     :  in  std_logic;
@@ -121,16 +121,20 @@ begin
         end if;
     end process;
     
-    process (ap_clk, ap_rst, fifo_en)
+    process (ap_clk, fifo_en)
     variable pos : integer := 0;
     begin
-        if (ap_rst = '0') then
+        if (fifo_en = '0') then
             fifo_o <= X"00000000";
             pos := 0;
         else
             if rising_edge(ap_clk) then
-                if (fifo_en = '0') and (pos < fifo_len) then
-                    fifo_o <= conv_std_logic_vector(fifoy(pos),32);
+                if (pos < fifo_len) then
+                    if pos = 0 or pos = fifo_len-1 then 
+                        fifo_o <= X"0000000A";
+                    else
+                        fifo_o <= conv_std_logic_vector(fifoy(pos),32);
+                    end if;
                     pos := pos + 1;
                 end if;                  
             end if;

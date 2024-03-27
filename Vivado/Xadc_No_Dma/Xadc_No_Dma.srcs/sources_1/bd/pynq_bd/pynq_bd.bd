@@ -34,8 +34,8 @@
       "fir_fab_0": "",
       "trapz_klm_0": "",
       "xadc_buffer_0": "",
-      "dpp_counter_0": "",
-      "inv_sw_0": ""
+      "inv_sw_0": "",
+      "dpp_counter_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -2963,6 +2963,25 @@
           }
         }
       },
+      "inv_sw_0": {
+        "vlnv": "xilinx.com:module_ref:inv_sw:1.0",
+        "xci_name": "pynq_bd_inv_sw_0_0",
+        "xci_path": "ip\\pynq_bd_inv_sw_0_0\\pynq_bd_inv_sw_0_0.xci",
+        "inst_hier_path": "inv_sw_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "inv_sw",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "in_sig": {
+            "direction": "I"
+          },
+          "out_sig": {
+            "direction": "O"
+          }
+        }
+      },
       "dpp_counter_0": {
         "vlnv": "xilinx.com:module_ref:dpp_counter:1.0",
         "xci_name": "pynq_bd_dpp_counter_0_0",
@@ -3018,25 +3037,6 @@
             "direction": "O",
             "left": "31",
             "right": "0"
-          }
-        }
-      },
-      "inv_sw_0": {
-        "vlnv": "xilinx.com:module_ref:inv_sw:1.0",
-        "xci_name": "pynq_bd_inv_sw_0_0",
-        "xci_path": "ip\\pynq_bd_inv_sw_0_0\\pynq_bd_inv_sw_0_0.xci",
-        "inst_hier_path": "inv_sw_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "inv_sw",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "in_sig": {
-            "direction": "I"
-          },
-          "out_sig": {
-            "direction": "O"
           }
         }
       }
