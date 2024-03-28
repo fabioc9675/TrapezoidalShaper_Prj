@@ -21,6 +21,7 @@ entity dpp_counter is
            y          :  out std_logic_vector (31 downto 0);
            led        :  out std_logic;
            led_rst    :  out std_logic;
+           ap_ready   :  out std_logic;
            fifo_en    :  in  std_logic;
            fifo_o     :  out std_logic_vector (31 downto 0)
          );
@@ -34,6 +35,7 @@ architecture Behavioral of dpp_counter is
     signal in_sample                : integer      := 0;
     signal out_counter              : std_logic_vector (31 downto 0);
     signal diff                     : integer      := 0;
+    signal ready_loc                : std_logic;
     
     signal led_s                    : std_logic;
     signal led_r                    : std_logic;
@@ -73,6 +75,7 @@ begin
             en_falling  <= '1';  -- it is prepared to count
             in_sample   <= 0;
             diff <= 0;
+            ready_loc <= '0';
             
             led_s <= '0';
             
@@ -115,7 +118,8 @@ begin
                             fifoy(i) <= fifoy(i) + 1;
                         end if;
                     end loop;
-                    counted <= '1';                
+                    counted <= '1';    
+                    ready_loc <= '1';            
                 end if;                
             end if;
         end if;
@@ -145,6 +149,7 @@ begin
 
     -- assign the output
     y <= out_counter;
+    ap_ready <= ready_loc;
     led <= led_s;
     led_rst <= led_r;
 
