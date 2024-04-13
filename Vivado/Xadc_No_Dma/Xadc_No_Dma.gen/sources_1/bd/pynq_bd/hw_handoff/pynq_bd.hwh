@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar 27 15:43:43 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr 12 10:28:29 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="pynq_bd" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -4464,8 +4464,8 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="fir_fab_0" PORT="ap_rst"/>
             <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_rst"/>
-            <CONNECTION INSTANCE="xadc_buffer_0" PORT="ap_rst"/>
             <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_rst"/>
+            <CONNECTION INSTANCE="xadc_buffer_0" PORT="ap_rst"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -7148,8 +7148,8 @@
             <CONNECTION INSTANCE="fir_fab_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="trapz_klm_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="ila_0" PORT="probe4"/>
-            <CONNECTION INSTANCE="xadc_buffer_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="dpp_counter_0" PORT="ap_clk"/>
+            <CONNECTION INSTANCE="xadc_buffer_0" PORT="ap_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="15" NAME="do_out" RIGHT="0" SIGIS="undef" SIGNAME="xadc_wiz_0_do_out">

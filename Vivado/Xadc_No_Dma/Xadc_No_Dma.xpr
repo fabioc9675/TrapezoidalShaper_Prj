@@ -123,6 +123,14 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/imports/new/dpp_counter.vhd">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../FirTrapz_sim/FirTrapz_sim.srcs/sources_1/new/dpp_counter.vhd"/>
+          <Attr Name="ImportTime" Val="1710180421"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/xadc_buffer.vhd">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../XADC_DMA_PYNQ/XADC_DMA_PYNQ.srcs/sources_1/new/xadc_buffer.vhd"/>
@@ -133,14 +141,6 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/inv_sw.vhd">
         <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/new/dpp_counter.vhd">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../FirTrapz_sim/FirTrapz_sim.srcs/sources_1/new/dpp_counter.vhd"/>
-          <Attr Name="ImportTime" Val="1710180421"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
