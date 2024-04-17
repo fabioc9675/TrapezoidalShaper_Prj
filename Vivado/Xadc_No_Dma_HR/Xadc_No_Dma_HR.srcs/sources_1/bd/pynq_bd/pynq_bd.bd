@@ -2771,7 +2771,7 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "2"
+            "value": "3"
           },
           "C_PROBE0_TYPE": {
             "value": "0"
@@ -2789,7 +2789,7 @@
             "value": "1"
           },
           "C_PROBE2_WIDTH": {
-            "value": "1"
+            "value": "32"
           },
           "C_PROBE3_TYPE": {
             "value": "1"
@@ -3119,7 +3119,8 @@
       "dpp_counter_0_y": {
         "ports": [
           "dpp_counter_0/y",
-          "dpp_leds_0/x"
+          "dpp_leds_0/x",
+          "ila_0/probe2"
         ]
       },
       "dpp_leds_0_led": {

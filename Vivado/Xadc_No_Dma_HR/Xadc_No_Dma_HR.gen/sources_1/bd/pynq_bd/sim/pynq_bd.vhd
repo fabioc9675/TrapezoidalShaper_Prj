@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Fri Apr 12 20:54:41 2024
+--Date        : Tue Apr 16 12:40:58 2024
 --Host        : DESKTOP-3FHD9AF running 64-bit major release  (build 9200)
 --Command     : generate_target pynq_bd.bd
 --Design      : pynq_bd
@@ -1637,7 +1637,8 @@ architecture STRUCTURE of pynq_bd is
   port (
     clk : in STD_LOGIC;
     probe0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    probe1 : in STD_LOGIC_VECTOR ( 31 downto 0 )
+    probe1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    probe2 : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component pynq_bd_ila_0_0;
   component pynq_bd_dpp_leds_0_0 is
@@ -1929,7 +1930,8 @@ ila_0: component pynq_bd_ila_0_0
      port map (
       clk => processing_system7_0_FCLK_CLK1,
       probe0(0) => xadc_wiz_0_drdy_out,
-      probe1(31 downto 0) => dpp_counter_0_fifo_o(31 downto 0)
+      probe1(31 downto 0) => dpp_counter_0_fifo_o(31 downto 0),
+      probe2(31 downto 0) => dpp_counter_0_y(31 downto 0)
     );
 inv_sw_0: component pynq_bd_inv_sw_0_0
      port map (
