@@ -42,8 +42,8 @@ architecture Behavioral of dpp_counter is
     type buffer_fifo is array (integer range <>) of integer;
     signal fifoy           : buffer_fifo(0 to fifo_len);
     signal comp_buff       : buffer_fifo(0 to fifo_len);
-    constant comparator    : integer     := 600000; --50000; -- 32767;  -- comparator level; equation = y = 2900*x+50000
-    constant comp_high     : integer     := 1100000;--1500000;  -- comparator level
+    constant comparator    : integer     := 10000; --600000; --50000; -- 32767;  -- comparator level; equation = y = 2900*x+50000
+    constant comp_high     : integer     := 2000000; --1100000;--1500000;  -- comparator level
     
 
 begin

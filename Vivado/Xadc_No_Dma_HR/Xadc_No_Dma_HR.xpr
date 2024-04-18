@@ -66,13 +66,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="76"/>
-    <Option Name="WTModelSimExportSim" Val="76"/>
-    <Option Name="WTQuestaExportSim" Val="76"/>
+    <Option Name="WTXSimExportSim" Val="78"/>
+    <Option Name="WTModelSimExportSim" Val="78"/>
+    <Option Name="WTQuestaExportSim" Val="78"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="76"/>
-    <Option Name="WTRivieraExportSim" Val="76"/>
-    <Option Name="WTActivehdlExportSim" Val="76"/>
+    <Option Name="WTVcsExportSim" Val="78"/>
+    <Option Name="WTRivieraExportSim" Val="78"/>
+    <Option Name="WTActivehdlExportSim" Val="78"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -156,10 +156,8 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/pynq_bd_wrapper.vhd">
+      <File Path="$PGENDIR/sources_1/bd/pynq_bd/hdl/pynq_bd_wrapper.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Xadc_No_Dma/Xadc_No_Dma.gen/sources_1/bd/pynq_bd/hdl/pynq_bd_wrapper.vhd"/>
-          <Attr Name="ImportTime" Val="1712935707"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
