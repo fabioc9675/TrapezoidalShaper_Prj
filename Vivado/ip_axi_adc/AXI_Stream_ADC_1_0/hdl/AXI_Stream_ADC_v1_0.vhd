@@ -16,7 +16,10 @@ entity AXI_Stream_ADC_v1_0 is
 	);
 	port (
 		-- Users to add ports here
-
+        --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+        data_in        : in  std_logic_vector(15 downto 0);
+        clk_adc        : in  std_logic;
+        --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 		-- User ports ends
 		-- Do not modify the ports beyond this line
 
@@ -41,6 +44,10 @@ architecture arch_imp of AXI_Stream_ADC_v1_0 is
 		C_M_START_COUNT	: integer	:= 32
 		);
 		port (
+		--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+		data_in         : in  std_logic_vector(15 downto 0);
+		clk_adc         : in std_logic;
+		--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 		M_AXIS_ACLK	: in std_logic;
 		M_AXIS_ARESETN	: in std_logic;
 		M_AXIS_TVALID	: out std_logic;
@@ -60,6 +67,10 @@ AXI_Stream_ADC_v1_0_M00_AXIS_inst : AXI_Stream_ADC_v1_0_M00_AXIS
 		C_M_START_COUNT	=> C_M00_AXIS_START_COUNT
 	)
 	port map (
+	    --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+	    data_in         => data_in,
+	    clk_adc         => clk_adc,
+	    --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 		M_AXIS_ACLK	=> m00_axis_aclk,
 		M_AXIS_ARESETN	=> m00_axis_aresetn,
 		M_AXIS_TVALID	=> m00_axis_tvalid,
