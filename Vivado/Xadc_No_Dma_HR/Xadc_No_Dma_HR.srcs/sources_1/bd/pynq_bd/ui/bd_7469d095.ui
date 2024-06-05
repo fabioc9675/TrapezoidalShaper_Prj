@@ -1,0 +1,74 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.09233",
+   "Default View_TopLeft":"1641,790",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 8 -x 2300 -y 740 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 8 -x 2300 -y 980 -defaultsOSRD
+preplace port Vaux1_0 -pg 1 -lvl 0 -x -20 -y 920 -defaultsOSRD
+preplace port port-id_led_rst_0 -pg 1 -lvl 8 -x 2300 -y 1100 -defaultsOSRD
+preplace port port-id_fifo_en_0 -pg 1 -lvl 0 -x -20 -y 1120 -defaultsOSRD
+preplace port port-id_in_sig_0 -pg 1 -lvl 0 -x -20 -y 940 -defaultsOSRD
+preplace portBus sw -pg 1 -lvl 0 -x -20 -y 420 -defaultsOSRD
+preplace portBus led_0 -pg 1 -lvl 8 -x 2300 -y 1040 -defaultsOSRD
+preplace portBus led_1 -pg 1 -lvl 8 -x 2300 -y 480 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 230 -y 800 -defaultsOSRD
+preplace inst xadc_wiz_0 -pg 1 -lvl 4 -x 1390 -y 420 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 2 -x 630 -y 490 -defaultsOSRD
+preplace inst rst_clk_wiz_0_104M -pg 1 -lvl 3 -x 1010 -y 460 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 630 -y 260 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 230 -y 310 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 1010 -y 80 -defaultsOSRD
+preplace inst leds_0 -pg 1 -lvl 3 -x 1010 -y 270 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 7 -x 2170 -y 480 -defaultsOSRD
+preplace inst xlslice_1 -pg 1 -lvl 7 -x 2170 -y 580 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 7 -x 2170 -y 860 -defaultsOSRD
+preplace inst dpp_leds_0 -pg 1 -lvl 7 -x 2170 -y 1040 -defaultsOSRD
+preplace inst fir_fab_0 -pg 1 -lvl 4 -x 1390 -y 660 -defaultsOSRD
+preplace inst trapz_klm_0 -pg 1 -lvl 5 -x 1670 -y 900 -defaultsOSRD
+preplace inst xadc_buffer_0 -pg 1 -lvl 3 -x 1010 -y 640 -defaultsOSRD
+preplace inst inv_sw_0 -pg 1 -lvl 2 -x 630 -y 680 -defaultsOSRD
+preplace inst dpp_counter_0 -pg 1 -lvl 6 -x 1910 -y 1090 -defaultsOSRD
+preplace netloc ap_rst_0_1 1 2 4 780 720 1220 770 1530 1080 N
+preplace netloc axi_gpio_0_gpio_io_o 1 3 4 NJ 90 NJ 90 NJ 90 2020
+preplace netloc clk_wiz_0_clk_out1 1 2 2 790 560 1180
+preplace netloc clk_wiz_0_locked 1 2 1 N 500
+preplace netloc dpp_counter_0_fifo_o 1 6 1 2020 870n
+preplace netloc dpp_counter_0_led_rst 1 6 2 NJ 1100 NJ
+preplace netloc dpp_counter_0_y 1 6 1 2030 890n
+preplace netloc dpp_leds_0_led 1 7 1 NJ 1040
+preplace netloc fifo_en_0_1 1 0 6 NJ 1120 NJ 1120 NJ 1120 NJ 1120 NJ 1120 NJ
+preplace netloc fir_fab_0_y 1 4 1 1550 660n
+preplace netloc in_sig_0_1 1 0 2 10J 680 NJ
+preplace netloc leds_0_addr 1 3 1 1230 260n
+preplace netloc leds_0_d_in 1 3 1 1220 280n
+preplace netloc leds_0_d_we_en 1 3 1 1190 300n
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 3 20 210 430 80 NJ
+preplace netloc processing_system7_0_FCLK_CLK1 1 1 6 460J 810 NJ 810 NJ 810 NJ 810 NJ 810 2020
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 3 30 410 440 560 780
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 2 460 100 NJ
+preplace netloc sw_0_1 1 0 3 10J 90 NJ 90 790J
+preplace netloc trapz_klm_0_y 1 5 1 1770 900n
+preplace netloc xadc_buffer_0_y 1 3 1 1180 640n
+preplace netloc xadc_wiz_0_do_out1 1 2 2 800 360 1180
+preplace netloc xadc_wiz_0_drdy_out 1 2 5 810 730 1200 750 1540 820 1780 850 N
+preplace netloc xadc_wiz_0_eoc_out 1 3 2 1230 580 1550
+preplace netloc xlslice_0_Dout 1 7 1 NJ 480
+preplace netloc Vaux1_0_1 1 0 4 0J 70 NJ 70 800J 180 1210J
+preplace netloc processing_system7_0_DDR 1 1 7 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ 740 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 1 7 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 NJ 760 2270J
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 450 160n
+preplace netloc ps7_0_axi_periph_M02_AXI 1 2 1 780 60n
+levelinfo -pg 1 -20 230 630 1010 1390 1670 1910 2170 2300
+pagesize -pg 1 -db -bbox -sgen -130 0 2420 1180
+"
+}
+{
+   "da_axi4_cnt":"7",
+   "da_axi4_s2mm_cnt":"2",
+   "da_board_cnt":"1",
+   "da_clkrst_cnt":"6",
+   "da_ps7_cnt":"1"
+}
