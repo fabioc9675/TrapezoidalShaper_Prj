@@ -122,8 +122,8 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/pynq_bd/ip/pynq_bd_axi_dma_0_0/sim/pynq_bd_axi_dma_0_0.vhd" \
-  "../../../bd/pynq_bd/ipshared/3f53/hdl/AXI_DPP_Counter_v1_0_M00_AXIS.vhd" \
-  "../../../bd/pynq_bd/ipshared/3f53/hdl/AXI_DPP_Counter_v1_0.vhd" \
+  "../../../bd/pynq_bd/ipshared/b9ed/hdl/AXI_DPP_Counter_v1_0_M00_AXIS.vhd" \
+  "../../../bd/pynq_bd/ipshared/b9ed/hdl/AXI_DPP_Counter_v1_0.vhd" \
   "../../../bd/pynq_bd/ip/pynq_bd_AXI_DPP_Counter_0_0/sim/pynq_bd_AXI_DPP_Counter_0_0.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_27 \

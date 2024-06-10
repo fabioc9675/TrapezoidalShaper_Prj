@@ -32,7 +32,6 @@
           "auto_us": ""
         }
       },
-      "AXI_DPP_Counter_0": "",
       "dpp_leds_0": "",
       "prepro_hier": {
         "xadc_buffer_0": "",
@@ -44,7 +43,8 @@
         "xlslice_xadc_buff_rst": "",
         "xlslice_trapz_rst": "",
         "xlslice_dpp_rst": ""
-      }
+      },
+      "AXI_DPP_Counter_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -2515,7 +2515,7 @@
             "value": "256"
           },
           "c_sg_length_width": {
-            "value": "11"
+            "value": "12"
           }
         },
         "interface_ports": {
@@ -2782,12 +2782,6 @@
             ]
           }
         }
-      },
-      "AXI_DPP_Counter_0": {
-        "vlnv": "xilinx.com:user:AXI_DPP_Counter:1.0",
-        "xci_name": "pynq_bd_AXI_DPP_Counter_0_0",
-        "xci_path": "ip\\pynq_bd_AXI_DPP_Counter_0_0\\pynq_bd_AXI_DPP_Counter_0_0.xci",
-        "inst_hier_path": "AXI_DPP_Counter_0"
       },
       "dpp_leds_0": {
         "vlnv": "xilinx.com:module_ref:dpp_leds:1.0",
@@ -3128,6 +3122,12 @@
             ]
           }
         }
+      },
+      "AXI_DPP_Counter_0": {
+        "vlnv": "xilinx.com:user:AXI_DPP_Counter:1.0",
+        "xci_name": "pynq_bd_AXI_DPP_Counter_0_0",
+        "xci_path": "ip\\pynq_bd_AXI_DPP_Counter_0_0\\pynq_bd_AXI_DPP_Counter_0_0.xci",
+        "inst_hier_path": "AXI_DPP_Counter_0"
       }
     },
     "interface_nets": {
@@ -3269,8 +3269,8 @@
       "xadc_wiz_0_drdy_out": {
         "ports": [
           "xadc_wiz_0/drdy_out",
-          "AXI_DPP_Counter_0/dpp_clk",
-          "prepro_hier/fir_clk"
+          "prepro_hier/fir_clk",
+          "AXI_DPP_Counter_0/dpp_clk"
         ]
       },
       "xadc_wiz_0_eoc_out": {

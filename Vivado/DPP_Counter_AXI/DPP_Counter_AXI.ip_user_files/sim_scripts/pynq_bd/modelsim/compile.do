@@ -183,8 +183,8 @@ vcom -work axi_dma_v7_1_28  -93  \
 
 vcom -work xil_defaultlib  -93  \
 "../../../bd/pynq_bd/ip/pynq_bd_axi_dma_0_0/sim/pynq_bd_axi_dma_0_0.vhd" \
-"../../../bd/pynq_bd/ipshared/3f53/hdl/AXI_DPP_Counter_v1_0_M00_AXIS.vhd" \
-"../../../bd/pynq_bd/ipshared/3f53/hdl/AXI_DPP_Counter_v1_0.vhd" \
+"../../../bd/pynq_bd/ipshared/b9ed/hdl/AXI_DPP_Counter_v1_0_M00_AXIS.vhd" \
+"../../../bd/pynq_bd/ipshared/b9ed/hdl/AXI_DPP_Counter_v1_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_AXI_DPP_Counter_0_0/sim/pynq_bd_AXI_DPP_Counter_0_0.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_27  -incr -mfcu  "+incdir+../../../../DPP_Counter_AXI.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_AXI.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_AXI.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \

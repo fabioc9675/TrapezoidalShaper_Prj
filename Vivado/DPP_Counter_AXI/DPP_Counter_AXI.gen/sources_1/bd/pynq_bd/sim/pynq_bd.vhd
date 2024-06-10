@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Mon Jun 10 16:20:39 2024
+--Date        : Mon Jun 10 16:49:30 2024
 --Host        : fabiancastano running 64-bit major release  (build 9200)
 --Command     : generate_target pynq_bd.bd
 --Design      : pynq_bd
@@ -1964,6 +1964,12 @@ architecture STRUCTURE of pynq_bd is
     s2mm_introut : out STD_LOGIC
   );
   end component pynq_bd_axi_dma_0_0;
+  component pynq_bd_dpp_leds_0_0 is
+  port (
+    x : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    led : out STD_LOGIC_VECTOR ( 3 downto 0 )
+  );
+  end component pynq_bd_dpp_leds_0_0;
   component pynq_bd_AXI_DPP_Counter_0_0 is
   port (
     dpp_clk : in STD_LOGIC;
@@ -1979,12 +1985,6 @@ architecture STRUCTURE of pynq_bd is
     m00_axis_tready : in STD_LOGIC
   );
   end component pynq_bd_AXI_DPP_Counter_0_0;
-  component pynq_bd_dpp_leds_0_0 is
-  port (
-    x : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    led : out STD_LOGIC_VECTOR ( 3 downto 0 )
-  );
-  end component pynq_bd_dpp_leds_0_0;
   signal AXI_DPP_Counter_0_M00_AXIS_TDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal AXI_DPP_Counter_0_M00_AXIS_TLAST : STD_LOGIC;
   signal AXI_DPP_Counter_0_M00_AXIS_TREADY : STD_LOGIC;

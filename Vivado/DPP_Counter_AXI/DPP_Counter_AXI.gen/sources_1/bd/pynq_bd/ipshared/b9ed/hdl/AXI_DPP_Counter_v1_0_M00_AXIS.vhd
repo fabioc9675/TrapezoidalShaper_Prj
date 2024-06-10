@@ -129,7 +129,7 @@ architecture implementation of AXI_DPP_Counter_v1_0_M00_AXIS is
     signal fifoy           : buffer_fifo(0 to NUMBER_OF_OUTPUT_WORDS);
     signal comp_buff       : buffer_fifo(0 to NUMBER_OF_OUTPUT_WORDS);
     constant comparator    : integer     := 50000; -- 32767;  -- comparator level
-    constant comp_high     : integer     := 1000000;  -- comparator level
+    constant comp_high     : integer     := 2000000;  -- comparator level
     
     signal act   : std_logic;
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
