@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------------
 -- Company: Universidad de Antioquia
 -- Engineer: Fabian Castano
--- Description: This modules convert the 16 bits data from XADC in 
+-- Description: This module convert the 16 bits data from XADC in 
 --              32 bits data, also syncronize with clock
 ----------------------------------------------------------------------------------
 

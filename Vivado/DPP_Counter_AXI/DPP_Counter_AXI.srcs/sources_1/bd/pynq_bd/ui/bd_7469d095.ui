@@ -1,27 +1,45 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-407,-9",
+   "Default View_ScaleFactor":"1.96767",
+   "Default View_TopLeft":"1009,-12",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 3 -x 690 -y 70 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 3 -x 690 -y 90 -defaultsOSRD
-preplace port Vaux1_0 -pg 1 -lvl 0 -x 0 -y 370 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 2 -x 440 -y 120 -defaultsOSRD
-preplace inst xadc_wiz_0 -pg 1 -lvl 2 -x 440 -y 370 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 120 -y 300 -defaultsOSRD
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 3 20 10 NJ 10 670
-preplace netloc clk_wiz_0_clk_out1 1 1 1 210 290n
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 3 30 230 NJ 230 670
-preplace netloc processing_system7_0_DDR 1 2 1 NJ 70
-preplace netloc processing_system7_0_FIXED_IO 1 2 1 NJ 90
-preplace netloc Vaux1_0_1 1 0 2 NJ 370 NJ
-levelinfo -pg 1 0 120 440 690
-pagesize -pg 1 -db -bbox -sgen -110 0 810 470
+preplace port DDR -pg 1 -lvl 6 -x 1660 -y 540 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 1660 -y 560 -defaultsOSRD
+preplace port Vaux1_0 -pg 1 -lvl 0 -x 0 -y 440 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 260 -y 590 -defaultsOSRD
+preplace inst xadc_wiz_0 -pg 1 -lvl 5 -x 1500 -y 380 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 4 -x 1210 -y 270 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 4 -x 1210 -y 380 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 970 -y 160 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 670 -y 140 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 260 -y 320 -defaultsOSRD
+preplace inst Prepro_hierarchy -pg 1 -lvl 5 -x 1500 -y 130 -defaultsOSRD
+preplace inst reset_hierarchy -pg 1 -lvl 4 -x 1210 -y 140 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 4 20 420 500 10 830 280 NJ
+preplace netloc clk_wiz_0_clk_out1 1 4 1 1310 260n
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 4 30 430 520 260 NJ 260 NJ
+preplace netloc xadc_wiz_0_drdy_out 1 4 1 1350 90n
+preplace netloc xadc_wiz_0_do_out 1 4 1 1360 170n
+preplace netloc xlconstant_0_dout 1 4 1 1330J 300n
+preplace netloc xlslice_xadc_buff_rst_Dout 1 4 1 N 150
+preplace netloc axi_gpio_0_gpio_io_o 1 3 1 1110 140n
+preplace netloc xlslice_xadc_ena_Dout 1 4 1 1320 130n
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 2 490 20 820
+preplace netloc xlslice_fir_rst_Dout 1 4 1 1330 110n
+preplace netloc xlslice_trapz_rst_Dout 1 4 1 1340 110n
+preplace netloc processing_system7_0_DDR 1 1 5 NJ 540 NJ 540 NJ 540 NJ 540 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 1 5 NJ 560 NJ 560 NJ 560 NJ 560 NJ
+preplace netloc Vaux1_0_1 1 0 5 NJ 440 NJ 440 NJ 440 NJ 440 NJ
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 510 80n
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 1 N 140
+levelinfo -pg 1 0 260 670 970 1210 1500 1660
+pagesize -pg 1 -db -bbox -sgen -110 0 1780 700
 "
 }
 {
+   "da_axi4_cnt":"1",
    "da_board_cnt":"3",
    "da_clkrst_cnt":"1",
    "da_ps7_cnt":"1"
