@@ -2,22 +2,22 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "pynq_bd_xlslice_xadc_buff_rst_1",
-    "cell_name": "reset_hierarchy/xlslice_fir_rst",
+    "cell_name": "reset_hier/xlslice_fir_rst",
     "component_reference": "xilinx.com:ip:xlslice:1.0",
     "ip_revision": "2",
     "gen_directory": "../../../../../../DPP_Counter_AXI.gen/sources_1/bd/pynq_bd/ip/pynq_bd_xlslice_xadc_buff_rst_1",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "pynq_bd_xlslice_xadc_buff_rst_1", "resolve_type": "user", "usage": "all" } ],
-        "DIN_TO": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "DIN_FROM": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DIN_TO": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "DIN_FROM": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "DIN_WIDTH": [ { "value": "32", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "DOUT_WIDTH": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ]
       },
       "model_parameters": {
         "DIN_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "DIN_FROM": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "DIN_TO": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+        "DIN_FROM": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "DIN_TO": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],

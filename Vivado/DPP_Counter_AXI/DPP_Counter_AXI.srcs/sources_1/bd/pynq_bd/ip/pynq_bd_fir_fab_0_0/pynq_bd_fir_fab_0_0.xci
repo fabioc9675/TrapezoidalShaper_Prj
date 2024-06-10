@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "pynq_bd_fir_fab_0_0",
-    "cell_name": "Prepro_hierarchy/fir_fab_0",
+    "cell_name": "prepro_hier/fir_fab_0",
     "component_reference": "xilinx.com:module_ref:fir_fab:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../DPP_Counter_AXI.gen/sources_1/bd/pynq_bd/ip/pynq_bd_fir_fab_0_0",
@@ -33,7 +33,7 @@
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2022.2" } ],
-        "SYNTHESISFLOW": [ { "value": "OOC_HIERARCHICAL" } ]
+        "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
     },
     "boundary": {
