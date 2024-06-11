@@ -1,0 +1,27 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-302,-227",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
+#  -string -flagsOSRD
+preplace port port-id_fir_clk -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace port port-id_trap_rst -pg 1 -lvl 0 -x 0 -y 250 -defaultsOSRD
+preplace port port-id_fir_rst -pg 1 -lvl 0 -x 0 -y 170 -defaultsOSRD
+preplace port port-id_adc_rst -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace portBus adc_in -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
+preplace inst trapz_klm_0 -pg 1 -lvl 3 -x 750 -y 250 -defaultsOSRD
+preplace inst fir_fab_0 -pg 1 -lvl 2 -x 450 -y 170 -defaultsOSRD
+preplace inst xadc_buffer_0 -pg 1 -lvl 1 -x 160 -y 90 -defaultsOSRD
+preplace netloc fir_fab_0_fir_out 1 2 1 580 170n
+preplace netloc xadc_buffer_0_adc_out 1 1 1 300 90n
+preplace netloc xadc_wiz_0_drdy_out 1 0 3 20 10 310 90 590
+preplace netloc xlslice_trapz_rst_Dout 1 0 3 NJ 250 NJ 250 NJ
+preplace netloc xlslice_fir_rst_Dout 1 0 2 NJ 170 NJ
+preplace netloc xlslice_xadc_buff_rst_Dout 1 0 1 NJ 90
+preplace netloc xadc_wiz_0_do_out 1 0 1 NJ 110
+levelinfo -pg 1 0 160 450 750 910
+pagesize -pg 1 -db -bbox -sgen -130 0 910 330
+"
+}
+
