@@ -121,7 +121,7 @@ architecture implementation of AXILite_DPP_Counter_v1_0_M00_AXIS is
 	-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     -- Senales agregadas para funciones del fifo
     signal en_rissing, en_falling   : std_logic;
-    signal counted                  : std_logic;
+    -- signal counted                  : std_logic;
     signal counter                  : integer      := 0;
     signal in_sample                : integer      := 0;
     signal out_counter              : std_logic_vector (31 downto 0);
@@ -135,32 +135,53 @@ architecture implementation of AXILite_DPP_Counter_v1_0_M00_AXIS is
     signal comp_high       : integer     := 2000000;  -- comparator level
     
     signal act   : std_logic;
+    
+    signal con_bram        : integer := 0;
+    -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    
+    -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    -- Adicion de componente memoria
+    COMPONENT comp_buff_ram
+        PORT (
+            clka : IN STD_LOGIC;
+            ena : IN STD_LOGIC;
+            wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+            addra : IN STD_LOGIC_VECTOR(8 DOWNTO 0);
+            dina : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            douta : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) 
+        );
+    END COMPONENT;
+    
+    -- signals para controlar el BRAM
+    signal comp_buff_rd_data                : STD_LOGIC_VECTOR(31 DOWNTO 0);
+    signal comp_buff_addr                   : STD_LOGIC_VECTOR(8 DOWNTO 0);
+    signal comp_buff_we                     : STD_LOGIC_VECTOR(0 DOWNTO 0);
+    signal comp_buff_wr_data                : STD_LOGIC_VECTOR(31 DOWNTO 0);
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 begin
 
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    your_instance_name : comp_buff_ram
+  PORT MAP (
+    clka => dpp_clk,
+    ena => '1',
+    wea => comp_buff_we,
+    addra => comp_buff_addr,
+    dina => comp_buff_wr_data,
+    douta => comp_buff_rd_data
+  );
+    
     -- Process made for functionship of the DPP
     comparator <= conv_integer(dpp_cmp_l);
     comp_high  <= conv_integer(dpp_cmp_h);
     
-    -- Process to create the comparatos stack buffer
-    process (dpp_clk, dpp_rst)    
-    variable comp_diff     : integer    :=  (comp_high - comparator) / NUMBER_OF_OUTPUT_WORDS;
-    begin 
-        if (dpp_rst = '0') then
-            for i in 0 to comp_buff'high loop
-                comp_buff(i) <= 0;
-            end loop;
-        else
-            for i in 0 to comp_buff'high loop
-                comp_buff(i) <= i*comp_diff + comparator;
-            end loop;
-        end if;
-    end process;
-    
+       
     -- counter activated    
     process (dpp_clk, dpp_rst)
+    variable comp_diff     : integer    :=  (comp_high - comparator) / NUMBER_OF_OUTPUT_WORDS;
+    variable counted : boolean := false;
     begin
         if (dpp_rst = '0') then
             -- reset everything
@@ -168,15 +189,39 @@ begin
             en_falling  <= '1';  -- it is prepared to count
             in_sample   <= 0;
             diff <= 0;
-                        
-            for i in 0 to fifoy'high loop
+            comp_buff_we <= conv_std_logic_vector(1,1);
+                                    
+            for i in 0 to NUMBER_OF_OUTPUT_WORDS-1 loop
                 fifoy(i) <= 0;
             end loop;
+            
+            if rising_edge(dpp_clk) then
+                if (con_bram < NUMBER_OF_OUTPUT_WORDS) then                
+                    comp_buff_addr <= conv_std_logic_vector(con_bram,9);
+                    comp_buff_wr_data <= conv_std_logic_vector(con_bram*comp_diff + comparator,32);
+                    con_bram <= con_bram + 1;
+                else
+                    con_bram <= 0;
+                end if;
+            end if;
             
             counter     <= 0; 
             out_counter <= conv_std_logic_vector(counter, 32);
         else
+            
+            comp_buff_we <= conv_std_logic_vector(0,1);
+                                    
             if rising_edge(dpp_clk) then
+                
+                if (con_bram < NUMBER_OF_OUTPUT_WORDS) then                
+                    comp_buff_addr <= conv_std_logic_vector(con_bram,9);
+                    comp_buff(con_bram) <= conv_integer(comp_buff_rd_data);
+                    con_bram <= con_bram + 1;
+                else
+                    con_bram <= 0;
+                end if;
+            
+            
                 in_sample <= conv_integer(signed(dpp_in)); 
                 diff <= conv_integer(signed(dpp_in)) - in_sample;
                 -- verify if there is a rissing edge
@@ -184,7 +229,7 @@ begin
                     if (en_rissing = '0') and (en_falling = '1') then
                         en_rissing <= '1';
                         en_falling <= '0';
-                        counted <= '0';
+                        counted := false;
                         -- increase the counter
                         counter <= counter + 1; 
                         out_counter <= conv_std_logic_vector(counter, 32);
@@ -201,12 +246,14 @@ begin
                 
                 -- discriminator
                 if (in_sample > comparator) and (diff < 0) then 
-                    for i in 0 to comp_buff'high-1 loop
-                        if (in_sample > comp_buff(i)) and (in_sample < comp_buff(i+1)) and counted = '0' then
-                            fifoy(i) <= fifoy(i) + 1;
+                    for i in 0 to NUMBER_OF_OUTPUT_WORDS-1 loop                    
+                        if (in_sample > comp_buff(i)) then
+                            if not counted then
+                                fifoy(i) <= fifoy(i) + 1; --conv_integer(comp_buff_rd_data);
+                                counted := true;
+                            end if;
                         end if;
-                    end loop;
-                    counted <= '1';                
+                    end loop;  
                 end if;                
             end if;
         end if;

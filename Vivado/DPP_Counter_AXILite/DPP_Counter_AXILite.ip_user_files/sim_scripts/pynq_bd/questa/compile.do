@@ -25,9 +25,9 @@ vlib questa_lib/msim/axi_datamover_v5_1_29
 vlib questa_lib/msim/axi_sg_v4_1_15
 vlib questa_lib/msim/axi_dma_v7_1_28
 vlib questa_lib/msim/xlslice_v1_0_2
+vlib questa_lib/msim/blk_mem_gen_v8_4_5
 vlib questa_lib/msim/axi_protocol_converter_v2_1_27
 vlib questa_lib/msim/axi_clock_converter_v2_1_26
-vlib questa_lib/msim/blk_mem_gen_v8_4_5
 vlib questa_lib/msim/axi_dwidth_converter_v2_1_27
 
 vmap xilinx_vip questa_lib/msim/xilinx_vip
@@ -54,9 +54,9 @@ vmap axi_datamover_v5_1_29 questa_lib/msim/axi_datamover_v5_1_29
 vmap axi_sg_v4_1_15 questa_lib/msim/axi_sg_v4_1_15
 vmap axi_dma_v7_1_28 questa_lib/msim/axi_dma_v7_1_28
 vmap xlslice_v1_0_2 questa_lib/msim/xlslice_v1_0_2
+vmap blk_mem_gen_v8_4_5 questa_lib/msim/blk_mem_gen_v8_4_5
 vmap axi_protocol_converter_v2_1_27 questa_lib/msim/axi_protocol_converter_v2_1_27
 vmap axi_clock_converter_v2_1_26 questa_lib/msim/axi_clock_converter_v2_1_26
-vmap blk_mem_gen_v8_4_5 questa_lib/msim/blk_mem_gen_v8_4_5
 vmap axi_dwidth_converter_v2_1_27 questa_lib/msim/axi_dwidth_converter_v2_1_27
 
 vlog -work xilinx_vip  -incr -mfcu  -sv -L axi_vip_v1_1_13 -L processing_system7_vip_v1_0_15 -L xilinx_vip "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
@@ -183,9 +183,18 @@ vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_AXILite
 "../../../bd/pynq_bd/ip/pynq_bd_xlslice_trapz_rst_0/sim/pynq_bd_xlslice_trapz_rst_0.v" \
 
 vcom -work xil_defaultlib  -93  \
-"../../../bd/pynq_bd/ipshared/f971/hdl/AXILite_DPP_Counter_v1_0_M00_AXIS.vhd" \
-"../../../bd/pynq_bd/ipshared/f971/hdl/AXILite_DPP_Counter_v1_0_S00_AXI.vhd" \
-"../../../bd/pynq_bd/ipshared/f971/hdl/AXILite_DPP_Counter_v1_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_0/sim/pynq_bd_axi_gpio_1_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_1/sim/pynq_bd_axi_gpio_1_1.vhd" \
+
+vlog -work blk_mem_gen_v8_4_5  -incr -mfcu  "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
+"../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ip/pynq_bd_AXILite_DPP_Counter_0_0/src/comp_buff_ram/simulation/blk_mem_gen_v8_4.v" \
+
+vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
+"../../../bd/pynq_bd/ip/pynq_bd_AXILite_DPP_Counter_0_0/src/comp_buff_ram/sim/comp_buff_ram.v" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/pynq_bd/ipshared/6e9f/hdl/AXILite_DPP_Counter_v1_0_M00_AXIS.vhd" \
+"../../../bd/pynq_bd/ipshared/6e9f/hdl/AXILite_DPP_Counter_v1_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_AXILite_DPP_Counter_0_0/sim/pynq_bd_AXILite_DPP_Counter_0_0.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_27  -incr -mfcu  "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
@@ -197,9 +206,6 @@ vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_AXILite
 
 vlog -work axi_clock_converter_v2_1_26  -incr -mfcu  "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/b8be/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
-
-vlog -work blk_mem_gen_v8_4_5  -incr -mfcu  "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
-"../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/25a8/simulation/blk_mem_gen_v8_4.v" \
 
 vlog -work axi_dwidth_converter_v2_1_27  -incr -mfcu  "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/4675/hdl/axi_dwidth_converter_v2_1_vl_rfs.v" \

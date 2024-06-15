@@ -122,9 +122,18 @@
   "../../../bd/pynq_bd/ip/pynq_bd_xlslice_trapz_rst_0/sim/pynq_bd_xlslice_trapz_rst_0.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/pynq_bd/ipshared/f971/hdl/AXILite_DPP_Counter_v1_0_M00_AXIS.vhd" \
-  "../../../bd/pynq_bd/ipshared/f971/hdl/AXILite_DPP_Counter_v1_0_S00_AXI.vhd" \
-  "../../../bd/pynq_bd/ipshared/f971/hdl/AXILite_DPP_Counter_v1_0.vhd" \
+  "../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_0/sim/pynq_bd_axi_gpio_1_0.vhd" \
+  "../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_1/sim/pynq_bd_axi_gpio_1_1.vhd" \
+-endlib
+-makelib xcelium_lib/blk_mem_gen_v8_4_5 \
+  "../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ip/pynq_bd_AXILite_DPP_Counter_0_0/src/comp_buff_ram/simulation/blk_mem_gen_v8_4.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/pynq_bd/ip/pynq_bd_AXILite_DPP_Counter_0_0/src/comp_buff_ram/sim/comp_buff_ram.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/pynq_bd/ipshared/6e9f/hdl/AXILite_DPP_Counter_v1_0_M00_AXIS.vhd" \
+  "../../../bd/pynq_bd/ipshared/6e9f/hdl/AXILite_DPP_Counter_v1_0.vhd" \
   "../../../bd/pynq_bd/ip/pynq_bd_AXILite_DPP_Counter_0_0/sim/pynq_bd_AXILite_DPP_Counter_0_0.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_27 \
@@ -136,9 +145,6 @@
 -endlib
 -makelib xcelium_lib/axi_clock_converter_v2_1_26 \
   "../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/b8be/hdl/axi_clock_converter_v2_1_vl_rfs.v" \
--endlib
--makelib xcelium_lib/blk_mem_gen_v8_4_5 \
-  "../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/25a8/simulation/blk_mem_gen_v8_4.v" \
 -endlib
 -makelib xcelium_lib/axi_dwidth_converter_v2_1_27 \
   "../../../../DPP_Counter_AXILite.gen/sources_1/bd/pynq_bd/ipshared/4675/hdl/axi_dwidth_converter_v2_1_vl_rfs.v" \

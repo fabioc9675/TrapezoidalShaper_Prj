@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:AXILite_DPP_Counter:1.0
--- IP Revision: 4
+-- IP Revision: 11
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -61,29 +61,6 @@ ENTITY pynq_bd_AXILite_DPP_Counter_0_0 IS
     dpp_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     dpp_cmp_l : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
     dpp_cmp_h : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    dpplite_cmp_l : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    dpplite_cmp_h : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    s00_axi_aclk : IN STD_LOGIC;
-    s00_axi_aresetn : IN STD_LOGIC;
-    s00_axi_awaddr : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-    s00_axi_awprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-    s00_axi_awvalid : IN STD_LOGIC;
-    s00_axi_awready : OUT STD_LOGIC;
-    s00_axi_wdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    s00_axi_wstrb : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-    s00_axi_wvalid : IN STD_LOGIC;
-    s00_axi_wready : OUT STD_LOGIC;
-    s00_axi_bresp : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-    s00_axi_bvalid : OUT STD_LOGIC;
-    s00_axi_bready : IN STD_LOGIC;
-    s00_axi_araddr : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-    s00_axi_arprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-    s00_axi_arvalid : IN STD_LOGIC;
-    s00_axi_arready : OUT STD_LOGIC;
-    s00_axi_rdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    s00_axi_rresp : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-    s00_axi_rvalid : OUT STD_LOGIC;
-    s00_axi_rready : IN STD_LOGIC;
     m00_axis_aclk : IN STD_LOGIC;
     m00_axis_aresetn : IN STD_LOGIC;
     m00_axis_tvalid : OUT STD_LOGIC;
@@ -111,29 +88,6 @@ ARCHITECTURE pynq_bd_AXILite_DPP_Counter_0_0_arch OF pynq_bd_AXILite_DPP_Counter
       dpp_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
       dpp_cmp_l : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
       dpp_cmp_h : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      dpplite_cmp_l : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      dpplite_cmp_h : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      s00_axi_aclk : IN STD_LOGIC;
-      s00_axi_aresetn : IN STD_LOGIC;
-      s00_axi_awaddr : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-      s00_axi_awprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-      s00_axi_awvalid : IN STD_LOGIC;
-      s00_axi_awready : OUT STD_LOGIC;
-      s00_axi_wdata : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-      s00_axi_wstrb : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-      s00_axi_wvalid : IN STD_LOGIC;
-      s00_axi_wready : OUT STD_LOGIC;
-      s00_axi_bresp : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-      s00_axi_bvalid : OUT STD_LOGIC;
-      s00_axi_bready : IN STD_LOGIC;
-      s00_axi_araddr : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-      s00_axi_arprot : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-      s00_axi_arvalid : IN STD_LOGIC;
-      s00_axi_arready : OUT STD_LOGIC;
-      s00_axi_rdata : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-      s00_axi_rresp : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-      s00_axi_rvalid : OUT STD_LOGIC;
-      s00_axi_rready : IN STD_LOGIC;
       m00_axis_aclk : IN STD_LOGIC;
       m00_axis_aresetn : IN STD_LOGIC;
       m00_axis_tvalid : OUT STD_LOGIC;
@@ -148,7 +102,7 @@ ARCHITECTURE pynq_bd_AXILite_DPP_Counter_0_0_arch OF pynq_bd_AXILite_DPP_Counter
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF pynq_bd_AXILite_DPP_Counter_0_0_arch : ARCHITECTURE IS "pynq_bd_AXILite_DPP_Counter_0_0,AXILite_DPP_Counter_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF pynq_bd_AXILite_DPP_Counter_0_0_arch: ARCHITECTURE IS "pynq_bd_AXILite_DPP_Counter_0_0,AXILite_DPP_Counter_v1_0,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=AXILite_DPP_Counter,x_ipVersion=1.0,x_ipCoreRevision=4,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=5,C_M00_AXIS_TDATA_WIDTH=32,C_M00_AXIS_START_COUNT=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF pynq_bd_AXILite_DPP_Counter_0_0_arch: ARCHITECTURE IS "pynq_bd_AXILite_DPP_Counter_0_0,AXILite_DPP_Counter_v1_0,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=AXILite_DPP_Counter,x_ipVersion=1.0,x_ipCoreRevision=11,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=5,C_M00_AXIS_TDATA_WIDTH=32,C_M00_AXIS_START_COUNT=32}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF m00_axis_aclk: SIGNAL IS "XIL_INTERFACENAME M00_AXIS_CLK, ASSOCIATED_BUSIF M00_AXIS, ASSOCIATED_RESET m00_axis_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN pynq_bd_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
@@ -161,31 +115,6 @@ ARCHITECTURE pynq_bd_AXILite_DPP_Counter_0_0_arch OF pynq_bd_AXILite_DPP_Counter
   ATTRIBUTE X_INTERFACE_INFO OF m00_axis_tstrb: SIGNAL IS "xilinx.com:interface:axis:1.0 M00_AXIS TSTRB";
   ATTRIBUTE X_INTERFACE_PARAMETER OF m00_axis_tvalid: SIGNAL IS "XIL_INTERFACENAME M00_AXIS, WIZ_DATA_WIDTH 32, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 1, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN pynq_bd_processing_system7_0_0_FCLK_CLK0, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF m00_axis_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M00_AXIS TVALID";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s00_axi_aclk: SIGNAL IS "XIL_INTERFACENAME S00_AXI_CLK, ASSOCIATED_BUSIF S00_AXI, ASSOCIATED_RESET s00_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN pynq_bd_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_aclk: SIGNAL IS "xilinx.com:signal:clock:1.0 S00_AXI_CLK CLK";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_araddr: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI ARADDR";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s00_axi_aresetn: SIGNAL IS "XIL_INTERFACENAME S00_AXI_RST, POLARITY ACTIVE_LOW, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 S00_AXI_RST RST";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_arprot: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI ARPROT";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_arready: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI ARREADY";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_arvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI ARVALID";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF s00_axi_awaddr: SIGNAL IS "XIL_INTERFACENAME S00_AXI, WIZ_DATA_WIDTH 32, WIZ_NUM_REG 8, SUPPORTS_NARROW_BURST 0, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 100000000, ID_WIDTH 0, ADDR_WIDTH 5, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.0, CLK_DOMAIN pynq_bd_processing_system" & 
-"7_0_0_FCLK_CLK0, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_awaddr: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI AWADDR";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_awprot: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI AWPROT";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_awready: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI AWREADY";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_awvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI AWVALID";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_bready: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI BREADY";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_bresp: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI BRESP";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_bvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI BVALID";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_rdata: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI RDATA";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_rready: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI RREADY";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_rresp: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI RRESP";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_rvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI RVALID";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_wdata: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI WDATA";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_wready: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI WREADY";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_wstrb: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI WSTRB";
-  ATTRIBUTE X_INTERFACE_INFO OF s00_axi_wvalid: SIGNAL IS "xilinx.com:interface:aximm:1.0 S00_AXI WVALID";
 BEGIN
   U0 : AXILite_DPP_Counter_v1_0
     GENERIC MAP (
@@ -201,29 +130,6 @@ BEGIN
       dpp_out => dpp_out,
       dpp_cmp_l => dpp_cmp_l,
       dpp_cmp_h => dpp_cmp_h,
-      dpplite_cmp_l => dpplite_cmp_l,
-      dpplite_cmp_h => dpplite_cmp_h,
-      s00_axi_aclk => s00_axi_aclk,
-      s00_axi_aresetn => s00_axi_aresetn,
-      s00_axi_awaddr => s00_axi_awaddr,
-      s00_axi_awprot => s00_axi_awprot,
-      s00_axi_awvalid => s00_axi_awvalid,
-      s00_axi_awready => s00_axi_awready,
-      s00_axi_wdata => s00_axi_wdata,
-      s00_axi_wstrb => s00_axi_wstrb,
-      s00_axi_wvalid => s00_axi_wvalid,
-      s00_axi_wready => s00_axi_wready,
-      s00_axi_bresp => s00_axi_bresp,
-      s00_axi_bvalid => s00_axi_bvalid,
-      s00_axi_bready => s00_axi_bready,
-      s00_axi_araddr => s00_axi_araddr,
-      s00_axi_arprot => s00_axi_arprot,
-      s00_axi_arvalid => s00_axi_arvalid,
-      s00_axi_arready => s00_axi_arready,
-      s00_axi_rdata => s00_axi_rdata,
-      s00_axi_rresp => s00_axi_rresp,
-      s00_axi_rvalid => s00_axi_rvalid,
-      s00_axi_rready => s00_axi_rready,
       m00_axis_aclk => m00_axis_aclk,
       m00_axis_aresetn => m00_axis_aresetn,
       m00_axis_tvalid => m00_axis_tvalid,
