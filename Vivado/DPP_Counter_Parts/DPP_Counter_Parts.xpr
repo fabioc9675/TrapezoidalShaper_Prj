@@ -67,13 +67,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="23"/>
-    <Option Name="WTModelSimExportSim" Val="23"/>
-    <Option Name="WTQuestaExportSim" Val="23"/>
+    <Option Name="WTXSimExportSim" Val="24"/>
+    <Option Name="WTModelSimExportSim" Val="24"/>
+    <Option Name="WTQuestaExportSim" Val="24"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="23"/>
-    <Option Name="WTRivieraExportSim" Val="23"/>
-    <Option Name="WTActivehdlExportSim" Val="23"/>
+    <Option Name="WTVcsExportSim" Val="24"/>
+    <Option Name="WTRivieraExportSim" Val="24"/>
+    <Option Name="WTActivehdlExportSim" Val="24"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -110,6 +110,18 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/xadc_buffer.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/slice_trapz.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/trapz_klm.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>

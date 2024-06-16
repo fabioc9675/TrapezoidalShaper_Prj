@@ -4,7 +4,7 @@
     "xci_name": "pynq_bd_AXI_Data_Stream_0_0",
     "cell_name": "AXI_Data_Stream_0",
     "component_reference": "xilinx.com:user:AXI_Data_Stream:1.0",
-    "ip_revision": "18",
+    "ip_revision": "19",
     "gen_directory": "../../../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ip/pynq_bd_AXI_Data_Stream_0_0",
     "parameters": {
       "component_parameters": {
@@ -33,7 +33,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "18" } ],
+        "IPREVISION": [ { "value": "19" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ip/pynq_bd_AXI_Data_Stream_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],

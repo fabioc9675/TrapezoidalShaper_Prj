@@ -171,10 +171,9 @@ vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.g
 "../../../bd/pynq_bd/ip/pynq_bd_xbar_0/sim/pynq_bd_xbar_0.v" \
 
 vcom -work xil_defaultlib  -93  \
-"../../../bd/pynq_bd/ipshared/a3f2/hdl/AXI_Data_Stream_v1_0_M00_AXIS.vhd" \
-"../../../bd/pynq_bd/ipshared/a3f2/hdl/AXI_Data_Stream_v1_0.vhd" \
+"../../../bd/pynq_bd/ipshared/6c0e/hdl/AXI_Data_Stream_v1_0_M00_AXIS.vhd" \
+"../../../bd/pynq_bd/ipshared/6c0e/hdl/AXI_Data_Stream_v1_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_AXI_Data_Stream_0_0/sim/pynq_bd_AXI_Data_Stream_0_0.vhd" \
-"../../../bd/pynq_bd/sim/pynq_bd.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_signal_mux_0_0/sim/pynq_bd_signal_mux_0_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_fir_fab_0_0/sim/pynq_bd_fir_fab_0_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_xadc_buffer_0_0/sim/pynq_bd_xadc_buffer_0_0.vhd" \
@@ -194,6 +193,11 @@ vcom -work xil_defaultlib  -93  \
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../bd/pynq_bd/ip/pynq_bd_xlslice_1_0/sim/pynq_bd_xlslice_1_0.v" \
 
+vcom -work xil_defaultlib  -93  \
+"../../../bd/pynq_bd/ip/pynq_bd_slice_trapz_0_0/sim/pynq_bd_slice_trapz_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_trapz_klm_0_0/sim/pynq_bd_trapz_klm_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_1/sim/pynq_bd_axi_gpio_1_1.vhd" \
+
 vlog -work axi_protocol_converter_v2_1_27  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/aeb3/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
@@ -212,6 +216,9 @@ vlog -work axi_dwidth_converter_v2_1_27  -incr -mfcu  "+incdir+../../../../DPP_C
 
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../bd/pynq_bd/ip/pynq_bd_auto_us_0/sim/pynq_bd_auto_us_0.v" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/pynq_bd/sim/pynq_bd.vhd" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:AXI_Data_Stream:1.0
--- IP Revision: 18
+-- IP Revision: 19
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -94,7 +94,7 @@ ARCHITECTURE pynq_bd_AXI_Data_Stream_0_0_arch OF pynq_bd_AXI_Data_Stream_0_0 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF pynq_bd_AXI_Data_Stream_0_0_arch : ARCHITECTURE IS "pynq_bd_AXI_Data_Stream_0_0,AXI_Data_Stream_v1_0,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF pynq_bd_AXI_Data_Stream_0_0_arch: ARCHITECTURE IS "pynq_bd_AXI_Data_Stream_0_0,AXI_Data_Stream_v1_0,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=AXI_Data_Stream,x_ipVersion=1.0,x_ipCoreRevision=18,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_M00_AXIS_TDATA_WIDTH=32,C_M00_AXIS_START_COUNT=32}";
+  ATTRIBUTE CORE_GENERATION_INFO OF pynq_bd_AXI_Data_Stream_0_0_arch: ARCHITECTURE IS "pynq_bd_AXI_Data_Stream_0_0,AXI_Data_Stream_v1_0,{x_ipProduct=Vivado 2022.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=AXI_Data_Stream,x_ipVersion=1.0,x_ipCoreRevision=19,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,C_M00_AXIS_TDATA_WIDTH=32,C_M00_AXIS_START_COUNT=32}";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER OF m00_axis_aclk: SIGNAL IS "XIL_INTERFACENAME M00_AXIS_CLK, ASSOCIATED_BUSIF M00_AXIS, ASSOCIATED_RESET m00_axis_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN pynq_bd_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0";

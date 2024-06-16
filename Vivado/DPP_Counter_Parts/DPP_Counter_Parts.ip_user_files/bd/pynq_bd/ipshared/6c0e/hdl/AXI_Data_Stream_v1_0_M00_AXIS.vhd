@@ -189,7 +189,53 @@ begin
 	            -- number of clock cycles.    
 	            --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	            
-                if (activar = '0' and clk_Adc = '1') then
+--                if (activar = '0' and clk_Adc = '1') then
+--	                activar <= '1';
+--                    if (triggered = '0') then
+--                        dfifo(write_ptr) <= data_in;
+--                        write_ptr <= (write_ptr + 1) mod BUFFER_SIZE;
+--                        if trg_adc = '1' then
+--                            triggered <= '1';
+--                            --capture_done <= false;
+--                            read_ptr <= (write_ptr - PRE_TRIGGER_SIZE + BUFFER_SIZE) mod BUFFER_SIZE;
+--                        end if;
+--                    end if;
+--                    if (triggered = '1' and capture_done = '0') then
+--                        dfifo(write_ptr) <= data_in;
+--                        write_ptr <= (write_ptr + 1) mod BUFFER_SIZE;
+--                        if write_ptr = read_ptr then
+--                            capture_done <= '1';
+--                            mst_exec_state  <= SEND_STREAM; 
+--                        end if;
+--                    end if;
+--                elsif clk_adc = '0' then
+--	               activar <= '0';
+--                end if;
+	            
+--	            act <= '0';   
+	            
+--	            if (first_time = '1') then
+--	                 mst_exec_state  <= SEND_STREAM; 
+--	                 first_time <= '0';
+--	            end if;
+	            
+	            mst_exec_state  <= SEND_STREAM; 
+	            act <= '0'; 
+	            --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                  
+--	            if ( count = std_logic_vector(to_unsigned((C_M_START_COUNT - 1), WAIT_COUNT_BITS))) then
+--	              mst_exec_state  <= SEND_STREAM;                                               
+--	            else                                                                            
+--	              count <= std_logic_vector (unsigned(count) + 1);                              
+--	              mst_exec_state  <= INIT_COUNTER;                                              
+--	            end if;                                                                         
+	                                                                                            
+	        when SEND_STREAM  =>                                                                
+	          -- The example design streaming master functionality starts                       
+	          -- when the master drives output tdata from the FIFO and the slave                
+	          -- has finished storing the S_AXIS_TDATA  
+	          
+	          --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	           if (activar = '0' and clk_Adc = '1') then
 	                activar <= '1';
                     if (triggered = '0') then
                         dfifo(write_ptr) <= data_in;
@@ -205,33 +251,13 @@ begin
                         write_ptr <= (write_ptr + 1) mod BUFFER_SIZE;
                         if write_ptr = read_ptr then
                             capture_done <= '1';
-                            mst_exec_state  <= SEND_STREAM; 
                         end if;
                     end if;
                 elsif clk_adc = '0' then
 	               activar <= '0';
                 end if;
-	            
-	            act <= '0';   
-	            
-	            if (first_time = '1') then
-	                 mst_exec_state  <= SEND_STREAM; 
-	                 first_time <= '0';
-	            end if;
-	            
-	            --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                                  
---	            if ( count = std_logic_vector(to_unsigned((C_M_START_COUNT - 1), WAIT_COUNT_BITS))) then
---	              mst_exec_state  <= SEND_STREAM;                                               
---	            else                                                                            
---	              count <= std_logic_vector (unsigned(count) + 1);                              
---	              mst_exec_state  <= INIT_COUNTER;                                              
---	            end if;                                                                         
-	                                                                                            
-	        when SEND_STREAM  =>                                                                
-	          -- The example design streaming master functionality starts                       
-	          -- when the master drives output tdata from the FIFO and the slave                
-	          -- has finished storing the S_AXIS_TDATA  
-	         	            
+	          --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	                 
 	          --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	          axis_tvalid <= '1';
 	          if (read_pointer = 0) then
