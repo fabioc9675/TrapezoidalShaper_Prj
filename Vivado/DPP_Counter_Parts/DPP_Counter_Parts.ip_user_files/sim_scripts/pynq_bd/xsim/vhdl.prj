@@ -8,5 +8,9 @@ vhdl xil_defaultlib  \
 "../../../bd/pynq_bd/ipshared/a3f2/hdl/AXI_Data_Stream_v1_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_AXI_Data_Stream_0_0/sim/pynq_bd_AXI_Data_Stream_0_0.vhd" \
 "../../../bd/pynq_bd/sim/pynq_bd.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_signal_mux_0_0/sim/pynq_bd_signal_mux_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_fir_fab_0_0/sim/pynq_bd_fir_fab_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_xadc_buffer_0_0/sim/pynq_bd_xadc_buffer_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_0/sim/pynq_bd_axi_gpio_1_0.vhd" \
 
 nosort

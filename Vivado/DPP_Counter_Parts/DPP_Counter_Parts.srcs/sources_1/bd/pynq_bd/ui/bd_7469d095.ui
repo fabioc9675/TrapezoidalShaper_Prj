@@ -1,50 +1,65 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.482407",
-   "Default View_TopLeft":"-386,2",
+   "Default View_ScaleFactor":"0.352061",
+   "Default View_TopLeft":"-105,-213",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 6 -x 1970 -y 280 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 6 -x 1970 -y 300 -defaultsOSRD
-preplace port Vaux1_0 -pg 1 -lvl 0 -x 0 -y 980 -defaultsOSRD
-preplace port port-id_out_trg_0 -pg 1 -lvl 6 -x 1970 -y 640 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 5 -x 1710 -y 330 -defaultsOSRD
-preplace inst xadc_wiz_0 -pg 1 -lvl 3 -x 990 -y 940 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 2 -x 590 -y 570 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 2 -x 590 -y 880 -defaultsOSRD
-preplace inst axi_dma_0 -pg 1 -lvl 3 -x 990 -y 100 -defaultsOSRD
-preplace inst greaterthan_0 -pg 1 -lvl 5 -x 1710 -y 710 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 990 -y 370 -defaultsOSRD
-preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 200 -y 600 -defaultsOSRD
-preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 590 -y 340 -defaultsOSRD
-preplace inst axi_mem_intercon -pg 1 -lvl 4 -x 1330 -y 320 -defaultsOSRD
-preplace inst AXI_Data_Stream_0 -pg 1 -lvl 2 -x 590 -y 740 -defaultsOSRD
-preplace netloc axi_gpio_0_gpio_io_o 1 3 2 1160 630 1480J
-preplace netloc clk_wiz_0_clk_out1 1 2 1 790 560n
-preplace netloc greaterthan_0_out_trg 1 1 5 420 940 810J 790 NJ 790 NJ 790 1950
-preplace netloc processing_system7_0_FCLK_CLK0 1 0 6 20 710 370 480 770 280 1180 440 1480 440 1950
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 6 30 700 390 640 NJ 640 NJ 640 NJ 640 1940
-preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 1 3 380 490 800 290 1170
-preplace netloc xadc_wiz_0_do_out 1 1 4 400 950 800 700 NJ 700 NJ
-preplace netloc xadc_wiz_0_drdy_out 1 1 2 410 960 820J
-preplace netloc xadc_wiz_0_eoc_out 1 2 2 820 800 1170
-preplace netloc xlconstant_0_dout 1 2 1 NJ 880
-preplace netloc AXI_Data_Stream_0_M00_AXIS 1 2 1 780 80n
-preplace netloc Vaux1_0_1 1 0 3 NJ 980 NJ 980 NJ
-preplace netloc axi_dma_0_M_AXI_S2MM 1 3 1 1180 80n
-preplace netloc axi_mem_intercon_M00_AXI 1 4 1 N 320
-preplace netloc processing_system7_0_DDR 1 5 1 NJ 280
-preplace netloc processing_system7_0_FIXED_IO 1 5 1 NJ 300
-preplace netloc processing_system7_0_M_AXI_GP0 1 1 5 370 200 NJ 200 NJ 200 NJ 200 1950
-preplace netloc ps7_0_axi_periph_M00_AXI 1 2 1 760 60n
-preplace netloc ps7_0_axi_periph_M01_AXI 1 2 1 N 350
-levelinfo -pg 1 0 200 590 990 1330 1710 1970
-pagesize -pg 1 -db -bbox -sgen -110 0 2090 1080
+preplace port DDR -pg 1 -lvl 13 -x 3590 -y 100 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 13 -x 3590 -y 120 -defaultsOSRD
+preplace port Vaux1_0 -pg 1 -lvl 0 -x 0 -y 840 -defaultsOSRD
+preplace port port-id_out_trg_0 -pg 1 -lvl 13 -x 3590 -y 660 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 9 -x 2590 -y 150 -defaultsOSRD
+preplace inst xadc_wiz_0 -pg 1 -lvl 11 -x 3180 -y 800 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 10 -x 2930 -y 380 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 10 -x 2930 -y 740 -defaultsOSRD
+preplace inst axi_dma_0 -pg 1 -lvl 7 -x 1880 -y 100 -defaultsOSRD
+preplace inst greaterthan_0 -pg 1 -lvl 12 -x 3450 -y 660 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 7 -x 1880 -y 450 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 5 -x 1110 -y 490 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 6 -x 1490 -y 430 -defaultsOSRD
+preplace inst axi_mem_intercon -pg 1 -lvl 8 -x 2210 -y 140 -defaultsOSRD
+preplace inst AXI_Data_Stream_0 -pg 1 -lvl 6 -x 1490 -y 710 -defaultsOSRD
+preplace inst signal_mux_0 -pg 1 -lvl 5 -x 1110 -y 670 -defaultsOSRD
+preplace inst fir_fab_0 -pg 1 -lvl 3 -x 600 -y 930 -defaultsOSRD
+preplace inst xadc_buffer_0 -pg 1 -lvl 2 -x 330 -y 950 -defaultsOSRD
+preplace inst xlconstant_rst -pg 1 -lvl 1 -x 100 -y 950 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 4 -x 830 -y 930 -defaultsOSRD
+preplace inst axi_gpio_sel -pg 1 -lvl 7 -x 1880 -y 600 -defaultsOSRD
+preplace inst xlslice_1 -pg 1 -lvl 4 -x 830 -y 630 -defaultsOSRD
+preplace netloc axi_gpio_0_gpio_io_o 1 7 5 NJ 460 NJ 460 NJ 460 NJ 460 3330
+preplace netloc clk_wiz_0_clk_out1 1 10 1 3030 370n
+preplace netloc greaterthan_0_out_trg 1 5 8 1320 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 3570
+preplace netloc processing_system7_0_FCLK_CLK0 1 4 6 940 390 1290 600 1690 200 2050 260 2360 260 2840
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 4 6 930 380 1280J 590 1700J 370 NJ 370 NJ 370 2830
+preplace netloc rst_ps7_0_100M_peripheral_aresetn 1 5 3 1300 610 1710 210 2060
+preplace netloc xadc_wiz_0_do_out 1 1 11 190 1040 NJ 1040 NJ 1040 930 820 NJ 820 NJ 820 NJ 820 NJ 820 NJ 820 3020 650 NJ
+preplace netloc xadc_wiz_0_drdy_out 1 1 10 180 870 470 850 NJ 850 NJ 850 1310 830 NJ 830 NJ 830 NJ 830 NJ 830 3040J
+preplace netloc xadc_wiz_0_eoc_out 1 10 2 3040 660 3320
+preplace netloc xlconstant_0_dout 1 10 1 NJ 740
+preplace netloc xlconstant_rst_dout 1 1 2 180 1030 470J
+preplace netloc xadc_buffer_0_adc_out 1 2 1 N 950
+preplace netloc signal_mux_0_data_out 1 5 1 N 670
+preplace netloc fir_fab_0_fir_out 1 3 1 NJ 930
+preplace netloc xlslice_0_Dout 1 4 1 940 670n
+preplace netloc axi_gpio_1_gpio_io_o 1 3 5 730 810 NJ 810 NJ 810 NJ 810 2060
+preplace netloc xlslice_1_Dout 1 4 1 NJ 630
+preplace netloc AXI_Data_Stream_0_M00_AXIS 1 6 1 1670 80n
+preplace netloc Vaux1_0_1 1 0 11 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ
+preplace netloc axi_dma_0_M_AXI_S2MM 1 7 1 N 80
+preplace netloc axi_mem_intercon_M00_AXI 1 8 1 N 140
+preplace netloc processing_system7_0_DDR 1 9 4 NJ 100 NJ 100 NJ 100 NJ
+preplace netloc processing_system7_0_FIXED_IO 1 9 4 NJ 120 NJ 120 NJ 120 NJ
+preplace netloc processing_system7_0_M_AXI_GP0 1 5 5 1280 270 NJ 270 NJ 270 NJ 270 2820
+preplace netloc ps7_0_axi_periph_M00_AXI 1 6 1 1660 60n
+preplace netloc ps7_0_axi_periph_M01_AXI 1 6 1 N 430
+preplace netloc ps7_0_axi_periph_M02_AXI 1 6 1 1680 450n
+levelinfo -pg 1 0 100 330 600 830 1110 1490 1880 2210 2590 2930 3180 3450 3590
+pagesize -pg 1 -db -bbox -sgen -110 0 3710 1050
 "
 }
 {
-   "da_axi4_cnt":"3",
+   "da_axi4_cnt":"4",
    "da_clkrst_cnt":"1",
    "da_ps7_cnt":"1"
 }

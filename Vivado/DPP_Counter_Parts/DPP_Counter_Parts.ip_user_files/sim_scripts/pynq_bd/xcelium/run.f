@@ -113,6 +113,25 @@
   "../../../bd/pynq_bd/ipshared/a3f2/hdl/AXI_Data_Stream_v1_0_M00_AXIS.vhd" \
   "../../../bd/pynq_bd/ipshared/a3f2/hdl/AXI_Data_Stream_v1_0.vhd" \
   "../../../bd/pynq_bd/ip/pynq_bd_AXI_Data_Stream_0_0/sim/pynq_bd_AXI_Data_Stream_0_0.vhd" \
+  "../../../bd/pynq_bd/sim/pynq_bd.vhd" \
+  "../../../bd/pynq_bd/ip/pynq_bd_signal_mux_0_0/sim/pynq_bd_signal_mux_0_0.vhd" \
+  "../../../bd/pynq_bd/ip/pynq_bd_fir_fab_0_0/sim/pynq_bd_fir_fab_0_0.vhd" \
+  "../../../bd/pynq_bd/ip/pynq_bd_xadc_buffer_0_0/sim/pynq_bd_xadc_buffer_0_0.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/pynq_bd/ip/pynq_bd_xlconstant_1_0/sim/pynq_bd_xlconstant_1_0.v" \
+-endlib
+-makelib xcelium_lib/xlslice_v1_0_2 \
+  "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/pynq_bd/ip/pynq_bd_xlslice_0_0/sim/pynq_bd_xlslice_0_0.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_0/sim/pynq_bd_axi_gpio_1_0.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/pynq_bd/ip/pynq_bd_xlslice_1_0/sim/pynq_bd_xlslice_1_0.v" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_27 \
   "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/aeb3/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
@@ -132,9 +151,6 @@
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/pynq_bd/ip/pynq_bd_auto_us_0/sim/pynq_bd_auto_us_0.v" \
--endlib
--makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/pynq_bd/sim/pynq_bd.vhd" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v
