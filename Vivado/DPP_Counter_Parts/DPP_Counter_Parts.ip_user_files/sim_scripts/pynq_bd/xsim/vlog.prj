@@ -1,4 +1,4 @@
-verilog xil_defaultlib --include "D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" --include "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" --include "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" --include "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" \
+verilog xil_defaultlib --include "C:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" --include "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" --include "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" --include "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" \
 "../../../bd/pynq_bd/ip/pynq_bd_processing_system7_0_0/sim/pynq_bd_processing_system7_0_0.v" \
 "../../../bd/pynq_bd/ip/pynq_bd_clk_wiz_0_0/pynq_bd_clk_wiz_0_0_clk_wiz.v" \
 "../../../bd/pynq_bd/ip/pynq_bd_clk_wiz_0_0/pynq_bd_clk_wiz_0_0.v" \
