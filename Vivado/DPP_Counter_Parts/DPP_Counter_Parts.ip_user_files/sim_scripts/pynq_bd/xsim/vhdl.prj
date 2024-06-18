@@ -21,8 +21,8 @@ vhdl xil_defaultlib  \
 "../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_0_0/sim/pynq_bd_axi_gpio_0_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_0_1/sim/pynq_bd_axi_gpio_0_1.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_dpp_counter_0_0/sim/pynq_bd_dpp_counter_0_0.vhd" \
-"../../../bd/pynq_bd/ipshared/9a5f/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd" \
-"../../../bd/pynq_bd/ipshared/9a5f/hdl/AXI_DPP_BRam_v1_0.vhd" \
+"../../../bd/pynq_bd/ipshared/4b41/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd" \
+"../../../bd/pynq_bd/ipshared/4b41/hdl/AXI_DPP_BRam_v1_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_AXI_DPP_BRam_0_0/sim/pynq_bd_AXI_DPP_BRam_0_0.vhd" \
 "../../../bd/pynq_bd/sim/pynq_bd.vhd" \
 

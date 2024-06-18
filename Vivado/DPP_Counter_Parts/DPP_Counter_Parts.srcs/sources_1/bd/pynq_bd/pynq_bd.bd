@@ -4108,6 +4108,14 @@
                   "ASSOCIATED_RESET": {
                     "value": "adc_rst",
                     "value_src": "constant"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "default_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "pynq_bd_processing_system7_0_0_FCLK_CLK0",
+                    "value_src": "default_prop"
                   }
                 }
               },
@@ -4145,6 +4153,14 @@
                   "ASSOCIATED_RESET": {
                     "value": "fir_rst",
                     "value_src": "constant"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "default_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "pynq_bd_processing_system7_0_0_FCLK_CLK0",
+                    "value_src": "default_prop"
                   }
                 }
               },
@@ -4182,6 +4198,14 @@
                   "ASSOCIATED_RESET": {
                     "value": "trap_rst",
                     "value_src": "constant"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "default_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "pynq_bd_processing_system7_0_0_FCLK_CLK0",
+                    "value_src": "default_prop"
                   }
                 }
               },
@@ -4497,6 +4521,14 @@
               "ASSOCIATED_RESET": {
                 "value": "dpp_rst",
                 "value_src": "constant"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "default_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "pynq_bd_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
               }
             }
           },

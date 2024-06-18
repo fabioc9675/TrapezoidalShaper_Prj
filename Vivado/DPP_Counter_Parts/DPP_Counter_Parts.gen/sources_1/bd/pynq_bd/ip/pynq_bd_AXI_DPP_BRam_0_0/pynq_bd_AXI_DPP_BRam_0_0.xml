@@ -302,11 +302,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jun 18 14:33:21 UTC 2024</spirit:value>
+            <spirit:value>Tue Jun 18 22:08:06 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:09a069af</spirit:value>
+            <spirit:value>9:177a1906</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -317,7 +317,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:09a069af</spirit:value>
+            <spirit:value>9:177a1906</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -333,11 +333,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jun 18 14:33:21 UTC 2024</spirit:value>
+            <spirit:value>Tue Jun 18 22:08:06 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:09a069af</spirit:value>
+            <spirit:value>9:177a1906</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -353,11 +353,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jun 18 14:33:21 UTC 2024</spirit:value>
+            <spirit:value>Tue Jun 18 22:08:06 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f87ea726</spirit:value>
+            <spirit:value>9:e6a4d78f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -373,11 +373,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jun 18 14:33:21 UTC 2024</spirit:value>
+            <spirit:value>Tue Jun 18 22:08:06 UTC 2024</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:f87ea726</spirit:value>
+            <spirit:value>9:e6a4d78f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -574,11 +574,11 @@
         <spirit:userFileType>CELL_NAME_AXI_DPP_BRam_v1_0_M00_AXIS_inst/bram_dpp_mem</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/9a5f/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd</spirit:name>
+        <spirit:name>../../ipshared/4b41/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/9a5f/hdl/AXI_DPP_BRam_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/4b41/hdl/AXI_DPP_BRam_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -598,11 +598,11 @@
         <spirit:userFileType>CELL_NAME_AXI_DPP_BRam_v1_0_M00_AXIS_inst/bram_dpp_mem</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/9a5f/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd</spirit:name>
+        <spirit:name>../../ipshared/4b41/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ipshared/9a5f/hdl/AXI_DPP_BRam_v1_0.vhd</spirit:name>
+        <spirit:name>../../ipshared/4b41/hdl/AXI_DPP_BRam_v1_0.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
@@ -647,7 +647,7 @@
       <xilinx:xpmLibraries>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>15</xilinx:coreRevision>
+      <xilinx:coreRevision>22</xilinx:coreRevision>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M00_AXIS.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M00_AXIS.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd"/>
@@ -675,7 +675,7 @@
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2022.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="8a2a6053"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="49400827"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="a2d14afc"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="749f574f"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="9a194edc"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="e7169e09"/>

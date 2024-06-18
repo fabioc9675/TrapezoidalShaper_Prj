@@ -22,6 +22,7 @@ entity AXI_DPP_BRam_v1_0 is
         dpp_rst             :  in  std_logic;
         dpp_amp             :  in  std_logic_vector(15 downto 0);
         dpp_evt             :  in  std_logic;
+        --led_out             :  out std_logic_vector (2 downto 0);
         -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		-- User ports ends
 		-- Do not modify the ports beyond this line
@@ -53,6 +54,7 @@ architecture arch_imp of AXI_DPP_BRam_v1_0 is
         dpp_rst             :  in  std_logic;
         dpp_amp             :  in  std_logic_vector(15 downto 0);
         dpp_evt             :  in  std_logic;
+        --led_out             :  out std_logic_vector (2 downto 0);
         -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		M_AXIS_ACLK	: in std_logic;
 		M_AXIS_ARESETN	: in std_logic;
@@ -78,7 +80,8 @@ AXI_DPP_BRam_v1_0_M00_AXIS_inst : AXI_DPP_BRam_v1_0_M00_AXIS
         dpp_clk         => dpp_clk,
         dpp_rst         => dpp_rst,
         dpp_amp         => dpp_amp,
-        dpp_evt         => dpp_evt,
+        dpp_evt         => dpp_evt,        
+        --led_out         => led_out,  
         -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		M_AXIS_ACLK	=> m00_axis_aclk,
 		M_AXIS_ARESETN	=> m00_axis_aresetn,

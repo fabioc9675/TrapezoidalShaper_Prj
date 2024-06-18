@@ -157,8 +157,8 @@
   "../../../bd/pynq_bd/ip/pynq_bd_AXI_DPP_BRam_0_0/src/blk_dpp_mem/sim/blk_dpp_mem.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
-  "../../../bd/pynq_bd/ipshared/9a5f/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd" \
-  "../../../bd/pynq_bd/ipshared/9a5f/hdl/AXI_DPP_BRam_v1_0.vhd" \
+  "../../../bd/pynq_bd/ipshared/4b41/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd" \
+  "../../../bd/pynq_bd/ipshared/4b41/hdl/AXI_DPP_BRam_v1_0.vhd" \
   "../../../bd/pynq_bd/ip/pynq_bd_AXI_DPP_BRam_0_0/sim/pynq_bd_AXI_DPP_BRam_0_0.vhd" \
 -endlib
 -makelib xcelium_lib/axi_protocol_converter_v2_1_27 \

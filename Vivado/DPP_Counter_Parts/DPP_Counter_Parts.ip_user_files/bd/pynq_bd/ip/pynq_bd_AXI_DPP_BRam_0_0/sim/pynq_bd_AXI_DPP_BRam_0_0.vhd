@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: xilinx.com:user:AXI_DPP_BRam:1.0
--- IP Revision: 15
+-- IP Revision: 22
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;

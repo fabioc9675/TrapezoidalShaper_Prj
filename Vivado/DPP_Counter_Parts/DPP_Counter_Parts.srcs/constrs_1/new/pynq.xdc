@@ -18,9 +18,9 @@
 set_property -dict { PACKAGE_PIN L15   IOSTANDARD LVCMOS33 } [get_ports { out_trg_0 }]; #IO_L22N_T3_AD7N_35 Sch=led4_b
 #set_property -dict { PACKAGE_PIN G17   IOSTANDARD LVCMOS33 } [get_ports { led_0_5 }]; #IO_L16P_T2_35 Sch=led4_g
 #set_property -dict { PACKAGE_PIN N15   IOSTANDARD LVCMOS33 } [get_ports { led_0_6 }]; #IO_L21P_T3_DQS_AD14P_35 Sch=led4_r
-#set_property -dict { PACKAGE_PIN G14   IOSTANDARD LVCMOS33 } [get_ports { led_0_7 }]; #IO_0_35 Sch=led5_b
-#set_property -dict { PACKAGE_PIN L14   IOSTANDARD LVCMOS33 } [get_ports { led_rst_0 }]; #IO_L22P_T3_AD7P_35 Sch=led5_g
-#set_property -dict { PACKAGE_PIN M15   IOSTANDARD LVCMOS33 } [get_ports { led_1 }]; #IO_L23N_T3_35 Sch=led5_r
+#set_property -dict { PACKAGE_PIN G14   IOSTANDARD LVCMOS33 } [get_ports { led_0[0] }]; #IO_0_35 Sch=led5_b
+#set_property -dict { PACKAGE_PIN L14   IOSTANDARD LVCMOS33 } [get_ports { led_0[1] }]; #IO_L22P_T3_AD7P_35 Sch=led5_g
+#set_property -dict { PACKAGE_PIN M15   IOSTANDARD LVCMOS33 } [get_ports { led_0[2] }]; #IO_L23N_T3_35 Sch=led5_r
 
 ##LEDs
 

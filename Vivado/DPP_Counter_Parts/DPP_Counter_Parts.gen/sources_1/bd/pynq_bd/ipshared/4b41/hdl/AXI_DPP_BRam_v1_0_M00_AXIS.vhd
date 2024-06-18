@@ -25,6 +25,7 @@ entity AXI_DPP_BRam_v1_0_M00_AXIS is
         dpp_rst             :  in  std_logic;
         dpp_amp             :  in  std_logic_vector(15 downto 0);
         dpp_evt             :  in  std_logic;
+        --led_out             :  out std_logic_vector (2 downto 0);
         -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		-- User ports ends
 		-- Do not modify the ports beyond this line
@@ -143,29 +144,31 @@ architecture implementation of AXI_DPP_BRam_v1_0_M00_AXIS is
     type state_mem is ( mem_idle,
                         mem_read,
                         mem_increment,
-                        mem_store);
+                        mem_store,
+                        mem_wait);
                         
     -- typedef para el control de deteccion
-    signal mem_exec_state    : state_mem;
-    signal data_in_dpp       : std_logic_vector (31 downto 0);
-    -- signal data_increm       : std_logic_vector (31 downto 0);
-    signal activated         : std_logic    := '0';
-    signal detected          : std_logic    := '0';
+    signal prev_state, mem_exec_state    : state_mem;
+    signal data_in_dpp                   : std_logic_vector (31 downto 0);
+    signal data_increm                   : std_logic_vector (31 downto 0);
+    signal activated                     : std_logic    := '0';
+    signal detected                      : std_logic    := '0';
     
-    signal con_bram          : integer range 0 to 4096 := 0;
-    signal act               : std_logic := '0';
-    signal inc               : std_logic := '0';
+    signal con_bram                      : integer range 0 to 4096 := 0;
+    signal act                           : std_logic := '0';
+    signal inc                           : std_logic := '0';
+    
+    --signal l1, l2, l3                    : std_logic := '0';
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 begin
 
-
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ------------- Begin Cut here for INSTANTIATION Template ----- INST_TAG
     bram_dpp_mem : blk_dpp_mem
         PORT MAP (
-            clka   =>  M_AXIS_ACLK,
+            clka   =>  dpp_clk,
             ena    =>  '1',
             wea    =>  comp_buffa_we,
             addra  =>  comp_buffa_addr,
@@ -184,78 +187,171 @@ begin
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     -- actaulizacion de la direccion de memoria
     --comp_buffa_addr <=  dpp_amp(14 downto 15 - BRAM_ADDRESS_SIZE);
-    --data_in_dpp <= comp_buffa_rd_data;
-    --comp_buffa_wr_data <= data_increm;
-    -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    process (dpp_clk, dpp_rst, mem_exec_state, dpp_evt)
+    data_in_dpp <= comp_buffa_rd_data;
+    comp_buffa_wr_data <= data_increm;
+    
+    --led_out <= l3 & l2 & l1;
+    
+    -- process to assign the address    
+    Assing_ADDR: process (dpp_clk, dpp_rst, dpp_amp)
+    begin
+        if (dpp_rst = '0') then
+            if (rising_edge(dpp_clk)) then
+                con_bram <= (con_bram + 1) mod NUMBER_OF_OUTPUT_WORDS;
+                comp_buffa_addr <=  conv_std_logic_vector(con_bram, BRAM_ADDRESS_SIZE);               
+            end if;  
+        else
+            comp_buffa_addr <=  dpp_amp(14 downto 15 - BRAM_ADDRESS_SIZE);
+        end if;
+    end process;
+    
+    -- process to add one more cycle to write on port A
+    Sync_Proc: process (dpp_clk, dpp_rst)
+    begin
+        if (dpp_clk'event and dpp_clk = '1') then
+            if (dpp_rst = '0') then
+                prev_state <= mem_idle;
+            else
+                prev_state <= mem_exec_state;
+            end if;        
+        end if;
+    end process;
+    
+    -- process to assign prev states
+    Output_Decode: process (prev_state, dpp_rst)
+    begin
+        -- decode internal output signals
+        if dpp_rst = '0' then
+            comp_buffa_we  <= "1"; 
+            inc <= '0';
+        else
+            if prev_state = mem_idle then
+                comp_buffa_we  <= "0"; 
+                inc <= '0';
+                --l1 <= '1';
+            elsif prev_state = mem_read then
+                comp_buffa_we  <= "0"; 
+                inc <= '0';
+            elsif prev_state = mem_increment then
+                comp_buffa_we  <= "0"; 
+                inc <= '1';
+            elsif prev_state = mem_store then
+                comp_buffa_we  <= "1"; 
+                inc <= '0';
+            elsif prev_state = mem_wait then
+                comp_buffa_we  <= "0"; 
+                inc <= '0';
+                --l1 <= '0';
+            else
+                comp_buffa_we  <= "0"; 
+                inc <= '0';
+            end if;
+        end if;
+    end process;
+        
+    -- asignacion de memoria
+    Next_State_Decode: process (prev_state, dpp_amp, dpp_evt, dpp_rst)
     begin
         if (dpp_rst = '0') then
             mem_exec_state <= mem_idle;
-            --activated      <= '0';
-            detected       <= '0';
-            inc <= '0';
-            
-            comp_buffa_we  <= "1";
-            if ((dpp_clk = '1') and (activated = '0')) then
-                activated <= '1';
-                con_bram <= (con_bram + 1) mod NUMBER_OF_OUTPUT_WORDS;
-                comp_buffa_addr <=  conv_std_logic_vector(con_bram, BRAM_ADDRESS_SIZE);
-                comp_buffa_wr_data <= X"00000000";                
-            
-            elsif (dpp_clk = '0') then
-                activated <= '0';
-            end if;  
-            
         else
-            if ((dpp_clk = '1') and (activated = '0')) then
-                activated <= '1';
-                -- Maquina de estados para guardar los datos
-                case (mem_exec_state) is
-                    -- Estado IDLE
-                    when mem_idle =>
-                        if (dpp_evt = '1' and detected = '0') then
-                            detected <= '1';
-                            mem_exec_state <= mem_read;
-                        end if;
-                        comp_buffa_we <= "0";
-                        
-                    -- Estado lectura
-                    when mem_read =>
-                        comp_buffa_addr <=  dpp_amp(14 downto 15 - BRAM_ADDRESS_SIZE);
-                        mem_exec_state <= mem_increment;
-                        inc <= '1';
-                                            
-                    -- Estado incremento
-                    when mem_increment => 
-                        if (inc = '1') then
-                            data_in_dpp <= conv_std_logic_vector(conv_integer(comp_buffa_rd_data) + 1, 32);
-                            --data_increm <= conv_std_logic_vector(conv_integer(data_in_dpp) + 1, 32);
-                            inc <= '0';
-                        end if;                        
-                        mem_exec_state <= mem_store;                
-                    
-                    -- Estado guardar
-                    when mem_store =>   
-                        comp_buffa_we <= "1";                     
-                        comp_buffa_wr_data <= data_in_dpp;
-                        mem_exec_state <= mem_idle;
-                    
-                    when others =>
-                        mem_exec_state <= mem_idle;
-                end case;
-                
-                -- reset del estado de deteccion
-                if (dpp_evt = '0') then
-                    detected <= '0';
-                end if;
+            mem_exec_state <= prev_state;    
             
-            elsif (dpp_clk = '0') then
-                activated <= '0';
-            end if;        
+            case (prev_state) is
+                when mem_idle =>
+                    if dpp_evt = '1' then
+                        mem_exec_state <= mem_read;
+                        --l3 <= '1';
+                    else 
+                        mem_exec_state <= mem_idle;
+                    end if;
+                when mem_read =>
+                    mem_exec_state <= mem_increment;
+                when mem_increment =>
+                    mem_exec_state <= mem_store;
+                when mem_store =>
+                    mem_exec_state <= mem_wait;
+                when mem_wait => 
+                    if dpp_evt = '0' then
+                        mem_exec_state <= mem_idle;
+                        --l3 <= '0';
+                    end if;
+                when others =>
+                    mem_exec_state <= mem_idle;
+            end case;
         end if;
-    end process;     
+    end process;
+    
+    -- increment data
+    Increment: process(inc, data_in_dpp, dpp_rst)
+    begin
+        if (dpp_rst = '0') then
+            data_increm <= X"00000000"; 
+            --l2 <= '0';
+        elsif inc = '1' then
+            data_increm <= conv_std_logic_vector(conv_integer(data_in_dpp) + 1, 32);
+            --l2 <= '1';
+        end if;
+    end process;
+    -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+--    process (dpp_clk, dpp_rst, mem_exec_state, dpp_evt)
+--    begin
+--        if (dpp_rst = '0') then
+--            mem_exec_state <= mem_idle;
+--            --activated      <= '0';
+--            --detected       <= '0';
+--            --inc <= '0';            
+              
+--            data_in_dpp <= X"00000000";        
+            
+--        else
+--            if (rising_edge(dpp_clk)) then
+--                -- Maquina de estados para guardar los datos
+--                case (mem_exec_state) is
+--                    -- Estado IDLE
+--                    when mem_idle =>
+--                        if (dpp_evt = '1' and detected = '0') then
+--                            detected <= '1';
+--                            mem_exec_state <= mem_read;
+--                        end if;
+--                        comp_buffa_we <= "0";
+                        
+--                    -- Estado lectura
+--                    when mem_read =>
+--                        comp_buffa_addr <=  dpp_amp(14 downto 15 - BRAM_ADDRESS_SIZE);
+--                        mem_exec_state <= mem_increment;
+--                        inc <= '1';
+                                            
+--                    -- Estado incremento
+--                    when mem_increment => 
+--                        if (inc = '1') then
+--                            data_in_dpp <= conv_std_logic_vector(conv_integer(comp_buffa_rd_data) + 1, 32);
+--                            --data_increm <= conv_std_logic_vector(conv_integer(data_in_dpp) + 1, 32);
+--                            inc <= '0';
+--                        end if;                        
+--                        mem_exec_state <= mem_store;                
+                    
+--                    -- Estado guardar
+--                    when mem_store =>   
+--                        comp_buffa_we <= "1";                     
+--                        comp_buffa_wr_data <= data_in_dpp;
+--                        mem_exec_state <= mem_wait;
+                        
+--                    when mem_wait =>
+--                        comp_buffa_we <= "0";
+--                        if (dpp_evt = '0') then
+--                            detected <= '0';
+--                            mem_exec_state <= mem_idle;
+--                        end if;
+                    
+--                    when others =>
+--                        mem_exec_state <= mem_idle;
+--                end case;
+--            end if;                                    
+--        end if;
+--    end process;     
     
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
