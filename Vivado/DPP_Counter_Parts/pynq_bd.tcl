@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# fir_fab, greaterthan, signal_mux, slice_trapz, trapz_klm, xadc_buffer
+# dpp_counter, greaterthan, signal_mux, slice_trapz, slice_trapz, fir_fab, trapz_klm, xadc_buffer
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -131,15 +131,16 @@ set bCheckIPsPassed 1
 set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
+xilinx.com:user:AXI_DPP_BRam:1.0\
 xilinx.com:user:AXI_Data_Stream:1.0\
 xilinx.com:ip:axi_dma:7.1\
-xilinx.com:ip:axi_gpio:2.0\
 xilinx.com:ip:clk_wiz:6.0\
 xilinx.com:ip:processing_system7:5.5\
 xilinx.com:ip:proc_sys_reset:5.0\
 xilinx.com:ip:xadc_wiz:3.3\
 xilinx.com:ip:xlconstant:1.1\
 xilinx.com:ip:xlslice:1.0\
+xilinx.com:ip:axi_gpio:2.0\
 "
 
    set list_ips_missing ""
@@ -165,10 +166,12 @@ xilinx.com:ip:xlslice:1.0\
 set bCheckModules 1
 if { $bCheckModules == 1 } {
    set list_check_mods "\ 
-fir_fab\
+dpp_counter\
 greaterthan\
 signal_mux\
 slice_trapz\
+slice_trapz\
+fir_fab\
 trapz_klm\
 xadc_buffer\
 "
@@ -198,6 +201,297 @@ if { $bCheckIPsPassed != 1 } {
 # DESIGN PROCs
 ##################################################################
 
+
+# Hierarchical cell: hier_rst
+proc create_hier_cell_hier_rst { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_hier_rst() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 S_AXI
+
+
+  # Create pins
+  create_bd_pin -dir O -from 0 -to 0 Dout
+  create_bd_pin -dir O -from 0 -to 0 Dout1
+  create_bd_pin -dir O -from 0 -to 0 Dout2
+  create_bd_pin -dir O -from 0 -to 0 Dout3
+  create_bd_pin -dir I -type clk s_axi_aclk
+  create_bd_pin -dir I -type rst s_axi_aresetn
+
+  # Create instance: axi_gpio_rst, and set properties
+  set axi_gpio_rst [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_rst ]
+
+  # Create instance: xlslice_rst_bram, and set properties
+  set xlslice_rst_bram [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_rst_bram ]
+  set_property -dict [list \
+    CONFIG.DIN_FROM {3} \
+    CONFIG.DIN_TO {3} \
+  ] $xlslice_rst_bram
+
+
+  # Create instance: xlslice_rst_dpp, and set properties
+  set xlslice_rst_dpp [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_rst_dpp ]
+  set_property -dict [list \
+    CONFIG.DIN_FROM {2} \
+    CONFIG.DIN_TO {2} \
+  ] $xlslice_rst_dpp
+
+
+  # Create instance: xlslice_rst_fir, and set properties
+  set xlslice_rst_fir [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_rst_fir ]
+
+  # Create instance: xlslice_rst_trapz, and set properties
+  set xlslice_rst_trapz [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_rst_trapz ]
+  set_property -dict [list \
+    CONFIG.DIN_FROM {1} \
+    CONFIG.DIN_TO {1} \
+  ] $xlslice_rst_trapz
+
+
+  # Create interface connections
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M07_AXI [get_bd_intf_pins S_AXI] [get_bd_intf_pins axi_gpio_rst/S_AXI]
+
+  # Create port connections
+  connect_bd_net -net axi_gpio_rst_gpio_io_o [get_bd_pins axi_gpio_rst/gpio_io_o] [get_bd_pins xlslice_rst_bram/Din] [get_bd_pins xlslice_rst_dpp/Din] [get_bd_pins xlslice_rst_fir/Din] [get_bd_pins xlslice_rst_trapz/Din]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins s_axi_aclk] [get_bd_pins axi_gpio_rst/s_axi_aclk]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins axi_gpio_rst/s_axi_aresetn]
+  connect_bd_net -net xlslice_rst_bram_Dout [get_bd_pins Dout] [get_bd_pins xlslice_rst_bram/Dout]
+  connect_bd_net -net xlslice_rst_dpp_Dout [get_bd_pins Dout2] [get_bd_pins xlslice_rst_dpp/Dout]
+  connect_bd_net -net xlslice_rst_fir_Dout [get_bd_pins Dout3] [get_bd_pins xlslice_rst_fir/Dout]
+  connect_bd_net -net xlslice_rst_trapz_Dout [get_bd_pins Dout1] [get_bd_pins xlslice_rst_trapz/Dout]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: hier_preproc
+proc create_hier_cell_hier_preproc { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_hier_preproc() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir I -from 15 -to 0 adc_in
+  create_bd_pin -dir I -type clk fir_clk
+  create_bd_pin -dir I -type rst fir_rst
+  create_bd_pin -dir O -from 31 -to 0 trap_in
+  create_bd_pin -dir O -from 31 -to 0 trap_out
+  create_bd_pin -dir I -type rst trap_rst
+
+  # Create instance: fir_fab_0, and set properties
+  set block_name fir_fab
+  set block_cell_name fir_fab_0
+  if { [catch {set fir_fab_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $fir_fab_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: trapz_klm_0, and set properties
+  set block_name trapz_klm
+  set block_cell_name trapz_klm_0
+  if { [catch {set trapz_klm_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $trapz_klm_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: xadc_buffer_0, and set properties
+  set block_name xadc_buffer
+  set block_cell_name xadc_buffer_0
+  if { [catch {set xadc_buffer_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $xadc_buffer_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: xlconstant_rst, and set properties
+  set xlconstant_rst [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_rst ]
+
+  # Create port connections
+  connect_bd_net -net fir_fab_0_fir_out [get_bd_pins trap_in] [get_bd_pins fir_fab_0/fir_out] [get_bd_pins trapz_klm_0/trap_in]
+  connect_bd_net -net trapz_klm_0_trap_out [get_bd_pins trap_out] [get_bd_pins trapz_klm_0/trap_out]
+  connect_bd_net -net xadc_buffer_0_adc_out [get_bd_pins fir_fab_0/fir_in] [get_bd_pins xadc_buffer_0/adc_out]
+  connect_bd_net -net xadc_wiz_0_do_out [get_bd_pins adc_in] [get_bd_pins xadc_buffer_0/adc_in]
+  connect_bd_net -net xadc_wiz_0_drdy_out [get_bd_pins fir_clk] [get_bd_pins fir_fab_0/fir_clk] [get_bd_pins trapz_klm_0/trap_clk] [get_bd_pins xadc_buffer_0/adc_clk]
+  connect_bd_net -net xlconstant_rst_dout [get_bd_pins xadc_buffer_0/adc_rst] [get_bd_pins xlconstant_rst/dout]
+  connect_bd_net -net xlslice_rst_fir_Dout [get_bd_pins fir_rst] [get_bd_pins fir_fab_0/fir_rst]
+  connect_bd_net -net xlslice_rst_trapz_Dout [get_bd_pins trap_rst] [get_bd_pins trapz_klm_0/trap_rst]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: hier_gpio
+proc create_hier_cell_hier_gpio { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_hier_gpio() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 S_AXI
+
+  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 S_AXI1
+
+  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 S_AXI2
+
+  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 S_AXI3
+
+  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 S_AXI4
+
+  create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:aximm_rtl:1.0 S_AXI5
+
+
+  # Create pins
+  create_bd_pin -dir I -from 31 -to 0 gpio_io_i
+  create_bd_pin -dir I -from 15 -to 0 gpio_io_i1
+  create_bd_pin -dir O -from 31 -to 0 gpio_io_o
+  create_bd_pin -dir O -from 31 -to 0 gpio_io_o1
+  create_bd_pin -dir O -from 31 -to 0 gpio_io_o2
+  create_bd_pin -dir O -from 15 -to 0 gpio_io_o3
+  create_bd_pin -dir I -type clk s_axi_aclk
+  create_bd_pin -dir I -type rst s_axi_aresetn
+
+  # Create instance: axi_gpio_0, and set properties
+  set axi_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0 ]
+  set_property -dict [list \
+    CONFIG.C_DOUT_DEFAULT {0x00000200} \
+    CONFIG.C_GPIO_WIDTH {16} \
+  ] $axi_gpio_0
+
+
+  # Create instance: axi_gpio_amp, and set properties
+  set axi_gpio_amp [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_amp ]
+
+  # Create instance: axi_gpio_count, and set properties
+  set axi_gpio_count [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_count ]
+
+  # Create instance: axi_gpio_dpp_cmp, and set properties
+  set axi_gpio_dpp_cmp [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_dpp_cmp ]
+  set_property CONFIG.C_DOUT_DEFAULT {0x0000C350} $axi_gpio_dpp_cmp
+
+
+  # Create instance: axi_gpio_sel, and set properties
+  set axi_gpio_sel [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_sel ]
+
+  # Create instance: axi_gpio_trapz, and set properties
+  set axi_gpio_trapz [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_trapz ]
+
+  # Create interface connections
+  connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins S_AXI5] [get_bd_intf_pins axi_gpio_amp/S_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins S_AXI4] [get_bd_intf_pins axi_gpio_0/S_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins S_AXI3] [get_bd_intf_pins axi_gpio_sel/S_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M03_AXI [get_bd_intf_pins S_AXI2] [get_bd_intf_pins axi_gpio_trapz/S_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M04_AXI [get_bd_intf_pins S_AXI] [get_bd_intf_pins axi_gpio_dpp_cmp/S_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M06_AXI [get_bd_intf_pins S_AXI1] [get_bd_intf_pins axi_gpio_count/S_AXI]
+
+  # Create port connections
+  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins gpio_io_o3] [get_bd_pins axi_gpio_0/gpio_io_o]
+  connect_bd_net -net axi_gpio_1_gpio_io_o [get_bd_pins gpio_io_o2] [get_bd_pins axi_gpio_sel/gpio_io_o]
+  connect_bd_net -net axi_gpio_1_gpio_io_o1 [get_bd_pins gpio_io_o1] [get_bd_pins axi_gpio_trapz/gpio_io_o]
+  connect_bd_net -net axi_gpio_dpp_cmp_gpio_io_o [get_bd_pins gpio_io_o] [get_bd_pins axi_gpio_dpp_cmp/gpio_io_o]
+  connect_bd_net -net dpp_counter_0_dpp_out [get_bd_pins gpio_io_i] [get_bd_pins axi_gpio_count/gpio_io_i]
+  connect_bd_net -net gpio_io_i1_1 [get_bd_pins gpio_io_i1] [get_bd_pins axi_gpio_amp/gpio_io_i]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins s_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_amp/s_axi_aclk] [get_bd_pins axi_gpio_count/s_axi_aclk] [get_bd_pins axi_gpio_dpp_cmp/s_axi_aclk] [get_bd_pins axi_gpio_sel/s_axi_aclk] [get_bd_pins axi_gpio_trapz/s_axi_aclk]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_amp/s_axi_aresetn] [get_bd_pins axi_gpio_count/s_axi_aresetn] [get_bd_pins axi_gpio_dpp_cmp/s_axi_aresetn] [get_bd_pins axi_gpio_sel/s_axi_aresetn] [get_bd_pins axi_gpio_trapz/s_axi_aresetn]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
 
 
 # Procedure to create entire design; Provide argument to make
@@ -241,7 +535,11 @@ proc create_root_design { parentCell } {
 
 
   # Create ports
+  set led_0 [ create_bd_port -dir O -from 3 -to 0 led_0 ]
   set out_trg_0 [ create_bd_port -dir O out_trg_0 ]
+
+  # Create instance: AXI_DPP_BRam_0, and set properties
+  set AXI_DPP_BRam_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:AXI_DPP_BRam:1.0 AXI_DPP_BRam_0 ]
 
   # Create instance: AXI_Data_Stream_0, and set properties
   set AXI_Data_Stream_0 [ create_bd_cell -type ip -vlnv xilinx.com:user:AXI_Data_Stream:1.0 AXI_Data_Stream_0 ]
@@ -256,23 +554,22 @@ proc create_root_design { parentCell } {
   ] $axi_dma_0
 
 
-  # Create instance: axi_gpio_0, and set properties
-  set axi_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0 ]
+  # Create instance: axi_dma_1, and set properties
+  set axi_dma_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_dma:7.1 axi_dma_1 ]
   set_property -dict [list \
-    CONFIG.C_DOUT_DEFAULT {0x00000200} \
-    CONFIG.C_GPIO_WIDTH {16} \
-  ] $axi_gpio_0
+    CONFIG.c_include_mm2s {0} \
+    CONFIG.c_include_sg {0} \
+    CONFIG.c_s2mm_burst_size {256} \
+    CONFIG.c_sg_length_width {14} \
+  ] $axi_dma_1
 
-
-  # Create instance: axi_gpio_sel, and set properties
-  set axi_gpio_sel [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_sel ]
-
-  # Create instance: axi_gpio_trapz, and set properties
-  set axi_gpio_trapz [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_trapz ]
 
   # Create instance: axi_mem_intercon, and set properties
   set axi_mem_intercon [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_mem_intercon ]
-  set_property CONFIG.NUM_MI {1} $axi_mem_intercon
+  set_property -dict [list \
+    CONFIG.NUM_MI {1} \
+    CONFIG.NUM_SI {2} \
+  ] $axi_mem_intercon
 
 
   # Create instance: clk_wiz_0, and set properties
@@ -288,13 +585,13 @@ proc create_root_design { parentCell } {
   ] $clk_wiz_0
 
 
-  # Create instance: fir_fab_0, and set properties
-  set block_name fir_fab
-  set block_cell_name fir_fab_0
-  if { [catch {set fir_fab_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: dpp_counter_0, and set properties
+  set block_name dpp_counter
+  set block_cell_name dpp_counter_0
+  if { [catch {set dpp_counter_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $fir_fab_0 eq "" } {
+   } elseif { $dpp_counter_0 eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -310,6 +607,15 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  # Create instance: hier_gpio
+  create_hier_cell_hier_gpio [current_bd_instance .] hier_gpio
+
+  # Create instance: hier_preproc
+  create_hier_cell_hier_preproc [current_bd_instance .] hier_preproc
+
+  # Create instance: hier_rst
+  create_hier_cell_hier_rst [current_bd_instance .] hier_rst
+
   # Create instance: processing_system7_0, and set properties
   set processing_system7_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0 ]
   set_property -dict [list \
@@ -847,7 +1153,7 @@ proc create_root_design { parentCell } {
 
   # Create instance: ps7_0_axi_periph, and set properties
   set ps7_0_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 ps7_0_axi_periph ]
-  set_property CONFIG.NUM_MI {4} $ps7_0_axi_periph
+  set_property CONFIG.NUM_MI {9} $ps7_0_axi_periph
 
 
   # Create instance: rst_ps7_0_100M, and set properties
@@ -875,24 +1181,13 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: trapz_klm_0, and set properties
-  set block_name trapz_klm
-  set block_cell_name trapz_klm_0
-  if { [catch {set trapz_klm_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: slice_trapz_1, and set properties
+  set block_name slice_trapz
+  set block_cell_name slice_trapz_1
+  if { [catch {set slice_trapz_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $trapz_klm_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: xadc_buffer_0, and set properties
-  set block_name xadc_buffer
-  set block_cell_name xadc_buffer_0
-  if { [catch {set xadc_buffer_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $xadc_buffer_0 eq "" } {
+   } elseif { $slice_trapz_1 eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -926,9 +1221,6 @@ proc create_root_design { parentCell } {
   ] $xlconstant_0
 
 
-  # Create instance: xlconstant_rst, and set properties
-  set xlconstant_rst [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_rst ]
-
   # Create instance: xlslice_0, and set properties
   set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
   set_property -dict [list \
@@ -942,47 +1234,73 @@ proc create_root_design { parentCell } {
   set_property CONFIG.DIN_FROM {1} $xlslice_1
 
 
+  # Create instance: xlslice_2, and set properties
+  set xlslice_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_2 ]
+  set_property CONFIG.DIN_FROM {3} $xlslice_2
+
+
   # Create interface connections
+  connect_bd_intf_net -intf_net AXI_DPP_BRam_0_M00_AXIS [get_bd_intf_pins AXI_DPP_BRam_0/M00_AXIS] [get_bd_intf_pins axi_dma_1/S_AXIS_S2MM]
   connect_bd_intf_net -intf_net AXI_Data_Stream_0_M00_AXIS [get_bd_intf_pins AXI_Data_Stream_0/M00_AXIS] [get_bd_intf_pins axi_dma_0/S_AXIS_S2MM]
   connect_bd_intf_net -intf_net Vaux1_0_1 [get_bd_intf_ports Vaux1_0] [get_bd_intf_pins xadc_wiz_0/Vaux1]
   connect_bd_intf_net -intf_net axi_dma_0_M_AXI_S2MM [get_bd_intf_pins axi_dma_0/M_AXI_S2MM] [get_bd_intf_pins axi_mem_intercon/S00_AXI]
+  connect_bd_intf_net -intf_net axi_dma_1_M_AXI_S2MM [get_bd_intf_pins axi_dma_1/M_AXI_S2MM] [get_bd_intf_pins axi_mem_intercon/S01_AXI]
   connect_bd_intf_net -intf_net axi_mem_intercon_M00_AXI [get_bd_intf_pins axi_mem_intercon/M00_AXI] [get_bd_intf_pins processing_system7_0/S_AXI_HP0]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
   connect_bd_intf_net -intf_net processing_system7_0_FIXED_IO [get_bd_intf_ports FIXED_IO] [get_bd_intf_pins processing_system7_0/FIXED_IO]
   connect_bd_intf_net -intf_net processing_system7_0_M_AXI_GP0 [get_bd_intf_pins processing_system7_0/M_AXI_GP0] [get_bd_intf_pins ps7_0_axi_periph/S00_AXI]
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M00_AXI [get_bd_intf_pins axi_dma_0/S_AXI_LITE] [get_bd_intf_pins ps7_0_axi_periph/M00_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins axi_gpio_0/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M01_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins axi_gpio_sel/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M02_AXI]
-  connect_bd_intf_net -intf_net ps7_0_axi_periph_M03_AXI [get_bd_intf_pins axi_gpio_trapz/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M03_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins hier_gpio/S_AXI4] [get_bd_intf_pins ps7_0_axi_periph/M01_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins hier_gpio/S_AXI3] [get_bd_intf_pins ps7_0_axi_periph/M02_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M03_AXI [get_bd_intf_pins hier_gpio/S_AXI2] [get_bd_intf_pins ps7_0_axi_periph/M03_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M04_AXI [get_bd_intf_pins hier_gpio/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M04_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M05_AXI [get_bd_intf_pins axi_dma_1/S_AXI_LITE] [get_bd_intf_pins ps7_0_axi_periph/M05_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M06_AXI [get_bd_intf_pins hier_gpio/S_AXI1] [get_bd_intf_pins ps7_0_axi_periph/M06_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M07_AXI [get_bd_intf_pins hier_rst/S_AXI] [get_bd_intf_pins ps7_0_axi_periph/M07_AXI]
+  connect_bd_intf_net -intf_net ps7_0_axi_periph_M08_AXI [get_bd_intf_pins hier_gpio/S_AXI5] [get_bd_intf_pins ps7_0_axi_periph/M08_AXI]
 
   # Create port connections
-  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins greaterthan_0/in_com]
-  connect_bd_net -net axi_gpio_1_gpio_io_o [get_bd_pins axi_gpio_sel/gpio_io_o] [get_bd_pins xlslice_1/Din]
-  connect_bd_net -net axi_gpio_1_gpio_io_o1 [get_bd_pins axi_gpio_trapz/gpio_io_o] [get_bd_pins slice_trapz_0/sel]
+  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins greaterthan_0/in_com] [get_bd_pins hier_gpio/gpio_io_o3]
+  connect_bd_net -net axi_gpio_1_gpio_io_o [get_bd_pins hier_gpio/gpio_io_o2] [get_bd_pins xlslice_1/Din]
+  connect_bd_net -net axi_gpio_1_gpio_io_o1 [get_bd_pins hier_gpio/gpio_io_o1] [get_bd_pins slice_trapz_0/sel] [get_bd_pins slice_trapz_1/sel]
+  connect_bd_net -net axi_gpio_dpp_cmp_gpio_io_o [get_bd_pins dpp_counter_0/dpp_cmp] [get_bd_pins hier_gpio/gpio_io_o]
   connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins xadc_wiz_0/dclk_in]
-  connect_bd_net -net fir_fab_0_fir_out [get_bd_pins fir_fab_0/fir_out] [get_bd_pins trapz_klm_0/trap_in] [get_bd_pins xlslice_0/Din]
+  connect_bd_net -net dpp_counter_0_dpp_amp [get_bd_pins dpp_counter_0/dpp_amp] [get_bd_pins slice_trapz_1/trap_sig]
+  connect_bd_net -net dpp_counter_0_dpp_evt [get_bd_pins AXI_DPP_BRam_0/dpp_evt] [get_bd_pins dpp_counter_0/dpp_evt]
+  connect_bd_net -net dpp_counter_0_dpp_out [get_bd_pins dpp_counter_0/dpp_out] [get_bd_pins hier_gpio/gpio_io_i] [get_bd_pins xlslice_2/Din]
+  connect_bd_net -net fir_fab_0_fir_out [get_bd_pins hier_preproc/trap_in] [get_bd_pins xlslice_0/Din]
   connect_bd_net -net greaterthan_0_out_trg [get_bd_ports out_trg_0] [get_bd_pins AXI_Data_Stream_0/trg_adc] [get_bd_pins greaterthan_0/out_trg]
-  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins AXI_Data_Stream_0/m00_axis_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_sel/s_axi_aclk] [get_bd_pins axi_gpio_trapz/s_axi_aclk] [get_bd_pins axi_mem_intercon/ACLK] [get_bd_pins axi_mem_intercon/M00_ACLK] [get_bd_pins axi_mem_intercon/S00_ACLK] [get_bd_pins clk_wiz_0/clk_in1] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/M03_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins AXI_DPP_BRam_0/dpp_clk] [get_bd_pins AXI_DPP_BRam_0/m00_axis_aclk] [get_bd_pins AXI_Data_Stream_0/m00_axis_aclk] [get_bd_pins axi_dma_0/m_axi_s2mm_aclk] [get_bd_pins axi_dma_0/s_axi_lite_aclk] [get_bd_pins axi_dma_1/m_axi_s2mm_aclk] [get_bd_pins axi_dma_1/s_axi_lite_aclk] [get_bd_pins axi_mem_intercon/ACLK] [get_bd_pins axi_mem_intercon/M00_ACLK] [get_bd_pins axi_mem_intercon/S00_ACLK] [get_bd_pins axi_mem_intercon/S01_ACLK] [get_bd_pins clk_wiz_0/clk_in1] [get_bd_pins hier_gpio/s_axi_aclk] [get_bd_pins hier_rst/s_axi_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ps7_0_axi_periph/M03_ACLK] [get_bd_pins ps7_0_axi_periph/M04_ACLK] [get_bd_pins ps7_0_axi_periph/M05_ACLK] [get_bd_pins ps7_0_axi_periph/M06_ACLK] [get_bd_pins ps7_0_axi_periph/M07_ACLK] [get_bd_pins ps7_0_axi_periph/M08_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins clk_wiz_0/resetn] [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_100M/ext_reset_in]
-  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins AXI_Data_Stream_0/m00_axis_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_gpio_sel/s_axi_aresetn] [get_bd_pins axi_gpio_trapz/s_axi_aresetn] [get_bd_pins axi_mem_intercon/ARESETN] [get_bd_pins axi_mem_intercon/M00_ARESETN] [get_bd_pins axi_mem_intercon/S00_ARESETN] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/M03_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn]
+  connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins AXI_DPP_BRam_0/m00_axis_aresetn] [get_bd_pins AXI_Data_Stream_0/m00_axis_aresetn] [get_bd_pins axi_dma_0/axi_resetn] [get_bd_pins axi_dma_1/axi_resetn] [get_bd_pins axi_mem_intercon/ARESETN] [get_bd_pins axi_mem_intercon/M00_ARESETN] [get_bd_pins axi_mem_intercon/S00_ARESETN] [get_bd_pins axi_mem_intercon/S01_ARESETN] [get_bd_pins hier_gpio/s_axi_aresetn] [get_bd_pins hier_rst/s_axi_aresetn] [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ps7_0_axi_periph/M03_ARESETN] [get_bd_pins ps7_0_axi_periph/M04_ARESETN] [get_bd_pins ps7_0_axi_periph/M05_ARESETN] [get_bd_pins ps7_0_axi_periph/M06_ARESETN] [get_bd_pins ps7_0_axi_periph/M07_ARESETN] [get_bd_pins ps7_0_axi_periph/M08_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn]
   connect_bd_net -net signal_mux_0_data_out [get_bd_pins AXI_Data_Stream_0/data_in] [get_bd_pins signal_mux_0/data_out]
   connect_bd_net -net slice_trapz_0_sig_out [get_bd_pins signal_mux_0/x2] [get_bd_pins slice_trapz_0/sig_out]
-  connect_bd_net -net trapz_klm_0_trap_out [get_bd_pins slice_trapz_0/trap_sig] [get_bd_pins trapz_klm_0/trap_out]
-  connect_bd_net -net xadc_buffer_0_adc_out [get_bd_pins fir_fab_0/fir_in] [get_bd_pins xadc_buffer_0/adc_out]
-  connect_bd_net -net xadc_wiz_0_do_out [get_bd_pins greaterthan_0/in_adc] [get_bd_pins signal_mux_0/x0] [get_bd_pins xadc_buffer_0/adc_in] [get_bd_pins xadc_wiz_0/do_out]
-  connect_bd_net -net xadc_wiz_0_drdy_out [get_bd_pins AXI_Data_Stream_0/clk_adc] [get_bd_pins fir_fab_0/fir_clk] [get_bd_pins trapz_klm_0/trap_clk] [get_bd_pins xadc_buffer_0/adc_clk] [get_bd_pins xadc_wiz_0/drdy_out]
+  connect_bd_net -net slice_trapz_1_sig_out [get_bd_pins AXI_DPP_BRam_0/dpp_amp] [get_bd_pins hier_gpio/gpio_io_i1] [get_bd_pins slice_trapz_1/sig_out]
+  connect_bd_net -net trapz_klm_0_trap_out [get_bd_pins dpp_counter_0/dpp_in] [get_bd_pins hier_preproc/trap_out] [get_bd_pins slice_trapz_0/trap_sig]
+  connect_bd_net -net xadc_wiz_0_do_out [get_bd_pins greaterthan_0/in_adc] [get_bd_pins hier_preproc/adc_in] [get_bd_pins signal_mux_0/x0] [get_bd_pins xadc_wiz_0/do_out]
+  connect_bd_net -net xadc_wiz_0_drdy_out [get_bd_pins AXI_Data_Stream_0/clk_adc] [get_bd_pins dpp_counter_0/dpp_clk] [get_bd_pins hier_preproc/fir_clk] [get_bd_pins xadc_wiz_0/drdy_out]
   connect_bd_net -net xadc_wiz_0_eoc_out [get_bd_pins xadc_wiz_0/den_in] [get_bd_pins xadc_wiz_0/eoc_out]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins xadc_wiz_0/daddr_in] [get_bd_pins xlconstant_0/dout]
-  connect_bd_net -net xlconstant_rst_dout [get_bd_pins fir_fab_0/fir_rst] [get_bd_pins trapz_klm_0/trap_rst] [get_bd_pins xadc_buffer_0/adc_rst] [get_bd_pins xlconstant_rst/dout]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins signal_mux_0/x1] [get_bd_pins xlslice_0/Dout]
   connect_bd_net -net xlslice_1_Dout [get_bd_pins signal_mux_0/sel] [get_bd_pins xlslice_1/Dout]
+  connect_bd_net -net xlslice_2_Dout [get_bd_ports led_0] [get_bd_pins xlslice_2/Dout]
+  connect_bd_net -net xlslice_rst_bram_Dout [get_bd_pins AXI_DPP_BRam_0/dpp_rst] [get_bd_pins hier_rst/Dout]
+  connect_bd_net -net xlslice_rst_dpp_Dout [get_bd_pins dpp_counter_0/dpp_rst] [get_bd_pins hier_rst/Dout2]
+  connect_bd_net -net xlslice_rst_fir_Dout [get_bd_pins hier_preproc/fir_rst] [get_bd_pins hier_rst/Dout3]
+  connect_bd_net -net xlslice_rst_trapz_Dout [get_bd_pins hier_preproc/trap_rst] [get_bd_pins hier_rst/Dout1]
 
   # Create address segments
   assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces axi_dma_0/Data_S2MM] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] -force
+  assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces axi_dma_1/Data_S2MM] [get_bd_addr_segs processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM] -force
   assign_bd_address -offset 0x40400000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_dma_0/S_AXI_LITE/Reg] -force
-  assign_bd_address -offset 0x41200000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] -force
-  assign_bd_address -offset 0x41210000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_sel/S_AXI/Reg] -force
-  assign_bd_address -offset 0x41220000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_gpio_trapz/S_AXI/Reg] -force
+  assign_bd_address -offset 0x40410000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_dma_1/S_AXI_LITE/Reg] -force
+  assign_bd_address -offset 0x41200000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs hier_gpio/axi_gpio_0/S_AXI/Reg] -force
+  assign_bd_address -offset 0x41210000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs hier_gpio/axi_gpio_sel/S_AXI/Reg] -force
+  assign_bd_address -offset 0x41260000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs hier_gpio/axi_gpio_amp/S_AXI/Reg] -force
+  assign_bd_address -offset 0x41240000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs hier_gpio/axi_gpio_count/S_AXI/Reg] -force
+  assign_bd_address -offset 0x41230000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs hier_gpio/axi_gpio_dpp_cmp/S_AXI/Reg] -force
+  assign_bd_address -offset 0x41250000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs hier_rst/axi_gpio_rst/S_AXI/Reg] -force
+  assign_bd_address -offset 0x41220000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs hier_gpio/axi_gpio_trapz/S_AXI/Reg] -force
 
 
   # Restore current instance

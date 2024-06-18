@@ -61,7 +61,7 @@
 
 
 #ifdef XILINX_SIMULATOR
-pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm), aclk("aclk"), aresetn("aresetn"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"),mp_S_AXI_rd_socket_stub(nullptr),mp_M_AXI_rd_socket_stub(nullptr)
+pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm), aclk("aclk"), aresetn("aresetn"), s_axi_awid("s_axi_awid"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bid("s_axi_bid"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), s_axi_arid("s_axi_arid"), s_axi_araddr("s_axi_araddr"), s_axi_arlen("s_axi_arlen"), s_axi_arsize("s_axi_arsize"), s_axi_arburst("s_axi_arburst"), s_axi_arlock("s_axi_arlock"), s_axi_arcache("s_axi_arcache"), s_axi_arprot("s_axi_arprot"), s_axi_arregion("s_axi_arregion"), s_axi_arqos("s_axi_arqos"), s_axi_arvalid("s_axi_arvalid"), s_axi_arready("s_axi_arready"), s_axi_rid("s_axi_rid"), s_axi_rdata("s_axi_rdata"), s_axi_rresp("s_axi_rresp"), s_axi_rlast("s_axi_rlast"), s_axi_rvalid("s_axi_rvalid"), s_axi_rready("s_axi_rready"), m_axi_awid("m_axi_awid"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wid("m_axi_wid"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bid("m_axi_bid"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"), m_axi_arid("m_axi_arid"), m_axi_araddr("m_axi_araddr"), m_axi_arlen("m_axi_arlen"), m_axi_arsize("m_axi_arsize"), m_axi_arburst("m_axi_arburst"), m_axi_arlock("m_axi_arlock"), m_axi_arcache("m_axi_arcache"), m_axi_arprot("m_axi_arprot"), m_axi_arqos("m_axi_arqos"), m_axi_arvalid("m_axi_arvalid"), m_axi_arready("m_axi_arready"), m_axi_rid("m_axi_rid"), m_axi_rdata("m_axi_rdata"), m_axi_rresp("m_axi_rresp"), m_axi_rlast("m_axi_rlast"), m_axi_rvalid("m_axi_rvalid"), m_axi_rready("m_axi_rready")
 {
 
   // initialize pins
@@ -71,13 +71,14 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
   // initialize transactors
   mp_S_AXI_transactor = NULL;
   mp_s_axi_awlock_converter = NULL;
+  mp_s_axi_arlock_converter = NULL;
   mp_M_AXI_transactor = NULL;
   mp_m_axi_awlen_converter = NULL;
   mp_m_axi_awlock_converter = NULL;
+  mp_m_axi_arlen_converter = NULL;
+  mp_m_axi_arlock_converter = NULL;
 
   // initialize socket stubs
-  mp_S_AXI_rd_socket_stub = NULL;
-  mp_M_AXI_rd_socket_stub = NULL;
 
 }
 
@@ -88,13 +89,12 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "S_AXI_TLM_MODE") != 1)
   {
     // Instantiate Socket Stubs
-    mp_S_AXI_rd_socket_stub = new xtlm::xtlm_aximm_initiator_stub("rd_socket", 0);
 
   // 'S_AXI' transactor parameters
     xsc::common_cpp::properties S_AXI_transactor_param_props;
-    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    S_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    S_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -109,11 +109,11 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addLong("HAS_REGION", "1");
     S_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     S_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    S_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    S_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
+    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
+    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
     S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -122,13 +122,14 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
-    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
 
     // S_AXI' transactor ports
 
+    mp_S_AXI_transactor->AWID(s_axi_awid);
     mp_S_AXI_transactor->AWADDR(s_axi_awaddr);
     mp_S_AXI_transactor->AWLEN(s_axi_awlen);
     mp_S_AXI_transactor->AWSIZE(s_axi_awsize);
@@ -148,15 +149,37 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     mp_S_AXI_transactor->WLAST(s_axi_wlast);
     mp_S_AXI_transactor->WVALID(s_axi_wvalid);
     mp_S_AXI_transactor->WREADY(s_axi_wready);
+    mp_S_AXI_transactor->BID(s_axi_bid);
     mp_S_AXI_transactor->BRESP(s_axi_bresp);
     mp_S_AXI_transactor->BVALID(s_axi_bvalid);
     mp_S_AXI_transactor->BREADY(s_axi_bready);
+    mp_S_AXI_transactor->ARID(s_axi_arid);
+    mp_S_AXI_transactor->ARADDR(s_axi_araddr);
+    mp_S_AXI_transactor->ARLEN(s_axi_arlen);
+    mp_S_AXI_transactor->ARSIZE(s_axi_arsize);
+    mp_S_AXI_transactor->ARBURST(s_axi_arburst);
+    mp_s_axi_arlock_converter = new xsc::common::vectorN2scalar_converter<1>("s_axi_arlock_converter");
+    mp_s_axi_arlock_converter->vector_in(s_axi_arlock);
+    mp_s_axi_arlock_converter->scalar_out(m_s_axi_arlock_converter_signal);
+    mp_S_AXI_transactor->ARLOCK(m_s_axi_arlock_converter_signal);
+    mp_S_AXI_transactor->ARCACHE(s_axi_arcache);
+    mp_S_AXI_transactor->ARPROT(s_axi_arprot);
+    mp_S_AXI_transactor->ARREGION(s_axi_arregion);
+    mp_S_AXI_transactor->ARQOS(s_axi_arqos);
+    mp_S_AXI_transactor->ARVALID(s_axi_arvalid);
+    mp_S_AXI_transactor->ARREADY(s_axi_arready);
+    mp_S_AXI_transactor->RID(s_axi_rid);
+    mp_S_AXI_transactor->RDATA(s_axi_rdata);
+    mp_S_AXI_transactor->RRESP(s_axi_rresp);
+    mp_S_AXI_transactor->RLAST(s_axi_rlast);
+    mp_S_AXI_transactor->RVALID(s_axi_rvalid);
+    mp_S_AXI_transactor->RREADY(s_axi_rready);
     mp_S_AXI_transactor->CLK(aclk);
     mp_S_AXI_transactor->RST(aresetn);
 
     // S_AXI' transactor sockets
 
-    mp_impl->target_rd_socket->bind(mp_S_AXI_rd_socket_stub->initiator_socket);
+    mp_impl->target_rd_socket->bind(*(mp_S_AXI_transactor->rd_socket));
     mp_impl->target_wr_socket->bind(*(mp_S_AXI_transactor->wr_socket));
   }
   else
@@ -168,13 +191,12 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "M_AXI_TLM_MODE") != 1)
   {
     // Instantiate Socket Stubs
-    mp_M_AXI_rd_socket_stub = new xtlm::xtlm_aximm_target_stub("rd_socket", 0);
 
   // 'M_AXI' transactor parameters
     xsc::common_cpp::properties M_AXI_transactor_param_props;
-    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     M_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    M_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    M_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     M_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     M_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     M_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -189,10 +211,10 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     M_AXI_transactor_param_props.addLong("HAS_REGION", "0");
     M_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     M_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    M_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    M_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     M_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
+    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
     M_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
     M_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
@@ -202,13 +224,14 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     M_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     M_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M_AXI_transactor_param_props.addString("PROTOCOL", "AXI3");
-    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     M_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<32,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
+    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
 
     // M_AXI' transactor ports
 
+    mp_M_AXI_transactor->AWID(m_axi_awid);
     mp_M_AXI_transactor->AWADDR(m_axi_awaddr);
     mp_m_axi_awlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_awlen_converter");
     mp_m_axi_awlen_converter->vector_in(m_m_axi_awlen_converter_signal);
@@ -230,15 +253,39 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     mp_M_AXI_transactor->WLAST(m_axi_wlast);
     mp_M_AXI_transactor->WVALID(m_axi_wvalid);
     mp_M_AXI_transactor->WREADY(m_axi_wready);
+    mp_M_AXI_transactor->BID(m_axi_bid);
     mp_M_AXI_transactor->BRESP(m_axi_bresp);
     mp_M_AXI_transactor->BVALID(m_axi_bvalid);
     mp_M_AXI_transactor->BREADY(m_axi_bready);
+    mp_M_AXI_transactor->ARID(m_axi_arid);
+    mp_M_AXI_transactor->ARADDR(m_axi_araddr);
+    mp_m_axi_arlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_arlen_converter");
+    mp_m_axi_arlen_converter->vector_in(m_m_axi_arlen_converter_signal);
+    mp_m_axi_arlen_converter->vector_out(m_axi_arlen);
+    mp_M_AXI_transactor->ARLEN(m_m_axi_arlen_converter_signal);
+    mp_M_AXI_transactor->ARSIZE(m_axi_arsize);
+    mp_M_AXI_transactor->ARBURST(m_axi_arburst);
+    mp_m_axi_arlock_converter = new xsc::common::scalar2vectorN_converter<2>("m_axi_arlock_converter");
+    mp_m_axi_arlock_converter->scalar_in(m_m_axi_arlock_converter_signal);
+    mp_m_axi_arlock_converter->vector_out(m_axi_arlock);
+    mp_M_AXI_transactor->ARLOCK(m_m_axi_arlock_converter_signal);
+    mp_M_AXI_transactor->ARCACHE(m_axi_arcache);
+    mp_M_AXI_transactor->ARPROT(m_axi_arprot);
+    mp_M_AXI_transactor->ARQOS(m_axi_arqos);
+    mp_M_AXI_transactor->ARVALID(m_axi_arvalid);
+    mp_M_AXI_transactor->ARREADY(m_axi_arready);
+    mp_M_AXI_transactor->RID(m_axi_rid);
+    mp_M_AXI_transactor->RDATA(m_axi_rdata);
+    mp_M_AXI_transactor->RRESP(m_axi_rresp);
+    mp_M_AXI_transactor->RLAST(m_axi_rlast);
+    mp_M_AXI_transactor->RVALID(m_axi_rvalid);
+    mp_M_AXI_transactor->RREADY(m_axi_rready);
     mp_M_AXI_transactor->CLK(aclk);
     mp_M_AXI_transactor->RST(aresetn);
 
     // M_AXI' transactor sockets
 
-    mp_impl->initiator_rd_socket->bind(mp_M_AXI_rd_socket_stub->target_socket);
+    mp_impl->initiator_rd_socket->bind(*(mp_M_AXI_transactor->rd_socket));
     mp_impl->initiator_wr_socket->bind(*(mp_M_AXI_transactor->wr_socket));
   }
   else
@@ -253,7 +300,7 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
 
 
 #ifdef XM_SYSTEMC
-pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm), aclk("aclk"), aresetn("aresetn"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"),mp_S_AXI_rd_socket_stub(nullptr),mp_M_AXI_rd_socket_stub(nullptr)
+pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm), aclk("aclk"), aresetn("aresetn"), s_axi_awid("s_axi_awid"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bid("s_axi_bid"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), s_axi_arid("s_axi_arid"), s_axi_araddr("s_axi_araddr"), s_axi_arlen("s_axi_arlen"), s_axi_arsize("s_axi_arsize"), s_axi_arburst("s_axi_arburst"), s_axi_arlock("s_axi_arlock"), s_axi_arcache("s_axi_arcache"), s_axi_arprot("s_axi_arprot"), s_axi_arregion("s_axi_arregion"), s_axi_arqos("s_axi_arqos"), s_axi_arvalid("s_axi_arvalid"), s_axi_arready("s_axi_arready"), s_axi_rid("s_axi_rid"), s_axi_rdata("s_axi_rdata"), s_axi_rresp("s_axi_rresp"), s_axi_rlast("s_axi_rlast"), s_axi_rvalid("s_axi_rvalid"), s_axi_rready("s_axi_rready"), m_axi_awid("m_axi_awid"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wid("m_axi_wid"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bid("m_axi_bid"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"), m_axi_arid("m_axi_arid"), m_axi_araddr("m_axi_araddr"), m_axi_arlen("m_axi_arlen"), m_axi_arsize("m_axi_arsize"), m_axi_arburst("m_axi_arburst"), m_axi_arlock("m_axi_arlock"), m_axi_arcache("m_axi_arcache"), m_axi_arprot("m_axi_arprot"), m_axi_arqos("m_axi_arqos"), m_axi_arvalid("m_axi_arvalid"), m_axi_arready("m_axi_arready"), m_axi_rid("m_axi_rid"), m_axi_rdata("m_axi_rdata"), m_axi_rresp("m_axi_rresp"), m_axi_rlast("m_axi_rlast"), m_axi_rvalid("m_axi_rvalid"), m_axi_rready("m_axi_rready")
 {
 
   // initialize pins
@@ -263,13 +310,14 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
   // initialize transactors
   mp_S_AXI_transactor = NULL;
   mp_s_axi_awlock_converter = NULL;
+  mp_s_axi_arlock_converter = NULL;
   mp_M_AXI_transactor = NULL;
   mp_m_axi_awlen_converter = NULL;
   mp_m_axi_awlock_converter = NULL;
+  mp_m_axi_arlen_converter = NULL;
+  mp_m_axi_arlock_converter = NULL;
 
   // initialize socket stubs
-  mp_S_AXI_rd_socket_stub = NULL;
-  mp_M_AXI_rd_socket_stub = NULL;
 
 }
 
@@ -280,13 +328,12 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "S_AXI_TLM_MODE") != 1)
   {
     // Instantiate Socket Stubs
-    mp_S_AXI_rd_socket_stub = new xtlm::xtlm_aximm_initiator_stub("rd_socket", 0);
 
   // 'S_AXI' transactor parameters
     xsc::common_cpp::properties S_AXI_transactor_param_props;
-    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    S_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    S_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -301,11 +348,11 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addLong("HAS_REGION", "1");
     S_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     S_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    S_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    S_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
+    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
+    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
     S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -314,13 +361,14 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
-    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
 
     // S_AXI' transactor ports
 
+    mp_S_AXI_transactor->AWID(s_axi_awid);
     mp_S_AXI_transactor->AWADDR(s_axi_awaddr);
     mp_S_AXI_transactor->AWLEN(s_axi_awlen);
     mp_S_AXI_transactor->AWSIZE(s_axi_awsize);
@@ -340,15 +388,37 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     mp_S_AXI_transactor->WLAST(s_axi_wlast);
     mp_S_AXI_transactor->WVALID(s_axi_wvalid);
     mp_S_AXI_transactor->WREADY(s_axi_wready);
+    mp_S_AXI_transactor->BID(s_axi_bid);
     mp_S_AXI_transactor->BRESP(s_axi_bresp);
     mp_S_AXI_transactor->BVALID(s_axi_bvalid);
     mp_S_AXI_transactor->BREADY(s_axi_bready);
+    mp_S_AXI_transactor->ARID(s_axi_arid);
+    mp_S_AXI_transactor->ARADDR(s_axi_araddr);
+    mp_S_AXI_transactor->ARLEN(s_axi_arlen);
+    mp_S_AXI_transactor->ARSIZE(s_axi_arsize);
+    mp_S_AXI_transactor->ARBURST(s_axi_arburst);
+    mp_s_axi_arlock_converter = new xsc::common::vectorN2scalar_converter<1>("s_axi_arlock_converter");
+    mp_s_axi_arlock_converter->vector_in(s_axi_arlock);
+    mp_s_axi_arlock_converter->scalar_out(m_s_axi_arlock_converter_signal);
+    mp_S_AXI_transactor->ARLOCK(m_s_axi_arlock_converter_signal);
+    mp_S_AXI_transactor->ARCACHE(s_axi_arcache);
+    mp_S_AXI_transactor->ARPROT(s_axi_arprot);
+    mp_S_AXI_transactor->ARREGION(s_axi_arregion);
+    mp_S_AXI_transactor->ARQOS(s_axi_arqos);
+    mp_S_AXI_transactor->ARVALID(s_axi_arvalid);
+    mp_S_AXI_transactor->ARREADY(s_axi_arready);
+    mp_S_AXI_transactor->RID(s_axi_rid);
+    mp_S_AXI_transactor->RDATA(s_axi_rdata);
+    mp_S_AXI_transactor->RRESP(s_axi_rresp);
+    mp_S_AXI_transactor->RLAST(s_axi_rlast);
+    mp_S_AXI_transactor->RVALID(s_axi_rvalid);
+    mp_S_AXI_transactor->RREADY(s_axi_rready);
     mp_S_AXI_transactor->CLK(aclk);
     mp_S_AXI_transactor->RST(aresetn);
 
     // S_AXI' transactor sockets
 
-    mp_impl->target_rd_socket->bind(mp_S_AXI_rd_socket_stub->initiator_socket);
+    mp_impl->target_rd_socket->bind(*(mp_S_AXI_transactor->rd_socket));
     mp_impl->target_wr_socket->bind(*(mp_S_AXI_transactor->wr_socket));
   }
   else
@@ -360,13 +430,12 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "M_AXI_TLM_MODE") != 1)
   {
     // Instantiate Socket Stubs
-    mp_M_AXI_rd_socket_stub = new xtlm::xtlm_aximm_target_stub("rd_socket", 0);
 
   // 'M_AXI' transactor parameters
     xsc::common_cpp::properties M_AXI_transactor_param_props;
-    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     M_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    M_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    M_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     M_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     M_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     M_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -381,10 +450,10 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     M_AXI_transactor_param_props.addLong("HAS_REGION", "0");
     M_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     M_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    M_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    M_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     M_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
+    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
     M_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
     M_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
@@ -394,13 +463,14 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     M_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     M_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M_AXI_transactor_param_props.addString("PROTOCOL", "AXI3");
-    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     M_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<32,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
+    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
 
     // M_AXI' transactor ports
 
+    mp_M_AXI_transactor->AWID(m_axi_awid);
     mp_M_AXI_transactor->AWADDR(m_axi_awaddr);
     mp_m_axi_awlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_awlen_converter");
     mp_m_axi_awlen_converter->vector_in(m_m_axi_awlen_converter_signal);
@@ -422,15 +492,39 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     mp_M_AXI_transactor->WLAST(m_axi_wlast);
     mp_M_AXI_transactor->WVALID(m_axi_wvalid);
     mp_M_AXI_transactor->WREADY(m_axi_wready);
+    mp_M_AXI_transactor->BID(m_axi_bid);
     mp_M_AXI_transactor->BRESP(m_axi_bresp);
     mp_M_AXI_transactor->BVALID(m_axi_bvalid);
     mp_M_AXI_transactor->BREADY(m_axi_bready);
+    mp_M_AXI_transactor->ARID(m_axi_arid);
+    mp_M_AXI_transactor->ARADDR(m_axi_araddr);
+    mp_m_axi_arlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_arlen_converter");
+    mp_m_axi_arlen_converter->vector_in(m_m_axi_arlen_converter_signal);
+    mp_m_axi_arlen_converter->vector_out(m_axi_arlen);
+    mp_M_AXI_transactor->ARLEN(m_m_axi_arlen_converter_signal);
+    mp_M_AXI_transactor->ARSIZE(m_axi_arsize);
+    mp_M_AXI_transactor->ARBURST(m_axi_arburst);
+    mp_m_axi_arlock_converter = new xsc::common::scalar2vectorN_converter<2>("m_axi_arlock_converter");
+    mp_m_axi_arlock_converter->scalar_in(m_m_axi_arlock_converter_signal);
+    mp_m_axi_arlock_converter->vector_out(m_axi_arlock);
+    mp_M_AXI_transactor->ARLOCK(m_m_axi_arlock_converter_signal);
+    mp_M_AXI_transactor->ARCACHE(m_axi_arcache);
+    mp_M_AXI_transactor->ARPROT(m_axi_arprot);
+    mp_M_AXI_transactor->ARQOS(m_axi_arqos);
+    mp_M_AXI_transactor->ARVALID(m_axi_arvalid);
+    mp_M_AXI_transactor->ARREADY(m_axi_arready);
+    mp_M_AXI_transactor->RID(m_axi_rid);
+    mp_M_AXI_transactor->RDATA(m_axi_rdata);
+    mp_M_AXI_transactor->RRESP(m_axi_rresp);
+    mp_M_AXI_transactor->RLAST(m_axi_rlast);
+    mp_M_AXI_transactor->RVALID(m_axi_rvalid);
+    mp_M_AXI_transactor->RREADY(m_axi_rready);
     mp_M_AXI_transactor->CLK(aclk);
     mp_M_AXI_transactor->RST(aresetn);
 
     // M_AXI' transactor sockets
 
-    mp_impl->initiator_rd_socket->bind(mp_M_AXI_rd_socket_stub->target_socket);
+    mp_impl->initiator_rd_socket->bind(*(mp_M_AXI_transactor->rd_socket));
     mp_impl->initiator_wr_socket->bind(*(mp_M_AXI_transactor->wr_socket));
   }
   else
@@ -445,7 +539,7 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
 
 
 #ifdef RIVIERA
-pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm), aclk("aclk"), aresetn("aresetn"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"),mp_S_AXI_rd_socket_stub(nullptr),mp_M_AXI_rd_socket_stub(nullptr)
+pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm), aclk("aclk"), aresetn("aresetn"), s_axi_awid("s_axi_awid"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bid("s_axi_bid"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), s_axi_arid("s_axi_arid"), s_axi_araddr("s_axi_araddr"), s_axi_arlen("s_axi_arlen"), s_axi_arsize("s_axi_arsize"), s_axi_arburst("s_axi_arburst"), s_axi_arlock("s_axi_arlock"), s_axi_arcache("s_axi_arcache"), s_axi_arprot("s_axi_arprot"), s_axi_arregion("s_axi_arregion"), s_axi_arqos("s_axi_arqos"), s_axi_arvalid("s_axi_arvalid"), s_axi_arready("s_axi_arready"), s_axi_rid("s_axi_rid"), s_axi_rdata("s_axi_rdata"), s_axi_rresp("s_axi_rresp"), s_axi_rlast("s_axi_rlast"), s_axi_rvalid("s_axi_rvalid"), s_axi_rready("s_axi_rready"), m_axi_awid("m_axi_awid"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wid("m_axi_wid"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bid("m_axi_bid"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"), m_axi_arid("m_axi_arid"), m_axi_araddr("m_axi_araddr"), m_axi_arlen("m_axi_arlen"), m_axi_arsize("m_axi_arsize"), m_axi_arburst("m_axi_arburst"), m_axi_arlock("m_axi_arlock"), m_axi_arcache("m_axi_arcache"), m_axi_arprot("m_axi_arprot"), m_axi_arqos("m_axi_arqos"), m_axi_arvalid("m_axi_arvalid"), m_axi_arready("m_axi_arready"), m_axi_rid("m_axi_rid"), m_axi_rdata("m_axi_rdata"), m_axi_rresp("m_axi_rresp"), m_axi_rlast("m_axi_rlast"), m_axi_rvalid("m_axi_rvalid"), m_axi_rready("m_axi_rready")
 {
 
   // initialize pins
@@ -455,13 +549,14 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
   // initialize transactors
   mp_S_AXI_transactor = NULL;
   mp_s_axi_awlock_converter = NULL;
+  mp_s_axi_arlock_converter = NULL;
   mp_M_AXI_transactor = NULL;
   mp_m_axi_awlen_converter = NULL;
   mp_m_axi_awlock_converter = NULL;
+  mp_m_axi_arlen_converter = NULL;
+  mp_m_axi_arlock_converter = NULL;
 
   // initialize socket stubs
-  mp_S_AXI_rd_socket_stub = NULL;
-  mp_M_AXI_rd_socket_stub = NULL;
 
 }
 
@@ -472,13 +567,12 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "S_AXI_TLM_MODE") != 1)
   {
     // Instantiate Socket Stubs
-    mp_S_AXI_rd_socket_stub = new xtlm::xtlm_aximm_initiator_stub("rd_socket", 0);
 
   // 'S_AXI' transactor parameters
     xsc::common_cpp::properties S_AXI_transactor_param_props;
-    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    S_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    S_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -493,11 +587,11 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addLong("HAS_REGION", "1");
     S_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     S_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    S_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    S_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
+    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
+    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
     S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -506,13 +600,14 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     S_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
-    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
 
     // S_AXI' transactor ports
 
+    mp_S_AXI_transactor->AWID(s_axi_awid);
     mp_S_AXI_transactor->AWADDR(s_axi_awaddr);
     mp_S_AXI_transactor->AWLEN(s_axi_awlen);
     mp_S_AXI_transactor->AWSIZE(s_axi_awsize);
@@ -532,15 +627,37 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     mp_S_AXI_transactor->WLAST(s_axi_wlast);
     mp_S_AXI_transactor->WVALID(s_axi_wvalid);
     mp_S_AXI_transactor->WREADY(s_axi_wready);
+    mp_S_AXI_transactor->BID(s_axi_bid);
     mp_S_AXI_transactor->BRESP(s_axi_bresp);
     mp_S_AXI_transactor->BVALID(s_axi_bvalid);
     mp_S_AXI_transactor->BREADY(s_axi_bready);
+    mp_S_AXI_transactor->ARID(s_axi_arid);
+    mp_S_AXI_transactor->ARADDR(s_axi_araddr);
+    mp_S_AXI_transactor->ARLEN(s_axi_arlen);
+    mp_S_AXI_transactor->ARSIZE(s_axi_arsize);
+    mp_S_AXI_transactor->ARBURST(s_axi_arburst);
+    mp_s_axi_arlock_converter = new xsc::common::vectorN2scalar_converter<1>("s_axi_arlock_converter");
+    mp_s_axi_arlock_converter->vector_in(s_axi_arlock);
+    mp_s_axi_arlock_converter->scalar_out(m_s_axi_arlock_converter_signal);
+    mp_S_AXI_transactor->ARLOCK(m_s_axi_arlock_converter_signal);
+    mp_S_AXI_transactor->ARCACHE(s_axi_arcache);
+    mp_S_AXI_transactor->ARPROT(s_axi_arprot);
+    mp_S_AXI_transactor->ARREGION(s_axi_arregion);
+    mp_S_AXI_transactor->ARQOS(s_axi_arqos);
+    mp_S_AXI_transactor->ARVALID(s_axi_arvalid);
+    mp_S_AXI_transactor->ARREADY(s_axi_arready);
+    mp_S_AXI_transactor->RID(s_axi_rid);
+    mp_S_AXI_transactor->RDATA(s_axi_rdata);
+    mp_S_AXI_transactor->RRESP(s_axi_rresp);
+    mp_S_AXI_transactor->RLAST(s_axi_rlast);
+    mp_S_AXI_transactor->RVALID(s_axi_rvalid);
+    mp_S_AXI_transactor->RREADY(s_axi_rready);
     mp_S_AXI_transactor->CLK(aclk);
     mp_S_AXI_transactor->RST(aresetn);
 
     // S_AXI' transactor sockets
 
-    mp_impl->target_rd_socket->bind(mp_S_AXI_rd_socket_stub->initiator_socket);
+    mp_impl->target_rd_socket->bind(*(mp_S_AXI_transactor->rd_socket));
     mp_impl->target_wr_socket->bind(*(mp_S_AXI_transactor->wr_socket));
   }
   else
@@ -552,13 +669,12 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "M_AXI_TLM_MODE") != 1)
   {
     // Instantiate Socket Stubs
-    mp_M_AXI_rd_socket_stub = new xtlm::xtlm_aximm_target_stub("rd_socket", 0);
 
   // 'M_AXI' transactor parameters
     xsc::common_cpp::properties M_AXI_transactor_param_props;
-    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     M_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    M_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    M_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     M_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     M_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     M_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -573,10 +689,10 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     M_AXI_transactor_param_props.addLong("HAS_REGION", "0");
     M_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     M_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    M_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    M_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     M_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
+    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
     M_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
     M_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
@@ -586,13 +702,14 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     M_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     M_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M_AXI_transactor_param_props.addString("PROTOCOL", "AXI3");
-    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     M_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<32,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
+    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
 
     // M_AXI' transactor ports
 
+    mp_M_AXI_transactor->AWID(m_axi_awid);
     mp_M_AXI_transactor->AWADDR(m_axi_awaddr);
     mp_m_axi_awlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_awlen_converter");
     mp_m_axi_awlen_converter->vector_in(m_m_axi_awlen_converter_signal);
@@ -614,15 +731,39 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
     mp_M_AXI_transactor->WLAST(m_axi_wlast);
     mp_M_AXI_transactor->WVALID(m_axi_wvalid);
     mp_M_AXI_transactor->WREADY(m_axi_wready);
+    mp_M_AXI_transactor->BID(m_axi_bid);
     mp_M_AXI_transactor->BRESP(m_axi_bresp);
     mp_M_AXI_transactor->BVALID(m_axi_bvalid);
     mp_M_AXI_transactor->BREADY(m_axi_bready);
+    mp_M_AXI_transactor->ARID(m_axi_arid);
+    mp_M_AXI_transactor->ARADDR(m_axi_araddr);
+    mp_m_axi_arlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_arlen_converter");
+    mp_m_axi_arlen_converter->vector_in(m_m_axi_arlen_converter_signal);
+    mp_m_axi_arlen_converter->vector_out(m_axi_arlen);
+    mp_M_AXI_transactor->ARLEN(m_m_axi_arlen_converter_signal);
+    mp_M_AXI_transactor->ARSIZE(m_axi_arsize);
+    mp_M_AXI_transactor->ARBURST(m_axi_arburst);
+    mp_m_axi_arlock_converter = new xsc::common::scalar2vectorN_converter<2>("m_axi_arlock_converter");
+    mp_m_axi_arlock_converter->scalar_in(m_m_axi_arlock_converter_signal);
+    mp_m_axi_arlock_converter->vector_out(m_axi_arlock);
+    mp_M_AXI_transactor->ARLOCK(m_m_axi_arlock_converter_signal);
+    mp_M_AXI_transactor->ARCACHE(m_axi_arcache);
+    mp_M_AXI_transactor->ARPROT(m_axi_arprot);
+    mp_M_AXI_transactor->ARQOS(m_axi_arqos);
+    mp_M_AXI_transactor->ARVALID(m_axi_arvalid);
+    mp_M_AXI_transactor->ARREADY(m_axi_arready);
+    mp_M_AXI_transactor->RID(m_axi_rid);
+    mp_M_AXI_transactor->RDATA(m_axi_rdata);
+    mp_M_AXI_transactor->RRESP(m_axi_rresp);
+    mp_M_AXI_transactor->RLAST(m_axi_rlast);
+    mp_M_AXI_transactor->RVALID(m_axi_rvalid);
+    mp_M_AXI_transactor->RREADY(m_axi_rready);
     mp_M_AXI_transactor->CLK(aclk);
     mp_M_AXI_transactor->RST(aresetn);
 
     // M_AXI' transactor sockets
 
-    mp_impl->initiator_rd_socket->bind(mp_M_AXI_rd_socket_stub->target_socket);
+    mp_impl->initiator_rd_socket->bind(*(mp_M_AXI_transactor->rd_socket));
     mp_impl->initiator_wr_socket->bind(*(mp_M_AXI_transactor->wr_socket));
   }
   else
@@ -637,7 +778,7 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
 
 
 #ifdef VCSSYSTEMC
-pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm),  aclk("aclk"), aresetn("aresetn"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"),mp_S_AXI_rd_socket_stub(nullptr),mp_M_AXI_rd_socket_stub(nullptr)
+pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm),  aclk("aclk"), aresetn("aresetn"), s_axi_awid("s_axi_awid"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bid("s_axi_bid"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), s_axi_arid("s_axi_arid"), s_axi_araddr("s_axi_araddr"), s_axi_arlen("s_axi_arlen"), s_axi_arsize("s_axi_arsize"), s_axi_arburst("s_axi_arburst"), s_axi_arlock("s_axi_arlock"), s_axi_arcache("s_axi_arcache"), s_axi_arprot("s_axi_arprot"), s_axi_arregion("s_axi_arregion"), s_axi_arqos("s_axi_arqos"), s_axi_arvalid("s_axi_arvalid"), s_axi_arready("s_axi_arready"), s_axi_rid("s_axi_rid"), s_axi_rdata("s_axi_rdata"), s_axi_rresp("s_axi_rresp"), s_axi_rlast("s_axi_rlast"), s_axi_rvalid("s_axi_rvalid"), s_axi_rready("s_axi_rready"), m_axi_awid("m_axi_awid"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wid("m_axi_wid"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bid("m_axi_bid"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"), m_axi_arid("m_axi_arid"), m_axi_araddr("m_axi_araddr"), m_axi_arlen("m_axi_arlen"), m_axi_arsize("m_axi_arsize"), m_axi_arburst("m_axi_arburst"), m_axi_arlock("m_axi_arlock"), m_axi_arcache("m_axi_arcache"), m_axi_arprot("m_axi_arprot"), m_axi_arqos("m_axi_arqos"), m_axi_arvalid("m_axi_arvalid"), m_axi_arready("m_axi_arready"), m_axi_rid("m_axi_rid"), m_axi_rdata("m_axi_rdata"), m_axi_rresp("m_axi_rresp"), m_axi_rlast("m_axi_rlast"), m_axi_rvalid("m_axi_rvalid"), m_axi_rready("m_axi_rready")
 {
   // initialize pins
   mp_impl->aclk(aclk);
@@ -646,19 +787,20 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
   // initialize transactors
   mp_S_AXI_transactor = NULL;
   mp_s_axi_awlock_converter = NULL;
+  mp_s_axi_arlock_converter = NULL;
   mp_M_AXI_transactor = NULL;
   mp_m_axi_awlen_converter = NULL;
   mp_m_axi_awlock_converter = NULL;
+  mp_m_axi_arlen_converter = NULL;
+  mp_m_axi_arlock_converter = NULL;
 
   // Instantiate Socket Stubs
-  mp_S_AXI_rd_socket_stub = NULL;
-  mp_M_AXI_rd_socket_stub = NULL;
 
   // configure S_AXI_transactor
     xsc::common_cpp::properties S_AXI_transactor_param_props;
-    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    S_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    S_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -673,11 +815,11 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
     S_AXI_transactor_param_props.addLong("HAS_REGION", "1");
     S_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     S_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    S_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    S_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
+    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
+    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
     S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -686,10 +828,11 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
     S_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
-    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+  mp_S_AXI_transactor->AWID(s_axi_awid);
   mp_S_AXI_transactor->AWADDR(s_axi_awaddr);
   mp_S_AXI_transactor->AWLEN(s_axi_awlen);
   mp_S_AXI_transactor->AWSIZE(s_axi_awsize);
@@ -709,16 +852,38 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
   mp_S_AXI_transactor->WLAST(s_axi_wlast);
   mp_S_AXI_transactor->WVALID(s_axi_wvalid);
   mp_S_AXI_transactor->WREADY(s_axi_wready);
+  mp_S_AXI_transactor->BID(s_axi_bid);
   mp_S_AXI_transactor->BRESP(s_axi_bresp);
   mp_S_AXI_transactor->BVALID(s_axi_bvalid);
   mp_S_AXI_transactor->BREADY(s_axi_bready);
+  mp_S_AXI_transactor->ARID(s_axi_arid);
+  mp_S_AXI_transactor->ARADDR(s_axi_araddr);
+  mp_S_AXI_transactor->ARLEN(s_axi_arlen);
+  mp_S_AXI_transactor->ARSIZE(s_axi_arsize);
+  mp_S_AXI_transactor->ARBURST(s_axi_arburst);
+  mp_s_axi_arlock_converter = new xsc::common::vectorN2scalar_converter<1>("s_axi_arlock_converter");
+  mp_s_axi_arlock_converter->vector_in(s_axi_arlock);
+  mp_s_axi_arlock_converter->scalar_out(m_s_axi_arlock_converter_signal);
+  mp_S_AXI_transactor->ARLOCK(m_s_axi_arlock_converter_signal);
+  mp_S_AXI_transactor->ARCACHE(s_axi_arcache);
+  mp_S_AXI_transactor->ARPROT(s_axi_arprot);
+  mp_S_AXI_transactor->ARREGION(s_axi_arregion);
+  mp_S_AXI_transactor->ARQOS(s_axi_arqos);
+  mp_S_AXI_transactor->ARVALID(s_axi_arvalid);
+  mp_S_AXI_transactor->ARREADY(s_axi_arready);
+  mp_S_AXI_transactor->RID(s_axi_rid);
+  mp_S_AXI_transactor->RDATA(s_axi_rdata);
+  mp_S_AXI_transactor->RRESP(s_axi_rresp);
+  mp_S_AXI_transactor->RLAST(s_axi_rlast);
+  mp_S_AXI_transactor->RVALID(s_axi_rvalid);
+  mp_S_AXI_transactor->RREADY(s_axi_rready);
   mp_S_AXI_transactor->CLK(aclk);
   mp_S_AXI_transactor->RST(aresetn);
   // configure M_AXI_transactor
     xsc::common_cpp::properties M_AXI_transactor_param_props;
-    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     M_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    M_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    M_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     M_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     M_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     M_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -733,10 +898,10 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
     M_AXI_transactor_param_props.addLong("HAS_REGION", "0");
     M_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     M_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    M_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    M_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     M_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
+    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
     M_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
     M_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
@@ -746,10 +911,11 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
     M_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     M_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M_AXI_transactor_param_props.addString("PROTOCOL", "AXI3");
-    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     M_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<32,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
+    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
+  mp_M_AXI_transactor->AWID(m_axi_awid);
   mp_M_AXI_transactor->AWADDR(m_axi_awaddr);
   mp_m_axi_awlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_awlen_converter");
   mp_m_axi_awlen_converter->vector_in(m_m_axi_awlen_converter_signal);
@@ -771,15 +937,41 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
   mp_M_AXI_transactor->WLAST(m_axi_wlast);
   mp_M_AXI_transactor->WVALID(m_axi_wvalid);
   mp_M_AXI_transactor->WREADY(m_axi_wready);
+  mp_M_AXI_transactor->BID(m_axi_bid);
   mp_M_AXI_transactor->BRESP(m_axi_bresp);
   mp_M_AXI_transactor->BVALID(m_axi_bvalid);
   mp_M_AXI_transactor->BREADY(m_axi_bready);
+  mp_M_AXI_transactor->ARID(m_axi_arid);
+  mp_M_AXI_transactor->ARADDR(m_axi_araddr);
+  mp_m_axi_arlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_arlen_converter");
+  mp_m_axi_arlen_converter->vector_in(m_m_axi_arlen_converter_signal);
+  mp_m_axi_arlen_converter->vector_out(m_axi_arlen);
+  mp_M_AXI_transactor->ARLEN(m_m_axi_arlen_converter_signal);
+  mp_M_AXI_transactor->ARSIZE(m_axi_arsize);
+  mp_M_AXI_transactor->ARBURST(m_axi_arburst);
+  mp_m_axi_arlock_converter = new xsc::common::scalar2vectorN_converter<2>("m_axi_arlock_converter");
+  mp_m_axi_arlock_converter->scalar_in(m_m_axi_arlock_converter_signal);
+  mp_m_axi_arlock_converter->vector_out(m_axi_arlock);
+  mp_M_AXI_transactor->ARLOCK(m_m_axi_arlock_converter_signal);
+  mp_M_AXI_transactor->ARCACHE(m_axi_arcache);
+  mp_M_AXI_transactor->ARPROT(m_axi_arprot);
+  mp_M_AXI_transactor->ARQOS(m_axi_arqos);
+  mp_M_AXI_transactor->ARVALID(m_axi_arvalid);
+  mp_M_AXI_transactor->ARREADY(m_axi_arready);
+  mp_M_AXI_transactor->RID(m_axi_rid);
+  mp_M_AXI_transactor->RDATA(m_axi_rdata);
+  mp_M_AXI_transactor->RRESP(m_axi_rresp);
+  mp_M_AXI_transactor->RLAST(m_axi_rlast);
+  mp_M_AXI_transactor->RVALID(m_axi_rvalid);
+  mp_M_AXI_transactor->RREADY(m_axi_rready);
   mp_M_AXI_transactor->CLK(aclk);
   mp_M_AXI_transactor->RST(aresetn);
 
   // initialize transactors stubs
   S_AXI_transactor_target_wr_socket_stub = nullptr;
+  S_AXI_transactor_target_rd_socket_stub = nullptr;
   M_AXI_transactor_initiator_wr_socket_stub = nullptr;
+  M_AXI_transactor_initiator_rd_socket_stub = nullptr;
 
 }
 
@@ -788,8 +980,7 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   // configure 'S_AXI' transactor
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "S_AXI_TLM_MODE") != 1)
   {
-    mp_S_AXI_rd_socket_stub = new xtlm::xtlm_aximm_initiator_stub("rd_socket", 0);
-    mp_impl->target_rd_socket->bind(mp_S_AXI_rd_socket_stub->initiator_socket);
+    mp_impl->target_rd_socket->bind(*(mp_S_AXI_transactor->rd_socket));
     mp_impl->target_wr_socket->bind(*(mp_S_AXI_transactor->wr_socket));
   
   }
@@ -797,14 +988,15 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   {
     S_AXI_transactor_target_wr_socket_stub = new xtlm::xtlm_aximm_target_stub("wr_socket",0);
     S_AXI_transactor_target_wr_socket_stub->bind(*(mp_S_AXI_transactor->wr_socket));
+    S_AXI_transactor_target_rd_socket_stub = new xtlm::xtlm_aximm_target_stub("rd_socket",0);
+    S_AXI_transactor_target_rd_socket_stub->bind(*(mp_S_AXI_transactor->rd_socket));
     mp_S_AXI_transactor->disable_transactor();
   }
 
   // configure 'M_AXI' transactor
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "M_AXI_TLM_MODE") != 1)
   {
-    mp_M_AXI_rd_socket_stub = new xtlm::xtlm_aximm_target_stub("rd_socket", 0);
-    mp_impl->initiator_rd_socket->bind(mp_M_AXI_rd_socket_stub->target_socket);
+    mp_impl->initiator_rd_socket->bind(*(mp_M_AXI_transactor->rd_socket));
     mp_impl->initiator_wr_socket->bind(*(mp_M_AXI_transactor->wr_socket));
   
   }
@@ -812,6 +1004,8 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   {
     M_AXI_transactor_initiator_wr_socket_stub = new xtlm::xtlm_aximm_initiator_stub("wr_socket",0);
     M_AXI_transactor_initiator_wr_socket_stub->bind(*(mp_M_AXI_transactor->wr_socket));
+    M_AXI_transactor_initiator_rd_socket_stub = new xtlm::xtlm_aximm_initiator_stub("rd_socket",0);
+    M_AXI_transactor_initiator_rd_socket_stub->bind(*(mp_M_AXI_transactor->rd_socket));
     mp_M_AXI_transactor->disable_transactor();
   }
 
@@ -823,7 +1017,7 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
 
 
 #ifdef MTI_SYSTEMC
-pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm),  aclk("aclk"), aresetn("aresetn"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"),mp_S_AXI_rd_socket_stub(nullptr),mp_M_AXI_rd_socket_stub(nullptr)
+pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_bd_auto_pc_1_sc(nm),  aclk("aclk"), aresetn("aresetn"), s_axi_awid("s_axi_awid"), s_axi_awaddr("s_axi_awaddr"), s_axi_awlen("s_axi_awlen"), s_axi_awsize("s_axi_awsize"), s_axi_awburst("s_axi_awburst"), s_axi_awlock("s_axi_awlock"), s_axi_awcache("s_axi_awcache"), s_axi_awprot("s_axi_awprot"), s_axi_awregion("s_axi_awregion"), s_axi_awqos("s_axi_awqos"), s_axi_awvalid("s_axi_awvalid"), s_axi_awready("s_axi_awready"), s_axi_wdata("s_axi_wdata"), s_axi_wstrb("s_axi_wstrb"), s_axi_wlast("s_axi_wlast"), s_axi_wvalid("s_axi_wvalid"), s_axi_wready("s_axi_wready"), s_axi_bid("s_axi_bid"), s_axi_bresp("s_axi_bresp"), s_axi_bvalid("s_axi_bvalid"), s_axi_bready("s_axi_bready"), s_axi_arid("s_axi_arid"), s_axi_araddr("s_axi_araddr"), s_axi_arlen("s_axi_arlen"), s_axi_arsize("s_axi_arsize"), s_axi_arburst("s_axi_arburst"), s_axi_arlock("s_axi_arlock"), s_axi_arcache("s_axi_arcache"), s_axi_arprot("s_axi_arprot"), s_axi_arregion("s_axi_arregion"), s_axi_arqos("s_axi_arqos"), s_axi_arvalid("s_axi_arvalid"), s_axi_arready("s_axi_arready"), s_axi_rid("s_axi_rid"), s_axi_rdata("s_axi_rdata"), s_axi_rresp("s_axi_rresp"), s_axi_rlast("s_axi_rlast"), s_axi_rvalid("s_axi_rvalid"), s_axi_rready("s_axi_rready"), m_axi_awid("m_axi_awid"), m_axi_awaddr("m_axi_awaddr"), m_axi_awlen("m_axi_awlen"), m_axi_awsize("m_axi_awsize"), m_axi_awburst("m_axi_awburst"), m_axi_awlock("m_axi_awlock"), m_axi_awcache("m_axi_awcache"), m_axi_awprot("m_axi_awprot"), m_axi_awqos("m_axi_awqos"), m_axi_awvalid("m_axi_awvalid"), m_axi_awready("m_axi_awready"), m_axi_wid("m_axi_wid"), m_axi_wdata("m_axi_wdata"), m_axi_wstrb("m_axi_wstrb"), m_axi_wlast("m_axi_wlast"), m_axi_wvalid("m_axi_wvalid"), m_axi_wready("m_axi_wready"), m_axi_bid("m_axi_bid"), m_axi_bresp("m_axi_bresp"), m_axi_bvalid("m_axi_bvalid"), m_axi_bready("m_axi_bready"), m_axi_arid("m_axi_arid"), m_axi_araddr("m_axi_araddr"), m_axi_arlen("m_axi_arlen"), m_axi_arsize("m_axi_arsize"), m_axi_arburst("m_axi_arburst"), m_axi_arlock("m_axi_arlock"), m_axi_arcache("m_axi_arcache"), m_axi_arprot("m_axi_arprot"), m_axi_arqos("m_axi_arqos"), m_axi_arvalid("m_axi_arvalid"), m_axi_arready("m_axi_arready"), m_axi_rid("m_axi_rid"), m_axi_rdata("m_axi_rdata"), m_axi_rresp("m_axi_rresp"), m_axi_rlast("m_axi_rlast"), m_axi_rvalid("m_axi_rvalid"), m_axi_rready("m_axi_rready")
 {
   // initialize pins
   mp_impl->aclk(aclk);
@@ -832,19 +1026,20 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
   // initialize transactors
   mp_S_AXI_transactor = NULL;
   mp_s_axi_awlock_converter = NULL;
+  mp_s_axi_arlock_converter = NULL;
   mp_M_AXI_transactor = NULL;
   mp_m_axi_awlen_converter = NULL;
   mp_m_axi_awlock_converter = NULL;
+  mp_m_axi_arlen_converter = NULL;
+  mp_m_axi_arlock_converter = NULL;
 
   // Instantiate Socket Stubs
-  mp_S_AXI_rd_socket_stub = NULL;
-  mp_M_AXI_rd_socket_stub = NULL;
 
   // configure S_AXI_transactor
     xsc::common_cpp::properties S_AXI_transactor_param_props;
-    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    S_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     S_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    S_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    S_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     S_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     S_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     S_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -859,11 +1054,11 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
     S_AXI_transactor_param_props.addLong("HAS_REGION", "1");
     S_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     S_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    S_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    S_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     S_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     S_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
-    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "256");
+    S_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
+    S_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "128");
     S_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     S_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
     S_AXI_transactor_param_props.addLong("RUSER_BITS_PER_BYTE", "0");
@@ -872,10 +1067,11 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
     S_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     S_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     S_AXI_transactor_param_props.addString("PROTOCOL", "AXI4");
-    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    S_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     S_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<32,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+    mp_S_AXI_transactor = new xtlm::xaximm_pin2xtlm_t<64,32,1,1,1,1,1,1>("S_AXI_transactor", S_AXI_transactor_param_props);
+  mp_S_AXI_transactor->AWID(s_axi_awid);
   mp_S_AXI_transactor->AWADDR(s_axi_awaddr);
   mp_S_AXI_transactor->AWLEN(s_axi_awlen);
   mp_S_AXI_transactor->AWSIZE(s_axi_awsize);
@@ -895,16 +1091,38 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
   mp_S_AXI_transactor->WLAST(s_axi_wlast);
   mp_S_AXI_transactor->WVALID(s_axi_wvalid);
   mp_S_AXI_transactor->WREADY(s_axi_wready);
+  mp_S_AXI_transactor->BID(s_axi_bid);
   mp_S_AXI_transactor->BRESP(s_axi_bresp);
   mp_S_AXI_transactor->BVALID(s_axi_bvalid);
   mp_S_AXI_transactor->BREADY(s_axi_bready);
+  mp_S_AXI_transactor->ARID(s_axi_arid);
+  mp_S_AXI_transactor->ARADDR(s_axi_araddr);
+  mp_S_AXI_transactor->ARLEN(s_axi_arlen);
+  mp_S_AXI_transactor->ARSIZE(s_axi_arsize);
+  mp_S_AXI_transactor->ARBURST(s_axi_arburst);
+  mp_s_axi_arlock_converter = new xsc::common::vectorN2scalar_converter<1>("s_axi_arlock_converter");
+  mp_s_axi_arlock_converter->vector_in(s_axi_arlock);
+  mp_s_axi_arlock_converter->scalar_out(m_s_axi_arlock_converter_signal);
+  mp_S_AXI_transactor->ARLOCK(m_s_axi_arlock_converter_signal);
+  mp_S_AXI_transactor->ARCACHE(s_axi_arcache);
+  mp_S_AXI_transactor->ARPROT(s_axi_arprot);
+  mp_S_AXI_transactor->ARREGION(s_axi_arregion);
+  mp_S_AXI_transactor->ARQOS(s_axi_arqos);
+  mp_S_AXI_transactor->ARVALID(s_axi_arvalid);
+  mp_S_AXI_transactor->ARREADY(s_axi_arready);
+  mp_S_AXI_transactor->RID(s_axi_rid);
+  mp_S_AXI_transactor->RDATA(s_axi_rdata);
+  mp_S_AXI_transactor->RRESP(s_axi_rresp);
+  mp_S_AXI_transactor->RLAST(s_axi_rlast);
+  mp_S_AXI_transactor->RVALID(s_axi_rvalid);
+  mp_S_AXI_transactor->RREADY(s_axi_rready);
   mp_S_AXI_transactor->CLK(aclk);
   mp_S_AXI_transactor->RST(aresetn);
   // configure M_AXI_transactor
     xsc::common_cpp::properties M_AXI_transactor_param_props;
-    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "32");
+    M_AXI_transactor_param_props.addLong("DATA_WIDTH", "64");
     M_AXI_transactor_param_props.addLong("FREQ_HZ", "100000000");
-    M_AXI_transactor_param_props.addLong("ID_WIDTH", "0");
+    M_AXI_transactor_param_props.addLong("ID_WIDTH", "1");
     M_AXI_transactor_param_props.addLong("ADDR_WIDTH", "32");
     M_AXI_transactor_param_props.addLong("AWUSER_WIDTH", "0");
     M_AXI_transactor_param_props.addLong("ARUSER_WIDTH", "0");
@@ -919,10 +1137,10 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
     M_AXI_transactor_param_props.addLong("HAS_REGION", "0");
     M_AXI_transactor_param_props.addLong("HAS_WSTRB", "1");
     M_AXI_transactor_param_props.addLong("HAS_BRESP", "1");
-    M_AXI_transactor_param_props.addLong("HAS_RRESP", "0");
+    M_AXI_transactor_param_props.addLong("HAS_RRESP", "1");
     M_AXI_transactor_param_props.addLong("SUPPORTS_NARROW_BURST", "0");
     M_AXI_transactor_param_props.addLong("NUM_READ_OUTSTANDING", "8");
-    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "16");
+    M_AXI_transactor_param_props.addLong("NUM_WRITE_OUTSTANDING", "8");
     M_AXI_transactor_param_props.addLong("MAX_BURST_LENGTH", "16");
     M_AXI_transactor_param_props.addLong("NUM_READ_THREADS", "1");
     M_AXI_transactor_param_props.addLong("NUM_WRITE_THREADS", "1");
@@ -932,10 +1150,11 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
     M_AXI_transactor_param_props.addLong("HAS_RESET", "1");
     M_AXI_transactor_param_props.addFloat("PHASE", "0.0");
     M_AXI_transactor_param_props.addString("PROTOCOL", "AXI3");
-    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "WRITE_ONLY");
+    M_AXI_transactor_param_props.addString("READ_WRITE_MODE", "READ_WRITE");
     M_AXI_transactor_param_props.addString("CLK_DOMAIN", "pynq_bd_processing_system7_0_0_FCLK_CLK0");
 
-    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<32,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
+    mp_M_AXI_transactor = new xtlm::xaximm_xtlm2pin_t<64,32,1,1,1,1,1,1>("M_AXI_transactor", M_AXI_transactor_param_props);
+  mp_M_AXI_transactor->AWID(m_axi_awid);
   mp_M_AXI_transactor->AWADDR(m_axi_awaddr);
   mp_m_axi_awlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_awlen_converter");
   mp_m_axi_awlen_converter->vector_in(m_m_axi_awlen_converter_signal);
@@ -957,15 +1176,41 @@ pynq_bd_auto_pc_1::pynq_bd_auto_pc_1(const sc_core::sc_module_name& nm) : pynq_b
   mp_M_AXI_transactor->WLAST(m_axi_wlast);
   mp_M_AXI_transactor->WVALID(m_axi_wvalid);
   mp_M_AXI_transactor->WREADY(m_axi_wready);
+  mp_M_AXI_transactor->BID(m_axi_bid);
   mp_M_AXI_transactor->BRESP(m_axi_bresp);
   mp_M_AXI_transactor->BVALID(m_axi_bvalid);
   mp_M_AXI_transactor->BREADY(m_axi_bready);
+  mp_M_AXI_transactor->ARID(m_axi_arid);
+  mp_M_AXI_transactor->ARADDR(m_axi_araddr);
+  mp_m_axi_arlen_converter = new xsc::common::vector2vector_converter<8,4>("m_axi_arlen_converter");
+  mp_m_axi_arlen_converter->vector_in(m_m_axi_arlen_converter_signal);
+  mp_m_axi_arlen_converter->vector_out(m_axi_arlen);
+  mp_M_AXI_transactor->ARLEN(m_m_axi_arlen_converter_signal);
+  mp_M_AXI_transactor->ARSIZE(m_axi_arsize);
+  mp_M_AXI_transactor->ARBURST(m_axi_arburst);
+  mp_m_axi_arlock_converter = new xsc::common::scalar2vectorN_converter<2>("m_axi_arlock_converter");
+  mp_m_axi_arlock_converter->scalar_in(m_m_axi_arlock_converter_signal);
+  mp_m_axi_arlock_converter->vector_out(m_axi_arlock);
+  mp_M_AXI_transactor->ARLOCK(m_m_axi_arlock_converter_signal);
+  mp_M_AXI_transactor->ARCACHE(m_axi_arcache);
+  mp_M_AXI_transactor->ARPROT(m_axi_arprot);
+  mp_M_AXI_transactor->ARQOS(m_axi_arqos);
+  mp_M_AXI_transactor->ARVALID(m_axi_arvalid);
+  mp_M_AXI_transactor->ARREADY(m_axi_arready);
+  mp_M_AXI_transactor->RID(m_axi_rid);
+  mp_M_AXI_transactor->RDATA(m_axi_rdata);
+  mp_M_AXI_transactor->RRESP(m_axi_rresp);
+  mp_M_AXI_transactor->RLAST(m_axi_rlast);
+  mp_M_AXI_transactor->RVALID(m_axi_rvalid);
+  mp_M_AXI_transactor->RREADY(m_axi_rready);
   mp_M_AXI_transactor->CLK(aclk);
   mp_M_AXI_transactor->RST(aresetn);
 
   // initialize transactors stubs
   S_AXI_transactor_target_wr_socket_stub = nullptr;
+  S_AXI_transactor_target_rd_socket_stub = nullptr;
   M_AXI_transactor_initiator_wr_socket_stub = nullptr;
+  M_AXI_transactor_initiator_rd_socket_stub = nullptr;
 
 }
 
@@ -974,8 +1219,7 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   // configure 'S_AXI' transactor
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "S_AXI_TLM_MODE") != 1)
   {
-    mp_S_AXI_rd_socket_stub = new xtlm::xtlm_aximm_initiator_stub("rd_socket", 0);
-    mp_impl->target_rd_socket->bind(mp_S_AXI_rd_socket_stub->initiator_socket);
+    mp_impl->target_rd_socket->bind(*(mp_S_AXI_transactor->rd_socket));
     mp_impl->target_wr_socket->bind(*(mp_S_AXI_transactor->wr_socket));
   
   }
@@ -983,14 +1227,15 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   {
     S_AXI_transactor_target_wr_socket_stub = new xtlm::xtlm_aximm_target_stub("wr_socket",0);
     S_AXI_transactor_target_wr_socket_stub->bind(*(mp_S_AXI_transactor->wr_socket));
+    S_AXI_transactor_target_rd_socket_stub = new xtlm::xtlm_aximm_target_stub("rd_socket",0);
+    S_AXI_transactor_target_rd_socket_stub->bind(*(mp_S_AXI_transactor->rd_socket));
     mp_S_AXI_transactor->disable_transactor();
   }
 
   // configure 'M_AXI' transactor
   if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "M_AXI_TLM_MODE") != 1)
   {
-    mp_M_AXI_rd_socket_stub = new xtlm::xtlm_aximm_target_stub("rd_socket", 0);
-    mp_impl->initiator_rd_socket->bind(mp_M_AXI_rd_socket_stub->target_socket);
+    mp_impl->initiator_rd_socket->bind(*(mp_M_AXI_transactor->rd_socket));
     mp_impl->initiator_wr_socket->bind(*(mp_M_AXI_transactor->wr_socket));
   
   }
@@ -998,6 +1243,8 @@ void pynq_bd_auto_pc_1::before_end_of_elaboration()
   {
     M_AXI_transactor_initiator_wr_socket_stub = new xtlm::xtlm_aximm_initiator_stub("wr_socket",0);
     M_AXI_transactor_initiator_wr_socket_stub->bind(*(mp_M_AXI_transactor->wr_socket));
+    M_AXI_transactor_initiator_rd_socket_stub = new xtlm::xtlm_aximm_initiator_stub("rd_socket",0);
+    M_AXI_transactor_initiator_rd_socket_stub->bind(*(mp_M_AXI_transactor->rd_socket));
     mp_M_AXI_transactor->disable_transactor();
   }
 
@@ -1012,18 +1259,13 @@ pynq_bd_auto_pc_1::~pynq_bd_auto_pc_1()
 {
   delete mp_S_AXI_transactor;
   delete mp_s_axi_awlock_converter;
-  if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "S_AXI_TLM_MODE") != 1)
-  {
-    delete mp_S_AXI_rd_socket_stub;
-  }
+  delete mp_s_axi_arlock_converter;
 
   delete mp_M_AXI_transactor;
   delete mp_m_axi_awlen_converter;
   delete mp_m_axi_awlock_converter;
-  if (xsc::utils::xsc_sim_manager::getInstanceParameterInt("pynq_bd_auto_pc_1", "M_AXI_TLM_MODE") != 1)
-  {
-    delete mp_M_AXI_rd_socket_stub;
-  }
+  delete mp_m_axi_arlen_converter;
+  delete mp_m_axi_arlock_converter;
 
 }
 
@@ -1037,5 +1279,6 @@ XMSC_MODULE_EXPORT(pynq_bd_auto_pc_1);
 
 #ifdef RIVIERA
 SC_MODULE_EXPORT(pynq_bd_auto_pc_1);
+SC_REGISTER_BV(64);
 #endif
 

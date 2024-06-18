@@ -24,8 +24,8 @@ end dpp_counter;
 
 architecture Behavioral of dpp_counter is
     -- counter variables
-    signal en_rissing, en_falling   : std_logic;
-    signal counted                  : std_logic;
+    signal en_rissing, en_falling   : std_logic    := '0';
+    signal counted                  : std_logic    := '0';
     signal counter                  : integer      := 0;
     signal in_sample                : integer      := 0;
     signal out_counter              : std_logic_vector (31 downto 0);
@@ -63,7 +63,7 @@ begin
 --    end process;
 
     -- counter activated    
-    process (dpp_clk, dpp_rst)
+    process (dpp_clk, dpp_rst, dpp_cmp)
     begin
         if (dpp_rst = '0') then
             -- reset everything
@@ -105,6 +105,7 @@ begin
                     if (en_rissing = '1') and (en_falling = '0') then
                         en_rissing <= '0';
                         en_falling <= '1';
+                        det_amplitude <= '0'; 
                     end if;
                 end if;
                 
@@ -124,9 +125,9 @@ begin
                 end if;  
                 
                 -- clear det_amp
-                if (det_amplitude = '1') then
-                    det_amplitude <= '0'; 
-                end if;          
+                --if (det_amplitude = '1') then
+                --    det_amplitude <= '0'; 
+                --end if;          
             end if;
         end if;
     end process;

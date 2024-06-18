@@ -61,7 +61,7 @@ pynq_bd_auto_us_0_sc::pynq_bd_auto_us_0_sc(const sc_core::sc_module_name& nm) : 
 
   // initialize module
     xsc::common_cpp::properties model_param_props;
-    model_param_props.addLong("C_AXI_PROTOCOL", "1");
+    model_param_props.addLong("C_AXI_PROTOCOL", "0");
     model_param_props.addLong("C_S_AXI_ID_WIDTH", "1");
     model_param_props.addLong("C_SUPPORTS_ID", "0");
     model_param_props.addLong("C_AXI_ADDR_WIDTH", "32");

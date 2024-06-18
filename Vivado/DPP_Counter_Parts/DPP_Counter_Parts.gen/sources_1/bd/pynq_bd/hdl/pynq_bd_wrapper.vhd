@@ -1,8 +1,8 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Mon Jun 17 16:19:33 2024
---Host        : DESKTOP-3FHD9AF running 64-bit major release  (build 9200)
+--Date        : Tue Jun 18 01:46:02 2024
+--Host        : fabiancastano running 64-bit major release  (build 9200)
 --Command     : generate_target pynq_bd_wrapper.bd
 --Design      : pynq_bd_wrapper
 --Purpose     : IP block netlist
@@ -36,6 +36,7 @@ entity pynq_bd_wrapper is
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     Vaux1_0_v_n : in STD_LOGIC;
     Vaux1_0_v_p : in STD_LOGIC;
+    led_0 : out STD_LOGIC_VECTOR ( 3 downto 0 );
     out_trg_0 : out STD_LOGIC
   );
 end pynq_bd_wrapper;
@@ -66,7 +67,8 @@ architecture STRUCTURE of pynq_bd_wrapper is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     Vaux1_0_v_n : in STD_LOGIC;
     Vaux1_0_v_p : in STD_LOGIC;
-    out_trg_0 : out STD_LOGIC
+    out_trg_0 : out STD_LOGIC;
+    led_0 : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   end component pynq_bd;
 begin
@@ -95,6 +97,7 @@ pynq_bd_i: component pynq_bd
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
       Vaux1_0_v_n => Vaux1_0_v_n,
       Vaux1_0_v_p => Vaux1_0_v_p,
+      led_0(3 downto 0) => led_0(3 downto 0),
       out_trg_0 => out_trg_0
     );
 end STRUCTURE;

@@ -69,12 +69,13 @@ module pynq_bd_auto_us_0 (
   input bit_as_bool s_axi_aclk,
   input bit_as_bool s_axi_aresetn,
   input bit [31 : 0] s_axi_awaddr,
-  input bit [3 : 0] s_axi_awlen,
+  input bit [7 : 0] s_axi_awlen,
   input bit [2 : 0] s_axi_awsize,
   input bit [1 : 0] s_axi_awburst,
-  input bit [1 : 0] s_axi_awlock,
+  input bit [0 : 0] s_axi_awlock,
   input bit [3 : 0] s_axi_awcache,
   input bit [2 : 0] s_axi_awprot,
+  input bit [3 : 0] s_axi_awregion,
   input bit [3 : 0] s_axi_awqos,
   input bit_as_bool s_axi_awvalid,
   output bit_as_bool s_axi_awready,
@@ -87,12 +88,13 @@ module pynq_bd_auto_us_0 (
   output bit_as_bool s_axi_bvalid,
   input bit_as_bool s_axi_bready,
   output bit [31 : 0] m_axi_awaddr,
-  output bit [3 : 0] m_axi_awlen,
+  output bit [7 : 0] m_axi_awlen,
   output bit [2 : 0] m_axi_awsize,
   output bit [1 : 0] m_axi_awburst,
-  output bit [1 : 0] m_axi_awlock,
+  output bit [0 : 0] m_axi_awlock,
   output bit [3 : 0] m_axi_awcache,
   output bit [2 : 0] m_axi_awprot,
+  output bit [3 : 0] m_axi_awregion,
   output bit [3 : 0] m_axi_awqos,
   output bit_as_bool m_axi_awvalid,
   input bit_as_bool m_axi_awready,
@@ -110,18 +112,19 @@ endmodule
 
 `ifdef XCELIUM
 (* XMSC_MODULE_EXPORT *)
-module pynq_bd_auto_us_0 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awlen,s_axi_awsize,s_axi_awburst,s_axi_awlock,s_axi_awcache,s_axi_awprot,s_axi_awqos,s_axi_awvalid,s_axi_awready,s_axi_wdata,s_axi_wstrb,s_axi_wlast,s_axi_wvalid,s_axi_wready,s_axi_bresp,s_axi_bvalid,s_axi_bready,m_axi_awaddr,m_axi_awlen,m_axi_awsize,m_axi_awburst,m_axi_awlock,m_axi_awcache,m_axi_awprot,m_axi_awqos,m_axi_awvalid,m_axi_awready,m_axi_wdata,m_axi_wstrb,m_axi_wlast,m_axi_wvalid,m_axi_wready,m_axi_bresp,m_axi_bvalid,m_axi_bready)
+module pynq_bd_auto_us_0 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awlen,s_axi_awsize,s_axi_awburst,s_axi_awlock,s_axi_awcache,s_axi_awprot,s_axi_awregion,s_axi_awqos,s_axi_awvalid,s_axi_awready,s_axi_wdata,s_axi_wstrb,s_axi_wlast,s_axi_wvalid,s_axi_wready,s_axi_bresp,s_axi_bvalid,s_axi_bready,m_axi_awaddr,m_axi_awlen,m_axi_awsize,m_axi_awburst,m_axi_awlock,m_axi_awcache,m_axi_awprot,m_axi_awregion,m_axi_awqos,m_axi_awvalid,m_axi_awready,m_axi_wdata,m_axi_wstrb,m_axi_wlast,m_axi_wvalid,m_axi_wready,m_axi_bresp,m_axi_bvalid,m_axi_bready)
 (* integer foreign = "SystemC";
 *);
   input bit s_axi_aclk;
   input bit s_axi_aresetn;
   input bit [31 : 0] s_axi_awaddr;
-  input bit [3 : 0] s_axi_awlen;
+  input bit [7 : 0] s_axi_awlen;
   input bit [2 : 0] s_axi_awsize;
   input bit [1 : 0] s_axi_awburst;
-  input bit [1 : 0] s_axi_awlock;
+  input bit [0 : 0] s_axi_awlock;
   input bit [3 : 0] s_axi_awcache;
   input bit [2 : 0] s_axi_awprot;
+  input bit [3 : 0] s_axi_awregion;
   input bit [3 : 0] s_axi_awqos;
   input bit s_axi_awvalid;
   output wire s_axi_awready;
@@ -134,12 +137,13 @@ module pynq_bd_auto_us_0 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awlen,s_ax
   output wire s_axi_bvalid;
   input bit s_axi_bready;
   output wire [31 : 0] m_axi_awaddr;
-  output wire [3 : 0] m_axi_awlen;
+  output wire [7 : 0] m_axi_awlen;
   output wire [2 : 0] m_axi_awsize;
   output wire [1 : 0] m_axi_awburst;
-  output wire [1 : 0] m_axi_awlock;
+  output wire [0 : 0] m_axi_awlock;
   output wire [3 : 0] m_axi_awcache;
   output wire [2 : 0] m_axi_awprot;
+  output wire [3 : 0] m_axi_awregion;
   output wire [3 : 0] m_axi_awqos;
   output wire m_axi_awvalid;
   input bit m_axi_awready;

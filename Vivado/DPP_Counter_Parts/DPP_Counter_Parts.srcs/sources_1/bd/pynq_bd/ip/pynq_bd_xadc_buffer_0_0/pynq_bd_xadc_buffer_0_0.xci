@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "pynq_bd_xadc_buffer_0_0",
-    "cell_name": "xadc_buffer_0",
+    "cell_name": "hier_preproc/xadc_buffer_0",
     "component_reference": "xilinx.com:module_ref:xadc_buffer:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ip/pynq_bd_xadc_buffer_0_0",

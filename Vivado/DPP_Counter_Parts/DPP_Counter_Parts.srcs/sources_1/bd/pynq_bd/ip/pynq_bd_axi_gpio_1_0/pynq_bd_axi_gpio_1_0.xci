@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "pynq_bd_axi_gpio_1_0",
-    "cell_name": "axi_gpio_sel",
+    "cell_name": "hier_gpio/axi_gpio_sel",
     "component_reference": "xilinx.com:ip:axi_gpio:2.0",
     "ip_revision": "29",
     "gen_directory": "../../../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ip/pynq_bd_axi_gpio_1_0",
