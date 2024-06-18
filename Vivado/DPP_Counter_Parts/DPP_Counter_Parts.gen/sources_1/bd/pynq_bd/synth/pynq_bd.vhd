@@ -1,7 +1,7 @@
 --Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
---Date        : Tue Jun 18 02:08:30 2024
+--Date        : Tue Jun 18 09:33:20 2024
 --Host        : fabiancastano running 64-bit major release  (build 9200)
 --Command     : generate_target pynq_bd.bd
 --Design      : pynq_bd
@@ -5428,6 +5428,17 @@ architecture STRUCTURE of pynq_bd is
     Dout : out STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   end component pynq_bd_xlslice_2_0;
+  component pynq_bd_dpp_counter_0_0 is
+  port (
+    dpp_clk : in STD_LOGIC;
+    dpp_rst : in STD_LOGIC;
+    dpp_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dpp_cmp : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dpp_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    dpp_evt : out STD_LOGIC;
+    dpp_amp : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component pynq_bd_dpp_counter_0_0;
   component pynq_bd_AXI_DPP_BRam_0_0 is
   port (
     dpp_clk : in STD_LOGIC;
@@ -5443,17 +5454,6 @@ architecture STRUCTURE of pynq_bd is
     m00_axis_tready : in STD_LOGIC
   );
   end component pynq_bd_AXI_DPP_BRam_0_0;
-  component pynq_bd_dpp_counter_0_0 is
-  port (
-    dpp_clk : in STD_LOGIC;
-    dpp_rst : in STD_LOGIC;
-    dpp_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    dpp_cmp : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    dpp_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    dpp_evt : out STD_LOGIC;
-    dpp_amp : out STD_LOGIC_VECTOR ( 31 downto 0 )
-  );
-  end component pynq_bd_dpp_counter_0_0;
   signal AXI_DPP_BRam_0_M00_AXIS_TDATA : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal AXI_DPP_BRam_0_M00_AXIS_TLAST : STD_LOGIC;
   signal AXI_DPP_BRam_0_M00_AXIS_TREADY : STD_LOGIC;
@@ -5824,7 +5824,7 @@ begin
   Vaux1_0_1_V_N <= Vaux1_0_v_n;
   Vaux1_0_1_V_P <= Vaux1_0_v_p;
   led_0(3 downto 0) <= xlslice_2_Dout(3 downto 0);
-  out_trg_0 <= greaterthan_0_out_trg;
+  out_trg_0 <= dpp_counter_0_dpp_evt;
 AXI_DPP_BRam_0: component pynq_bd_AXI_DPP_BRam_0_0
      port map (
       dpp_amp(15 downto 0) => slice_trapz_1_sig_out(15 downto 0),

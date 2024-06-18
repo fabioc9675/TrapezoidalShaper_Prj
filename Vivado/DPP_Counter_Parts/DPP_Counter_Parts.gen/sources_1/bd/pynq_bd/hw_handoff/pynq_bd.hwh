@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jun 18 02:08:32 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jun 18 09:33:25 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="pynq_bd" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -119,14 +119,14 @@
         <CONNECTION INSTANCE="xadc_wiz_0" PORT="vauxp1"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="out_trg_0" SIGIS="undef" SIGNAME="greaterthan_0_out_trg">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="greaterthan_0" PORT="out_trg"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT DIR="O" LEFT="3" NAME="led_0" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_2_Dout">
       <CONNECTIONS>
         <CONNECTION INSTANCE="xlslice_2" PORT="Dout"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="out_trg_0" SIGIS="undef" SIGNAME="dpp_counter_0_dpp_evt">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dpp_counter_0" PORT="dpp_evt"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -185,7 +185,7 @@
   </EXTERNALINTERFACES>
 
   <MODULES>
-    <MODULE COREREVISION="11" FULLNAME="/AXI_DPP_BRam_0" HWVERSION="1.0" INSTANCE="AXI_DPP_BRam_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="AXI_DPP_BRam" VLNV="xilinx.com:user:AXI_DPP_BRam:1.0">
+    <MODULE COREREVISION="15" FULLNAME="/AXI_DPP_BRam_0" HWVERSION="1.0" INSTANCE="AXI_DPP_BRam_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="AXI_DPP_BRam" VLNV="xilinx.com:user:AXI_DPP_BRam:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="C_M00_AXIS_TDATA_WIDTH" VALUE="32"/>
@@ -4231,6 +4231,7 @@
         </PORT>
         <PORT DIR="O" NAME="dpp_evt" SIGIS="undef" SIGNAME="dpp_counter_0_dpp_evt">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="out_trg_0"/>
             <CONNECTION INSTANCE="AXI_DPP_BRam_0" PORT="dpp_evt"/>
           </CONNECTIONS>
         </PORT>
@@ -4261,7 +4262,6 @@
         </PORT>
         <PORT DIR="O" NAME="out_trg" SIGIS="undef" SIGNAME="greaterthan_0_out_trg">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="out_trg_0"/>
             <CONNECTION INSTANCE="AXI_Data_Stream_0" PORT="trg_adc"/>
           </CONNECTIONS>
         </PORT>

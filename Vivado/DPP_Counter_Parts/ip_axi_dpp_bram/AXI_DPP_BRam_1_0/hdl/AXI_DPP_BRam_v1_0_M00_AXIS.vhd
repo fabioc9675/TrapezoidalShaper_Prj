@@ -148,11 +148,13 @@ architecture implementation of AXI_DPP_BRam_v1_0_M00_AXIS is
     -- typedef para el control de deteccion
     signal mem_exec_state    : state_mem;
     signal data_in_dpp       : std_logic_vector (31 downto 0);
+    -- signal data_increm       : std_logic_vector (31 downto 0);
     signal activated         : std_logic    := '0';
     signal detected          : std_logic    := '0';
     
     signal con_bram          : integer range 0 to 4096 := 0;
     signal act               : std_logic := '0';
+    signal inc               : std_logic := '0';
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -163,7 +165,7 @@ begin
     ------------- Begin Cut here for INSTANTIATION Template ----- INST_TAG
     bram_dpp_mem : blk_dpp_mem
         PORT MAP (
-            clka   =>  dpp_clk,
+            clka   =>  M_AXIS_ACLK,
             ena    =>  '1',
             wea    =>  comp_buffa_we,
             addra  =>  comp_buffa_addr,
@@ -181,8 +183,9 @@ begin
 
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     -- actaulizacion de la direccion de memoria
-    -- comp_buffa_addr <=  dpp_amp(14 downto 15 - BRAM_ADDRESS_SIZE);
-
+    --comp_buffa_addr <=  dpp_amp(14 downto 15 - BRAM_ADDRESS_SIZE);
+    --data_in_dpp <= comp_buffa_rd_data;
+    --comp_buffa_wr_data <= data_increm;
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     -- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,6 +195,7 @@ begin
             mem_exec_state <= mem_idle;
             --activated      <= '0';
             detected       <= '0';
+            inc <= '0';
             
             comp_buffa_we  <= "1";
             if ((dpp_clk = '1') and (activated = '0')) then
@@ -221,15 +225,20 @@ begin
                     when mem_read =>
                         comp_buffa_addr <=  dpp_amp(14 downto 15 - BRAM_ADDRESS_SIZE);
                         mem_exec_state <= mem_increment;
-                    
+                        inc <= '1';
+                                            
                     -- Estado incremento
                     when mem_increment => 
-                        data_in_dpp <= conv_std_logic_vector(conv_integer(comp_buffa_rd_data) + 1, 32);
+                        if (inc = '1') then
+                            data_in_dpp <= conv_std_logic_vector(conv_integer(comp_buffa_rd_data) + 1, 32);
+                            --data_increm <= conv_std_logic_vector(conv_integer(data_in_dpp) + 1, 32);
+                            inc <= '0';
+                        end if;                        
                         mem_exec_state <= mem_store;                
                     
                     -- Estado guardar
-                    when mem_store =>
-                        comp_buffa_we <= "1";
+                    when mem_store =>   
+                        comp_buffa_we <= "1";                     
                         comp_buffa_wr_data <= data_in_dpp;
                         mem_exec_state <= mem_idle;
                     
