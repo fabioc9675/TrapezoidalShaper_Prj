@@ -16,15 +16,15 @@ vlib modelsim_lib/msim/lib_cdc_v1_0_2
 vlib modelsim_lib/msim/axi_datamover_v5_1_29
 vlib modelsim_lib/msim/axi_sg_v4_1_15
 vlib modelsim_lib/msim/axi_dma_v7_1_28
-vlib modelsim_lib/msim/axi_lite_ipif_v3_0_4
-vlib modelsim_lib/msim/interrupt_control_v3_1_4
-vlib modelsim_lib/msim/axi_gpio_v2_0_29
 vlib modelsim_lib/msim/proc_sys_reset_v5_0_13
 vlib modelsim_lib/msim/generic_baseblocks_v2_1_0
 vlib modelsim_lib/msim/axi_register_slice_v2_1_27
 vlib modelsim_lib/msim/axi_data_fifo_v2_1_26
 vlib modelsim_lib/msim/axi_crossbar_v2_1_28
 vlib modelsim_lib/msim/xlslice_v1_0_2
+vlib modelsim_lib/msim/axi_lite_ipif_v3_0_4
+vlib modelsim_lib/msim/interrupt_control_v3_1_4
+vlib modelsim_lib/msim/axi_gpio_v2_0_29
 vlib modelsim_lib/msim/blk_mem_gen_v8_4_5
 vlib modelsim_lib/msim/axi_protocol_converter_v2_1_27
 vlib modelsim_lib/msim/axi_clock_converter_v2_1_26
@@ -45,15 +45,15 @@ vmap lib_cdc_v1_0_2 modelsim_lib/msim/lib_cdc_v1_0_2
 vmap axi_datamover_v5_1_29 modelsim_lib/msim/axi_datamover_v5_1_29
 vmap axi_sg_v4_1_15 modelsim_lib/msim/axi_sg_v4_1_15
 vmap axi_dma_v7_1_28 modelsim_lib/msim/axi_dma_v7_1_28
-vmap axi_lite_ipif_v3_0_4 modelsim_lib/msim/axi_lite_ipif_v3_0_4
-vmap interrupt_control_v3_1_4 modelsim_lib/msim/interrupt_control_v3_1_4
-vmap axi_gpio_v2_0_29 modelsim_lib/msim/axi_gpio_v2_0_29
 vmap proc_sys_reset_v5_0_13 modelsim_lib/msim/proc_sys_reset_v5_0_13
 vmap generic_baseblocks_v2_1_0 modelsim_lib/msim/generic_baseblocks_v2_1_0
 vmap axi_register_slice_v2_1_27 modelsim_lib/msim/axi_register_slice_v2_1_27
 vmap axi_data_fifo_v2_1_26 modelsim_lib/msim/axi_data_fifo_v2_1_26
 vmap axi_crossbar_v2_1_28 modelsim_lib/msim/axi_crossbar_v2_1_28
 vmap xlslice_v1_0_2 modelsim_lib/msim/xlslice_v1_0_2
+vmap axi_lite_ipif_v3_0_4 modelsim_lib/msim/axi_lite_ipif_v3_0_4
+vmap interrupt_control_v3_1_4 modelsim_lib/msim/interrupt_control_v3_1_4
+vmap axi_gpio_v2_0_29 modelsim_lib/msim/axi_gpio_v2_0_29
 vmap blk_mem_gen_v8_4_5 modelsim_lib/msim/blk_mem_gen_v8_4_5
 vmap axi_protocol_converter_v2_1_27 modelsim_lib/msim/axi_protocol_converter_v2_1_27
 vmap axi_clock_converter_v2_1_26 modelsim_lib/msim/axi_clock_converter_v2_1_26
@@ -136,18 +136,6 @@ vcom -work axi_dma_v7_1_28  -93  \
 vcom -work xil_defaultlib  -93  \
 "../../../bd/pynq_bd/ip/pynq_bd_axi_dma_0_0/sim/pynq_bd_axi_dma_0_0.vhd" \
 
-vcom -work axi_lite_ipif_v3_0_4  -93  \
-"../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
-
-vcom -work interrupt_control_v3_1_4  -93  \
-"../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/a040/hdl/interrupt_control_v3_1_vh_rfs.vhd" \
-
-vcom -work axi_gpio_v2_0_29  -93  \
-"../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/6219/hdl/axi_gpio_v2_0_vh_rfs.vhd" \
-
-vcom -work xil_defaultlib  -93  \
-"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_0_0/sim/pynq_bd_axi_gpio_0_0.vhd" \
-
 vcom -work proc_sys_reset_v5_0_13  -93  \
 "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd" \
 
@@ -172,37 +160,56 @@ vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.g
 
 vcom -work xil_defaultlib  -93  \
 "../../../bd/pynq_bd/ip/pynq_bd_signal_mux_0_0/sim/pynq_bd_signal_mux_0_0.vhd" \
-"../../../bd/pynq_bd/ip/pynq_bd_fir_fab_0_0/sim/pynq_bd_fir_fab_0_0.vhd" \
-"../../../bd/pynq_bd/ip/pynq_bd_xadc_buffer_0_0/sim/pynq_bd_xadc_buffer_0_0.vhd" \
-
-vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
-"../../../bd/pynq_bd/ip/pynq_bd_xlconstant_1_0/sim/pynq_bd_xlconstant_1_0.v" \
 
 vlog -work xlslice_v1_0_2  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
 
 vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../bd/pynq_bd/ip/pynq_bd_xlslice_0_0/sim/pynq_bd_xlslice_0_0.v" \
-
-vcom -work xil_defaultlib  -93  \
-"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_0/sim/pynq_bd_axi_gpio_1_0.vhd" \
-
-vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../bd/pynq_bd/ip/pynq_bd_xlslice_1_0/sim/pynq_bd_xlslice_1_0.v" \
 
 vcom -work xil_defaultlib  -93  \
-"../../../bd/pynq_bd/ip/pynq_bd_trapz_klm_0_0/sim/pynq_bd_trapz_klm_0_0.vhd" \
-"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_1/sim/pynq_bd_axi_gpio_1_1.vhd" \
 "../../../bd/pynq_bd/ipshared/6c0e/hdl/AXI_Data_Stream_v1_0_M00_AXIS.vhd" \
 "../../../bd/pynq_bd/ipshared/6c0e/hdl/AXI_Data_Stream_v1_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_AXI_Data_Stream_0_0/sim/pynq_bd_AXI_Data_Stream_0_0.vhd" \
-"../../../bd/pynq_bd/ip/pynq_bd_dpp_counter_0_0/sim/pynq_bd_dpp_counter_0_0.vhd" \
-"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_2/sim/pynq_bd_axi_gpio_1_2.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_greaterthan_0_0/sim/pynq_bd_greaterthan_0_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_slice_trapz_0_0/sim/pynq_bd_slice_trapz_0_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_slice_trapz_1_0/sim/pynq_bd_slice_trapz_1_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_axi_dma_1_0/sim/pynq_bd_axi_dma_1_0.vhd" \
+
+vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlslice_2_0/sim/pynq_bd_xlslice_2_0.v" \
+
+vcom -work axi_lite_ipif_v3_0_4  -93  \
+"../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
+
+vcom -work interrupt_control_v3_1_4  -93  \
+"../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/a040/hdl/interrupt_control_v3_1_vh_rfs.vhd" \
+
+vcom -work axi_gpio_v2_0_29  -93  \
+"../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/6219/hdl/axi_gpio_v2_0_vh_rfs.vhd" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_4/sim/pynq_bd_axi_gpio_1_4.vhd" \
+
+vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlslice_rst_dpp_0/sim/pynq_bd_xlslice_rst_dpp_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlslice_rst_fir_0/sim/pynq_bd_xlslice_rst_fir_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlslice_rst_trapz_0/sim/pynq_bd_xlslice_rst_trapz_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlslice_3_0/sim/pynq_bd_xlslice_3_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlconstant_1_0/sim/pynq_bd_xlconstant_1_0.v" \
+
+vcom -work xil_defaultlib  -93  \
+"../../../bd/pynq_bd/ip/pynq_bd_xadc_buffer_0_0/sim/pynq_bd_xadc_buffer_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_fir_fab_0_0/sim/pynq_bd_fir_fab_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_trapz_klm_0_0/sim/pynq_bd_trapz_klm_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_2/sim/pynq_bd_axi_gpio_1_2.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_3/sim/pynq_bd_axi_gpio_1_3.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_1/sim/pynq_bd_axi_gpio_1_1.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_0/sim/pynq_bd_axi_gpio_1_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_0_0/sim/pynq_bd_axi_gpio_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_0_1/sim/pynq_bd_axi_gpio_0_1.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_dpp_counter_0_0/sim/pynq_bd_dpp_counter_0_0.vhd" \
 
 vlog -work blk_mem_gen_v8_4_5  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ip/pynq_bd_AXI_DPP_BRam_0_0/src/blk_dpp_mem/simulation/blk_mem_gen_v8_4.v" \
@@ -214,21 +221,6 @@ vcom -work xil_defaultlib  -93  \
 "../../../bd/pynq_bd/ipshared/5a44/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd" \
 "../../../bd/pynq_bd/ipshared/5a44/hdl/AXI_DPP_BRam_v1_0.vhd" \
 "../../../bd/pynq_bd/ip/pynq_bd_AXI_DPP_BRam_0_0/sim/pynq_bd_AXI_DPP_BRam_0_0.vhd" \
-
-vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
-"../../../bd/pynq_bd/ip/pynq_bd_xlslice_2_0/sim/pynq_bd_xlslice_2_0.v" \
-
-vcom -work xil_defaultlib  -93  \
-"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_1_4/sim/pynq_bd_axi_gpio_1_4.vhd" \
-
-vlog -work xil_defaultlib  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
-"../../../bd/pynq_bd/ip/pynq_bd_xlslice_3_0/sim/pynq_bd_xlslice_3_0.v" \
-"../../../bd/pynq_bd/ip/pynq_bd_xlslice_rst_fir_0/sim/pynq_bd_xlslice_rst_fir_0.v" \
-"../../../bd/pynq_bd/ip/pynq_bd_xlslice_rst_trapz_0/sim/pynq_bd_xlslice_rst_trapz_0.v" \
-"../../../bd/pynq_bd/ip/pynq_bd_xlslice_rst_dpp_0/sim/pynq_bd_xlslice_rst_dpp_0.v" \
-
-vcom -work xil_defaultlib  -93  \
-"../../../bd/pynq_bd/ip/pynq_bd_axi_gpio_0_1/sim/pynq_bd_axi_gpio_0_1.vhd" \
 
 vlog -work axi_protocol_converter_v2_1_27  -incr -mfcu  "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" "+incdir+../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/7698" "+incdir+D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" \
 "../../../../DPP_Counter_Parts.gen/sources_1/bd/pynq_bd/ipshared/aeb3/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \

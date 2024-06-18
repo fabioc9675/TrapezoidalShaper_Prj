@@ -74,8 +74,8 @@
         "axi_gpio_0": "",
         "axi_gpio_amp": ""
       },
-      "dpp_counter_0": "",
-      "AXI_DPP_BRam_0": ""
+      "AXI_DPP_BRam_0": "",
+      "dpp_counter_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -4479,6 +4479,12 @@
           }
         }
       },
+      "AXI_DPP_BRam_0": {
+        "vlnv": "xilinx.com:user:AXI_DPP_BRam:1.0",
+        "xci_name": "pynq_bd_AXI_DPP_BRam_0_0",
+        "xci_path": "ip\\pynq_bd_AXI_DPP_BRam_0_0\\pynq_bd_AXI_DPP_BRam_0_0.xci",
+        "inst_hier_path": "AXI_DPP_BRam_0"
+      },
       "dpp_counter_0": {
         "vlnv": "xilinx.com:module_ref:dpp_counter:1.0",
         "xci_name": "pynq_bd_dpp_counter_0_0",
@@ -4528,12 +4534,6 @@
             "right": "0"
           }
         }
-      },
-      "AXI_DPP_BRam_0": {
-        "vlnv": "xilinx.com:user:AXI_DPP_BRam:1.0",
-        "xci_name": "pynq_bd_AXI_DPP_BRam_0_0",
-        "xci_path": "ip\\pynq_bd_AXI_DPP_BRam_0_0\\pynq_bd_AXI_DPP_BRam_0_0.xci",
-        "inst_hier_path": "AXI_DPP_BRam_0"
       }
     },
     "interface_nets": {

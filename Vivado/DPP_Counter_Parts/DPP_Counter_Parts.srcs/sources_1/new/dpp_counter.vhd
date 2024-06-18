@@ -119,9 +119,11 @@ begin
                     --if (in_sample > comp_buff(comp_buff'high-1)) and counted = '0' then
                     --    fifoy(comp_buff'high-1) <= fifoy(comp_buff'high-1) + 1;
                     --end if;
-                    out_amplitude <= conv_std_logic_vector(in_sample, 32);
-                    det_amplitude <= '1';
-                    counted <= '1';                
+                    if (counted = '0') then
+                        out_amplitude <= conv_std_logic_vector(in_sample, 32);
+                        det_amplitude <= '1';
+                        counted <= '1';        
+                    end if;        
                 end if;  
                 
                 -- clear det_amp
