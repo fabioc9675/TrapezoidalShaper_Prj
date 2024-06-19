@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jun 18 01:46:06 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Jun 18 17:08:09 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="pynq_bd" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -119,14 +119,14 @@
         <CONNECTION INSTANCE="xadc_wiz_0" PORT="vauxp1"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="out_trg_0" SIGIS="undef" SIGNAME="greaterthan_0_out_trg">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="greaterthan_0" PORT="out_trg"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT DIR="O" LEFT="3" NAME="led_0" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_2_Dout">
       <CONNECTIONS>
         <CONNECTION INSTANCE="xlslice_2" PORT="Dout"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="out_trg_0" SIGIS="undef" SIGNAME="dpp_counter_0_dpp_evt">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="dpp_counter_0" PORT="dpp_evt"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -185,7 +185,7 @@
   </EXTERNALINTERFACES>
 
   <MODULES>
-    <MODULE COREREVISION="11" FULLNAME="/AXI_DPP_BRam_0" HWVERSION="1.0" INSTANCE="AXI_DPP_BRam_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="AXI_DPP_BRam" VLNV="xilinx.com:user:AXI_DPP_BRam:1.0">
+    <MODULE COREREVISION="22" FULLNAME="/AXI_DPP_BRam_0" HWVERSION="1.0" INSTANCE="AXI_DPP_BRam_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="AXI_DPP_BRam" VLNV="xilinx.com:user:AXI_DPP_BRam:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="C_M00_AXIS_TDATA_WIDTH" VALUE="32"/>
@@ -199,7 +199,7 @@
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="dpp_rst" POLARITY="ACTIVE_LOW" SIGIS="undef" SIGNAME="hier_rst_xlslice_rst_bram_Dout">
+        <PORT DIR="I" NAME="dpp_rst" SIGIS="undef" SIGNAME="hier_rst_xlslice_rst_bram_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_rst_xlslice_rst_bram" PORT="Dout"/>
           </CONNECTIONS>
@@ -4231,6 +4231,7 @@
         </PORT>
         <PORT DIR="O" NAME="dpp_evt" SIGIS="undef" SIGNAME="dpp_counter_0_dpp_evt">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="out_trg_0"/>
             <CONNECTION INSTANCE="AXI_DPP_BRam_0" PORT="dpp_evt"/>
           </CONNECTIONS>
         </PORT>
@@ -4261,7 +4262,6 @@
         </PORT>
         <PORT DIR="O" NAME="out_trg" SIGIS="undef" SIGNAME="greaterthan_0_out_trg">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="out_trg_0"/>
             <CONNECTION INSTANCE="AXI_Data_Stream_0" PORT="trg_adc"/>
           </CONNECTIONS>
         </PORT>
@@ -6917,7 +6917,7 @@
             <CONNECTION INSTANCE="hier_rst_axi_gpio_rst" PORT="gpio_io_o"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Dout" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="hier_rst_xlslice_rst_bram_Dout">
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="hier_rst_xlslice_rst_bram_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="AXI_DPP_BRam_0" PORT="dpp_rst"/>
           </CONNECTIONS>
@@ -9140,6 +9140,26 @@
             <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="M07_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M07_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M08_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M08_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="11" NAME="S00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="processing_system7_0_M_AXI_GP0_AWID">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_AWID"/>
@@ -9419,12 +9439,12 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="M01_AXI_awprot" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_awvalid" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_awvalid">
+        <PORT DIR="O" NAME="M01_AXI_awvalid" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_awvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_awvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_awready" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_awready">
+        <PORT DIR="I" NAME="M01_AXI_awready" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_awready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_awready"/>
           </CONNECTIONS>
@@ -9439,12 +9459,12 @@
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_wstrb"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_wvalid" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_wvalid">
+        <PORT DIR="O" NAME="M01_AXI_wvalid" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_wvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_wvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_wready" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_wready">
+        <PORT DIR="I" NAME="M01_AXI_wready" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_wready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_wready"/>
           </CONNECTIONS>
@@ -9454,12 +9474,12 @@
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_bresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_bvalid" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_bvalid">
+        <PORT DIR="I" NAME="M01_AXI_bvalid" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_bvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_bvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_bready" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_bready">
+        <PORT DIR="O" NAME="M01_AXI_bready" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_bready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_bready"/>
           </CONNECTIONS>
@@ -9470,12 +9490,12 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="M01_AXI_arprot" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_arvalid" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_arvalid">
+        <PORT DIR="O" NAME="M01_AXI_arvalid" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_arvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_arvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_arready" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_arready">
+        <PORT DIR="I" NAME="M01_AXI_arready" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_arready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_arready"/>
           </CONNECTIONS>
@@ -9490,12 +9510,12 @@
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_rresp"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="M01_AXI_rvalid" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_rvalid">
+        <PORT DIR="I" NAME="M01_AXI_rvalid" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_rvalid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_rvalid"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="M01_AXI_rready" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_rready">
+        <PORT DIR="O" NAME="M01_AXI_rready" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_0_s_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_0" PORT="s_axi_rready"/>
           </CONNECTIONS>
@@ -9931,16 +9951,6 @@
             <CONNECTION INSTANCE="hier_gpio_axi_gpio_count" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="M07_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M07_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_aresetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="O" LEFT="31" NAME="M07_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="hier_rst_axi_gpio_rst_s_axi_awaddr">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_rst_axi_gpio_rst" PORT="s_axi_awaddr"/>
@@ -10026,16 +10036,6 @@
         <PORT DIR="O" NAME="M07_AXI_rready" SIGIS="undef" SIGNAME="hier_rst_axi_gpio_rst_s_axi_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="hier_rst_axi_gpio_rst" PORT="s_axi_rready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M08_ACLK" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="M08_ARESETN" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_aresetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="M08_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="hier_gpio_axi_gpio_amp_s_axi_awaddr">
