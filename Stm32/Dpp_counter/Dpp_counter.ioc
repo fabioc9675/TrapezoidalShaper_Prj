@@ -1,6 +1,6 @@
 #MicroXplorer Configuration settings - do not modify
 ADC1.Channel-0\#ChannelRegularConversion=ADC_CHANNEL_15
-ADC1.ClockPrescaler=ADC_CLOCK_ASYNC_DIV1
+ADC1.ClockPrescaler=ADC_CLOCK_ASYNC_DIV4
 ADC1.ContinuousConvMode=ENABLE
 ADC1.ConversionDataManagement=ADC_CONVERSIONDATA_DMA_CIRCULAR
 ADC1.IPParameters=Rank-0\#ChannelRegularConversion,Channel-0\#ChannelRegularConversion,SamplingTime-0\#ChannelRegularConversion,OffsetNumber-0\#ChannelRegularConversion,OffsetSignedSaturation-0\#ChannelRegularConversion,NbrOfConversionFlag,master,ContinuousConvMode,NbrOfConversion,Resolution,Overrun,ConversionDataManagement,ClockPrescaler

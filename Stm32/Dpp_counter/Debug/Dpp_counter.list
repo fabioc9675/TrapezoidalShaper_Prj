@@ -449,136 +449,135 @@ void MX_ADC1_Init(void)
  80006a4:	4b30      	ldr	r3, [pc, #192]	@ (8000768 <MX_ADC1_Init+0xe8>)
  80006a6:	4a31      	ldr	r2, [pc, #196]	@ (800076c <MX_ADC1_Init+0xec>)
  80006a8:	601a      	str	r2, [r3, #0]
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV4;
  80006aa:	4b2f      	ldr	r3, [pc, #188]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006ac:	2200      	movs	r2, #0
- 80006ae:	605a      	str	r2, [r3, #4]
+ 80006ac:	f44f 2200 	mov.w	r2, #524288	@ 0x80000
+ 80006b0:	605a      	str	r2, [r3, #4]
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
- 80006b0:	4b2d      	ldr	r3, [pc, #180]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006b2:	2208      	movs	r2, #8
- 80006b4:	609a      	str	r2, [r3, #8]
+ 80006b2:	4b2d      	ldr	r3, [pc, #180]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006b4:	2208      	movs	r2, #8
+ 80006b6:	609a      	str	r2, [r3, #8]
   hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
- 80006b6:	4b2c      	ldr	r3, [pc, #176]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006b8:	2200      	movs	r2, #0
- 80006ba:	60da      	str	r2, [r3, #12]
+ 80006b8:	4b2b      	ldr	r3, [pc, #172]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006ba:	2200      	movs	r2, #0
+ 80006bc:	60da      	str	r2, [r3, #12]
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
- 80006bc:	4b2a      	ldr	r3, [pc, #168]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006be:	2204      	movs	r2, #4
- 80006c0:	611a      	str	r2, [r3, #16]
+ 80006be:	4b2a      	ldr	r3, [pc, #168]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006c0:	2204      	movs	r2, #4
+ 80006c2:	611a      	str	r2, [r3, #16]
   hadc1.Init.LowPowerAutoWait = DISABLE;
- 80006c2:	4b29      	ldr	r3, [pc, #164]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006c4:	2200      	movs	r2, #0
- 80006c6:	751a      	strb	r2, [r3, #20]
+ 80006c4:	4b28      	ldr	r3, [pc, #160]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006c6:	2200      	movs	r2, #0
+ 80006c8:	751a      	strb	r2, [r3, #20]
   hadc1.Init.ContinuousConvMode = ENABLE;
- 80006c8:	4b27      	ldr	r3, [pc, #156]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006ca:	2201      	movs	r2, #1
- 80006cc:	755a      	strb	r2, [r3, #21]
+ 80006ca:	4b27      	ldr	r3, [pc, #156]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006cc:	2201      	movs	r2, #1
+ 80006ce:	755a      	strb	r2, [r3, #21]
   hadc1.Init.NbrOfConversion = 1;
- 80006ce:	4b26      	ldr	r3, [pc, #152]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006d0:	2201      	movs	r2, #1
- 80006d2:	619a      	str	r2, [r3, #24]
+ 80006d0:	4b25      	ldr	r3, [pc, #148]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006d2:	2201      	movs	r2, #1
+ 80006d4:	619a      	str	r2, [r3, #24]
   hadc1.Init.DiscontinuousConvMode = DISABLE;
- 80006d4:	4b24      	ldr	r3, [pc, #144]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006d6:	2200      	movs	r2, #0
- 80006d8:	771a      	strb	r2, [r3, #28]
+ 80006d6:	4b24      	ldr	r3, [pc, #144]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006d8:	2200      	movs	r2, #0
+ 80006da:	771a      	strb	r2, [r3, #28]
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
- 80006da:	4b23      	ldr	r3, [pc, #140]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006dc:	2200      	movs	r2, #0
- 80006de:	625a      	str	r2, [r3, #36]	@ 0x24
+ 80006dc:	4b22      	ldr	r3, [pc, #136]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006de:	2200      	movs	r2, #0
+ 80006e0:	625a      	str	r2, [r3, #36]	@ 0x24
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
- 80006e0:	4b21      	ldr	r3, [pc, #132]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006e2:	2200      	movs	r2, #0
- 80006e4:	629a      	str	r2, [r3, #40]	@ 0x28
+ 80006e2:	4b21      	ldr	r3, [pc, #132]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006e4:	2200      	movs	r2, #0
+ 80006e6:	629a      	str	r2, [r3, #40]	@ 0x28
   hadc1.Init.ConversionDataManagement = ADC_CONVERSIONDATA_DMA_CIRCULAR;
- 80006e6:	4b20      	ldr	r3, [pc, #128]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006e8:	2203      	movs	r2, #3
- 80006ea:	62da      	str	r2, [r3, #44]	@ 0x2c
+ 80006e8:	4b1f      	ldr	r3, [pc, #124]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006ea:	2203      	movs	r2, #3
+ 80006ec:	62da      	str	r2, [r3, #44]	@ 0x2c
   hadc1.Init.Overrun = ADC_OVR_DATA_OVERWRITTEN;
- 80006ec:	4b1e      	ldr	r3, [pc, #120]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006ee:	f44f 5280 	mov.w	r2, #4096	@ 0x1000
- 80006f2:	631a      	str	r2, [r3, #48]	@ 0x30
+ 80006ee:	4b1e      	ldr	r3, [pc, #120]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006f0:	f44f 5280 	mov.w	r2, #4096	@ 0x1000
+ 80006f4:	631a      	str	r2, [r3, #48]	@ 0x30
   hadc1.Init.LeftBitShift = ADC_LEFTBITSHIFT_NONE;
- 80006f4:	4b1c      	ldr	r3, [pc, #112]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006f6:	2200      	movs	r2, #0
- 80006f8:	635a      	str	r2, [r3, #52]	@ 0x34
+ 80006f6:	4b1c      	ldr	r3, [pc, #112]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006f8:	2200      	movs	r2, #0
+ 80006fa:	635a      	str	r2, [r3, #52]	@ 0x34
   hadc1.Init.OversamplingMode = DISABLE;
- 80006fa:	4b1b      	ldr	r3, [pc, #108]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 80006fc:	2200      	movs	r2, #0
- 80006fe:	f883 2038 	strb.w	r2, [r3, #56]	@ 0x38
+ 80006fc:	4b1a      	ldr	r3, [pc, #104]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 80006fe:	2200      	movs	r2, #0
+ 8000700:	f883 2038 	strb.w	r2, [r3, #56]	@ 0x38
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
- 8000702:	4819      	ldr	r0, [pc, #100]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 8000704:	f001 f9ac 	bl	8001a60 <HAL_ADC_Init>
- 8000708:	4603      	mov	r3, r0
- 800070a:	2b00      	cmp	r3, #0
- 800070c:	d001      	beq.n	8000712 <MX_ADC1_Init+0x92>
+ 8000704:	4818      	ldr	r0, [pc, #96]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 8000706:	f001 f9ab 	bl	8001a60 <HAL_ADC_Init>
+ 800070a:	4603      	mov	r3, r0
+ 800070c:	2b00      	cmp	r3, #0
+ 800070e:	d001      	beq.n	8000714 <MX_ADC1_Init+0x94>
   {
     Error_Handler();
- 800070e:	f000 fbcf 	bl	8000eb0 <Error_Handler>
+ 8000710:	f000 fbce 	bl	8000eb0 <Error_Handler>
   }
 
   /** Configure the ADC multi-mode
   */
   multimode.Mode = ADC_MODE_INDEPENDENT;
- 8000712:	2300      	movs	r3, #0
- 8000714:	61fb      	str	r3, [r7, #28]
+ 8000714:	2300      	movs	r3, #0
+ 8000716:	61fb      	str	r3, [r7, #28]
   if (HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode) != HAL_OK)
- 8000716:	f107 031c 	add.w	r3, r7, #28
- 800071a:	4619      	mov	r1, r3
- 800071c:	4812      	ldr	r0, [pc, #72]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 800071e:	f002 fb4d 	bl	8002dbc <HAL_ADCEx_MultiModeConfigChannel>
- 8000722:	4603      	mov	r3, r0
- 8000724:	2b00      	cmp	r3, #0
- 8000726:	d001      	beq.n	800072c <MX_ADC1_Init+0xac>
+ 8000718:	f107 031c 	add.w	r3, r7, #28
+ 800071c:	4619      	mov	r1, r3
+ 800071e:	4812      	ldr	r0, [pc, #72]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 8000720:	f002 fb4c 	bl	8002dbc <HAL_ADCEx_MultiModeConfigChannel>
+ 8000724:	4603      	mov	r3, r0
+ 8000726:	2b00      	cmp	r3, #0
+ 8000728:	d001      	beq.n	800072e <MX_ADC1_Init+0xae>
   {
     Error_Handler();
- 8000728:	f000 fbc2 	bl	8000eb0 <Error_Handler>
+ 800072a:	f000 fbc1 	bl	8000eb0 <Error_Handler>
   }
 
   /** Configure Regular Channel
   */
   sConfig.Channel = ADC_CHANNEL_15;
- 800072c:	4b10      	ldr	r3, [pc, #64]	@ (8000770 <MX_ADC1_Init+0xf0>)
- 800072e:	603b      	str	r3, [r7, #0]
+ 800072e:	4b10      	ldr	r3, [pc, #64]	@ (8000770 <MX_ADC1_Init+0xf0>)
+ 8000730:	603b      	str	r3, [r7, #0]
   sConfig.Rank = ADC_REGULAR_RANK_1;
- 8000730:	2306      	movs	r3, #6
- 8000732:	607b      	str	r3, [r7, #4]
+ 8000732:	2306      	movs	r3, #6
+ 8000734:	607b      	str	r3, [r7, #4]
   sConfig.SamplingTime = ADC_SAMPLETIME_8CYCLES_5;
- 8000734:	2302      	movs	r3, #2
- 8000736:	60bb      	str	r3, [r7, #8]
+ 8000736:	2302      	movs	r3, #2
+ 8000738:	60bb      	str	r3, [r7, #8]
   sConfig.SingleDiff = ADC_SINGLE_ENDED;
- 8000738:	f240 73ff 	movw	r3, #2047	@ 0x7ff
- 800073c:	60fb      	str	r3, [r7, #12]
+ 800073a:	f240 73ff 	movw	r3, #2047	@ 0x7ff
+ 800073e:	60fb      	str	r3, [r7, #12]
   sConfig.OffsetNumber = ADC_OFFSET_NONE;
- 800073e:	2304      	movs	r3, #4
- 8000740:	613b      	str	r3, [r7, #16]
+ 8000740:	2304      	movs	r3, #4
+ 8000742:	613b      	str	r3, [r7, #16]
   sConfig.Offset = 0;
- 8000742:	2300      	movs	r3, #0
- 8000744:	617b      	str	r3, [r7, #20]
+ 8000744:	2300      	movs	r3, #0
+ 8000746:	617b      	str	r3, [r7, #20]
   sConfig.OffsetSignedSaturation = DISABLE;
- 8000746:	2300      	movs	r3, #0
- 8000748:	767b      	strb	r3, [r7, #25]
+ 8000748:	2300      	movs	r3, #0
+ 800074a:	767b      	strb	r3, [r7, #25]
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
- 800074a:	463b      	mov	r3, r7
- 800074c:	4619      	mov	r1, r3
- 800074e:	4806      	ldr	r0, [pc, #24]	@ (8000768 <MX_ADC1_Init+0xe8>)
- 8000750:	f001 fc6c 	bl	800202c <HAL_ADC_ConfigChannel>
- 8000754:	4603      	mov	r3, r0
- 8000756:	2b00      	cmp	r3, #0
- 8000758:	d001      	beq.n	800075e <MX_ADC1_Init+0xde>
+ 800074c:	463b      	mov	r3, r7
+ 800074e:	4619      	mov	r1, r3
+ 8000750:	4805      	ldr	r0, [pc, #20]	@ (8000768 <MX_ADC1_Init+0xe8>)
+ 8000752:	f001 fc6b 	bl	800202c <HAL_ADC_ConfigChannel>
+ 8000756:	4603      	mov	r3, r0
+ 8000758:	2b00      	cmp	r3, #0
+ 800075a:	d001      	beq.n	8000760 <MX_ADC1_Init+0xe0>
   {
     Error_Handler();
- 800075a:	f000 fba9 	bl	8000eb0 <Error_Handler>
+ 800075c:	f000 fba8 	bl	8000eb0 <Error_Handler>
   }
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
 
 }
- 800075e:	bf00      	nop
- 8000760:	3728      	adds	r7, #40	@ 0x28
- 8000762:	46bd      	mov	sp, r7
- 8000764:	bd80      	pop	{r7, pc}
- 8000766:	bf00      	nop
+ 8000760:	bf00      	nop
+ 8000762:	3728      	adds	r7, #40	@ 0x28
+ 8000764:	46bd      	mov	sp, r7
+ 8000766:	bd80      	pop	{r7, pc}
  8000768:	24000084 	.word	0x24000084
  800076c:	40022000 	.word	0x40022000
  8000770:	3ef08000 	.word	0x3ef08000
