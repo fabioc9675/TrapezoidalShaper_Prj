@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "usart.h"
 #include "adc.h"
+#include "comp.h"
 #include <stdio.h>
 
 /* USER CODE END Includes */
@@ -38,7 +39,9 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define BUFFER_SIZE 8191
+#define BUFFER_SIZE 16384
+#define BUFFER_PRINT 8192
+#define PREEMPT_SIZE 1024
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -50,12 +53,19 @@
 /* USER CODE BEGIN Variables */
 uint8_t Rx_Data[10];
 uint8_t fl_receive = 0;
+uint8_t fl_trigger = 0;
 char    Tx_Data[10];
 
 uint32_t medicion[BUFFER_SIZE]; // Primer buffer para almacenar los valores del ADC
 uint32_t envio[BUFFER_SIZE]; // Segundo buffer para almacenar los valores del ADC
 uint32_t *currentBuffer = medicion; // Apuntador al buffer actual
 uint32_t *sendBuffer = NULL; // Apuntador al buffer que se enviará
+
+uint32_t read_ptr = 0; // Puntero de lectura para FIFO circular
+uint32_t write_ptr = 0; // Puntero de escritura para FIFO circular
+uint8_t triggered = 0; // Flag para indicar si se ha activado el trigger
+uint8_t capture_done = 0; // Flag para indicar si se ha completado la captura
+
 int contador = 0;
 
 /* USER CODE END Variables */
@@ -165,15 +175,31 @@ void StartSamplingTask(void const * argument)
 {
   /* USER CODE BEGIN StartSamplingTask */
 	HAL_ADC_Start_DMA(&hadc1, currentBuffer, BUFFER_SIZE);
+	HAL_COMP_Start_IT(&hcomp1);
 	//HAL_ADC_Start(&hadc1);
   /* Infinite loop */
   for(;;)
   {
 	  contador++;
-    osDelay(200);
+	  if (capture_done == 1) {
+		  capture_done = 0;
 
-    HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-    osDelay(300);
+
+		  for (int i = 0; i < BUFFER_SIZE; i++){
+			  if (*(sendBuffer+i) > 2000) {
+				  write_ptr = (i + BUFFER_SIZE - PREEMPT_SIZE) % BUFFER_SIZE;
+				  break;
+			  }
+		  }
+
+		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
+		  osDelay(20);
+		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 0);
+	  }
+//	  osDelay(200);
+//	  HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+//	  osDelay(300);
+
 
   }
   /* USER CODE END StartSamplingTask */
@@ -198,27 +224,13 @@ void StartSerialTask(void const * argument)
 
 	  if (fl_receive == 1){
 		  fl_receive = 0;
-		  HAL_ADC_Stop_DMA(&hadc1);
-		  // Alternar buffers
-		          if (currentBuffer == medicion)
-		          {
-		              currentBuffer = envio;
-		              sendBuffer = medicion;
-		          }
-		          else
-		          {
-		              currentBuffer = medicion;
-		              sendBuffer = envio;
-		          }
 
-		          // Reiniciar el DMA con el nuevo buffer
-		          HAL_ADC_Start_DMA(&hadc1, currentBuffer, BUFFER_SIZE);
+		  //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
+		  for (int i = 0; i < BUFFER_PRINT ; i++){
+			  sprintf(Tx_Data, "%lu\r\n", *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
+			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
+		  }
 
-		          //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
-		          		  for (int i = 0; i < BUFFER_SIZE ; i++){
-		          			  sprintf(Tx_Data, "%lu\r\n", *(sendBuffer+i));
-		          			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
-		          		  }
 
 	  }
 
@@ -229,6 +241,39 @@ void StartSerialTask(void const * argument)
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
+
+void HAL_COMP_TriggerCallback(COMP_HandleTypeDef *hcomp){
+	fl_trigger = 1;
+
+
+}
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
+	read_ptr = (read_ptr + 1) % BUFFER_SIZE;
+
+	if (fl_trigger == 1){
+		fl_trigger = 0;
+		if (capture_done ==  0) {
+				capture_done = 1;
+			HAL_ADC_Stop_DMA(&hadc1);
+			  // Alternar buffers
+			  if (currentBuffer == medicion)
+			  {
+				  currentBuffer = envio;
+				  sendBuffer = medicion;
+			  }
+			  else
+			  {
+				  currentBuffer = medicion;
+				  sendBuffer = envio;
+			  }
+
+			  // Reiniciar el DMA con el nuevo buffer
+			  HAL_ADC_Start_DMA(&hadc1, currentBuffer, BUFFER_SIZE);
+			}
+	}
+}
+
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
 	//HAL_GPIO_TogglePin (LD3_GPIO_Port, LD3_Pin);
 	HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
