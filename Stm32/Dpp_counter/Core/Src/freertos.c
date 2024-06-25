@@ -26,6 +26,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "usart.h"
+#include "adc.h"
+#include <stdio.h>
 
 /* USER CODE END Includes */
 
@@ -48,8 +50,9 @@
 /* USER CODE BEGIN Variables */
 uint8_t Rx_Data[10];
 uint8_t fl_receive = 0;
+char    Tx_Data[10];
 
-uint32_t medicion;
+uint32_t medicion[1024];
 int contador = 0;
 
 /* USER CODE END Variables */
@@ -158,10 +161,17 @@ void StartDefaultTask(void const * argument)
 void StartSamplingTask(void const * argument)
 {
   /* USER CODE BEGIN StartSamplingTask */
+	HAL_ADC_Start_DMA(&hadc1, &medicion, 1024);
+	//HAL_ADC_Start(&hadc1);
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  contador++;
+    osDelay(200);
+
+    HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+    osDelay(300);
+
   }
   /* USER CODE END StartSamplingTask */
 }
@@ -185,7 +195,11 @@ void StartSerialTask(void const * argument)
 
 	  if (fl_receive == 1){
 		  fl_receive = 0;
-		  HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
+		  //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
+		  for (int i = 0; i < 1024 ; i++){
+			  sprintf(Tx_Data, "%lu\r\n", medicion[i]);
+			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
+		  }
 	  }
 
     osDelay(1);
