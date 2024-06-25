@@ -7,8 +7,7 @@
       "name": "pynq_bd",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "None",
-      "tool_version": "2022.2",
-      "validated": "true"
+      "tool_version": "2022.2"
     },
     "design_tree": {
       "processing_system7_0": "",
@@ -235,17 +234,7 @@
       },
       "led_rst_0": {
         "type": "rst",
-        "direction": "O",
-        "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "POLARITY": {
-            "value": "ACTIVE_LOW",
-            "value_src": "default"
-          }
-        }
+        "direction": "O"
       },
       "led_1": {
         "direction": "O",
@@ -253,13 +242,7 @@
         "right": "0"
       },
       "fifo_en_0": {
-        "direction": "I",
-        "parameters": {
-          "POLARITY": {
-            "value": "ACTIVE_LOW",
-            "value_src": "default_prop"
-          }
-        }
+        "direction": "I"
       },
       "in_sig_0": {
         "direction": "I"
@@ -3024,14 +3007,11 @@
             "type": "rst",
             "direction": "O"
           },
+          "ap_ready": {
+            "direction": "O"
+          },
           "fifo_en": {
-            "direction": "I",
-            "parameters": {
-              "POLARITY": {
-                "value": "ACTIVE_LOW",
-                "value_src": "default_prop"
-              }
-            }
+            "direction": "I"
           },
           "fifo_o": {
             "direction": "O",

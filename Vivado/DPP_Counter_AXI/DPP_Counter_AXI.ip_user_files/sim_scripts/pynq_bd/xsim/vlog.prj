@@ -1,0 +1,17 @@
+verilog xil_defaultlib --include "D:/Xilinx/Vivado/2022.2/data/xilinx_vip/include" --include "../../../../DPP_Counter_AXI.gen/sources_1/bd/pynq_bd/ipshared/ec67/hdl" --include "../../../../DPP_Counter_AXI.gen/sources_1/bd/pynq_bd/ipshared/ee60/hdl" --include "../../../../DPP_Counter_AXI.gen/sources_1/bd/pynq_bd/ipshared/7698" \
+"../../../bd/pynq_bd/ip/pynq_bd_processing_system7_0_0/sim/pynq_bd_processing_system7_0_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_clk_wiz_0_0/pynq_bd_clk_wiz_0_0_clk_wiz.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_clk_wiz_0_0/pynq_bd_clk_wiz_0_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlconstant_0_0/sim/pynq_bd_xlconstant_0_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xbar_0/sim/pynq_bd_xbar_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlslice_xadc_buff_rst_1/sim/pynq_bd_xlslice_xadc_buff_rst_1.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlslice_0_0/sim/pynq_bd_xlslice_0_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlslice_fir_rst_0/sim/pynq_bd_xlslice_fir_rst_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_xlslice_trapz_rst_0/sim/pynq_bd_xlslice_trapz_rst_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_auto_pc_0/sim/pynq_bd_auto_pc_0.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_auto_pc_1/sim/pynq_bd_auto_pc_1.v" \
+"../../../bd/pynq_bd/ip/pynq_bd_auto_us_0/sim/pynq_bd_auto_us_0.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
