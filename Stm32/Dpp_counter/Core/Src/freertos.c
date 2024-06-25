@@ -38,7 +38,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define BUFFER_SIZE 8191
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -52,7 +52,10 @@ uint8_t Rx_Data[10];
 uint8_t fl_receive = 0;
 char    Tx_Data[10];
 
-uint32_t medicion[1024];
+uint32_t medicion[BUFFER_SIZE]; // Primer buffer para almacenar los valores del ADC
+uint32_t envio[BUFFER_SIZE]; // Segundo buffer para almacenar los valores del ADC
+uint32_t *currentBuffer = medicion; // Apuntador al buffer actual
+uint32_t *sendBuffer = NULL; // Apuntador al buffer que se enviará
 int contador = 0;
 
 /* USER CODE END Variables */
@@ -161,7 +164,7 @@ void StartDefaultTask(void const * argument)
 void StartSamplingTask(void const * argument)
 {
   /* USER CODE BEGIN StartSamplingTask */
-	HAL_ADC_Start_DMA(&hadc1, &medicion, 1024);
+	HAL_ADC_Start_DMA(&hadc1, currentBuffer, BUFFER_SIZE);
 	//HAL_ADC_Start(&hadc1);
   /* Infinite loop */
   for(;;)
@@ -195,11 +198,28 @@ void StartSerialTask(void const * argument)
 
 	  if (fl_receive == 1){
 		  fl_receive = 0;
-		  //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
-		  for (int i = 0; i < 1024 ; i++){
-			  sprintf(Tx_Data, "%lu\r\n", medicion[i]);
-			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
-		  }
+		  HAL_ADC_Stop_DMA(&hadc1);
+		  // Alternar buffers
+		          if (currentBuffer == medicion)
+		          {
+		              currentBuffer = envio;
+		              sendBuffer = medicion;
+		          }
+		          else
+		          {
+		              currentBuffer = medicion;
+		              sendBuffer = envio;
+		          }
+
+		          // Reiniciar el DMA con el nuevo buffer
+		          HAL_ADC_Start_DMA(&hadc1, currentBuffer, BUFFER_SIZE);
+
+		          //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
+		          		  for (int i = 0; i < BUFFER_SIZE ; i++){
+		          			  sprintf(Tx_Data, "%lu\r\n", *(sendBuffer+i));
+		          			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
+		          		  }
+
 	  }
 
     osDelay(1);
