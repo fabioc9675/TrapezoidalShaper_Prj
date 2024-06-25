@@ -1,6 +1,7 @@
-../Core/Src/freertos.c:73:6:vApplicationGetIdleTaskMemory	1
-../Core/Src/freertos.c:87:6:MX_FREERTOS_Init	1
-../Core/Src/freertos.c:134:6:StartDefaultTask	1
-../Core/Src/freertos.c:153:6:StartSamplingTask	1
-../Core/Src/freertos.c:171:6:StartSerialTask	1
-../Core/Src/freertos.c:189:6:HAL_UART_RxCpltCallback	1
+../Core/Src/freertos.c:75:6:vApplicationGetIdleTaskMemory	1
+../Core/Src/freertos.c:89:6:MX_FREERTOS_Init	1
+../Core/Src/freertos.c:136:6:StartDefaultTask	1
+../Core/Src/freertos.c:155:6:StartSamplingTask	1
+../Core/Src/freertos.c:173:6:StartSerialTask	2
+../Core/Src/freertos.c:195:6:HAL_UART_TxCpltCallback	1
+../Core/Src/freertos.c:201:6:HAL_UART_RxCpltCallback	1

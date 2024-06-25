@@ -46,6 +46,11 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
+uint8_t Rx_Data[10];
+uint8_t fl_receive = 0;
+
+uint32_t medicion;
+int contador = 0;
 
 /* USER CODE END Variables */
 osThreadId mainTaskHandle;
@@ -171,23 +176,36 @@ void StartSamplingTask(void const * argument)
 void StartSerialTask(void const * argument)
 {
   /* USER CODE BEGIN StartSerialTask */
+	//__HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE);   // enable idle line interrupt
+
+	HAL_UART_Receive_IT(&huart3, Rx_Data, 1);
   /* Infinite loop */
   for(;;)
   {
 
-	  HAL_UART_Transmit(&huart3, "HELLO FABIAN\n", 13, 0xFF);
+	  if (fl_receive == 1){
+		  fl_receive = 0;
+		  HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
+	  }
 
-
-
-    osDelay(2000);
+    osDelay(1);
   }
   /* USER CODE END StartSerialTask */
 }
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
+	//HAL_GPIO_TogglePin (LD3_GPIO_Port, LD3_Pin);
+	HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+	return;
+}
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
+	HAL_UART_Receive_IT(&huart3, Rx_Data, 1);
+	fl_receive = 1;
+	return;
 }
 /* USER CODE END Application */
