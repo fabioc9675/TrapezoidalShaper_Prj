@@ -29,7 +29,7 @@
 #include "adc.h"
 #include "comp.h"
 #include <stdio.h>
-
+#include "arm_math.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,6 +42,8 @@
 #define BUFFER_SIZE 16384
 #define BUFFER_PRINT 8192
 #define PREEMPT_SIZE 1024
+
+#define FIR_TAP_NUM 31
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -66,7 +68,57 @@ uint32_t write_ptr = 0; // Puntero de escritura para FIFO circular
 uint8_t triggered = 0; // Flag para indicar si se ha activado el trigger
 uint8_t capture_done = 0; // Flag para indicar si se ha completado la captura
 
+
 int contador = 0;
+
+
+// Parametros del FIR Filter
+//const q31_t firCoeffs32[FIR_TAP_NUM] = {
+//		0x0000, 0x0001, 0x0003, 0x0007, 0x000C, 0x0012,
+//		0x001A, 0x0021, 0x0029, 0x0031, 0x0038, 0x003E,
+//		0x0043, 0x0046, 0x0048, 0x0048, 0x0046, 0x0043,
+//		0x003E, 0x0038, 0x0031, 0x0029, 0x0021, 0x001A,
+//		0x0012, 0x000C, 0x0007, 0x0003, 0x0001, 0x0000, 0x0000};
+
+const float32_t firCoeffs32[FIR_TAP_NUM] = {
+0.0,
+0.0007663088786586984,
+0.003059471829289364,
+0.006811378631115489,
+0.011876947805368786,
+0.018040490404885947,
+0.025025961489500727,
+0.03251058488990011,
+0.04014114263135406,
+0.047552064652254124,
+0.054384346502548496,
+0.06030426910489331,
+0.06502089883314185,
+0.06830140818243065,
+0.06998337387462639,
+0.06998337387462639,
+0.06830140818243065,
+0.06502089883314185,
+0.0603042691048933,
+0.054384346502548496,
+0.04755206465225412,
+0.04014114263135405,
+0.0325105848899001,
+0.02502596148950071,
+0.018040490404885933,
+0.011876947805368774,
+0.00681137863111547,
+0.003059471829289364,
+0.0007663088786586984,
+0.0};
+
+// Variables para el filtro FIR
+float32_t firStateF32[FIR_TAP_NUM]; // [BUFFER_SIZE + FIR_TAP_NUM - 1];
+arm_fir_instance_q31 S;
+float32_t input; // [BUFFER_SIZE];
+float32_t output; // [BUFFER_SIZE];
+uint32_t outbuff[BUFFER_SIZE]; // Segundo buffer para almacenar los valores del ADC
+
 
 /* USER CODE END Variables */
 osThreadId mainTaskHandle;
@@ -75,6 +127,8 @@ osThreadId SerialTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
+// Inicializacion del filtro FIR
+void initFIR(void);
 
 /* USER CODE END FunctionPrototypes */
 
@@ -176,11 +230,13 @@ void StartSamplingTask(void const * argument)
   /* USER CODE BEGIN StartSamplingTask */
 	HAL_ADC_Start_DMA(&hadc1, currentBuffer, BUFFER_SIZE);
 	HAL_COMP_Start_IT(&hcomp1);
+
+	initFIR();
 	//HAL_ADC_Start(&hadc1);
   /* Infinite loop */
   for(;;)
   {
-	  contador++;
+
 	  if (capture_done == 1) {
 		  capture_done = 0;
 
@@ -188,6 +244,7 @@ void StartSamplingTask(void const * argument)
 		  for (int i = 0; i < BUFFER_SIZE; i++){
 			  if (*(sendBuffer+i) > 2000) {
 				  write_ptr = (i + BUFFER_SIZE - PREEMPT_SIZE) % BUFFER_SIZE;
+				  contador++;
 				  break;
 			  }
 		  }
@@ -225,10 +282,28 @@ void StartSerialTask(void const * argument)
 	  if (fl_receive == 1){
 		  fl_receive = 0;
 
+		  // Copiar los datos del buffer ADC al buffer de entrada
+		  for (int i = 0; i < BUFFER_SIZE; i++) {
+		    input = (float32_t)sendBuffer[i];
+		    arm_fir_f32(&S, &input, &output, 1);
+		    outbuff[i] = (uint32_t)output;
+		  }
+
+		  // Aplicar el filtro FIR
+
+
+
+
+
+
 		  //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
 		  for (int i = 0; i < BUFFER_PRINT ; i++){
-			  sprintf(Tx_Data, "%lu\r\n", *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
+			  sprintf(Tx_Data, "%lu,", outbuff[(write_ptr + i) % BUFFER_SIZE]);
+			  // sprintf(Tx_Data, "%lu\r\n", *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
 			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
+
+			  			  sprintf(Tx_Data, "%lu\r\n", *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
+			  			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
 		  }
 
 
@@ -242,6 +317,12 @@ void StartSerialTask(void const * argument)
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
 
+void initFIR(void) {
+  // arm_fir_init_q31(&S, FIR_TAP_NUM, &firCoeffs32, &firStateF32, BUFFER_SIZE);
+  arm_fir_init_f32(&S, FIR_TAP_NUM, firCoeffs32, firStateF32, 1);
+}
+
+/* ******************************************************************************** */
 void HAL_COMP_TriggerCallback(COMP_HandleTypeDef *hcomp){
 	fl_trigger = 1;
 
