@@ -113,11 +113,10 @@ const float32_t firCoeffs32[FIR_TAP_NUM] = {
 0.0};
 
 // Variables para el filtro FIR
-float32_t firStateF32[FIR_TAP_NUM]; // [BUFFER_SIZE + FIR_TAP_NUM - 1];
+float32_t firStateF32[BUFFER_SIZE + FIR_TAP_NUM - 1];
 arm_fir_instance_q31 S;
-float32_t input; // [BUFFER_SIZE];
-float32_t output; // [BUFFER_SIZE];
-uint32_t outbuff[BUFFER_SIZE]; // Segundo buffer para almacenar los valores del ADC
+float32_t input[BUFFER_SIZE];
+float32_t output[BUFFER_SIZE];
 
 
 /* USER CODE END Variables */
@@ -284,26 +283,20 @@ void StartSerialTask(void const * argument)
 
 		  // Copiar los datos del buffer ADC al buffer de entrada
 		  for (int i = 0; i < BUFFER_SIZE; i++) {
-		    input = (float32_t)sendBuffer[i];
-		    arm_fir_f32(&S, &input, &output, 1);
-		    outbuff[i] = (uint32_t)output;
+		    input[i] = (float32_t)sendBuffer[i];
+
 		  }
 
 		  // Aplicar el filtro FIR
-
-
-
-
+		  arm_fir_f32(&S, input, output, BUFFER_SIZE);
 
 
 		  //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
 		  for (int i = 0; i < BUFFER_PRINT ; i++){
-			  sprintf(Tx_Data, "%lu,", outbuff[(write_ptr + i) % BUFFER_SIZE]);
+			  sprintf(Tx_Data, "%lu,%lu\r\n", (uint32_t)output[(write_ptr + i) % BUFFER_SIZE],
+					                         *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
 			  // sprintf(Tx_Data, "%lu\r\n", *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
 			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
-
-			  			  sprintf(Tx_Data, "%lu\r\n", *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
-			  			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
 		  }
 
 
@@ -319,7 +312,7 @@ void StartSerialTask(void const * argument)
 
 void initFIR(void) {
   // arm_fir_init_q31(&S, FIR_TAP_NUM, &firCoeffs32, &firStateF32, BUFFER_SIZE);
-  arm_fir_init_f32(&S, FIR_TAP_NUM, firCoeffs32, firStateF32, 1);
+  arm_fir_init_f32(&S, FIR_TAP_NUM, firCoeffs32, firStateF32, BUFFER_SIZE);
 }
 
 /* ******************************************************************************** */
