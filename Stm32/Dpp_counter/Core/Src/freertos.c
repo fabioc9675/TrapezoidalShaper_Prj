@@ -48,6 +48,9 @@
 #define K_TRAPZ  29
 #define L_TRAPZ  50
 #define M_TRAPZ  20
+
+#define DPP_DEEP 2048
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -59,8 +62,12 @@
 /* USER CODE BEGIN Variables */
 uint8_t Rx_Data[10];
 uint8_t fl_receive = 0;
+uint8_t fl_dpp = 0;
+uint8_t fl_counter = 0;
 uint8_t fl_trigger = 0;
 char    Tx_Data[30];
+char    Tx_DPP[10];
+char    Tx_Count[10];
 
 uint32_t medicion[BUFFER_SIZE]; // Primer buffer para almacenar los valores del ADC
 uint32_t envio[BUFFER_SIZE]; // Segundo buffer para almacenar los valores del ADC
@@ -125,6 +132,9 @@ float32_t output[BUFFER_SIZE];
 // Variables para el filtro Trapz
 float32_t outpTrapz[BUFFER_PRINT];
 float32_t trapzStateF32[BUFFER_PRINT];
+
+// Variables para llenado del DPP
+uint32_t dppBuffer[DPP_DEEP];
 
 /* USER CODE END Variables */
 osThreadId mainTaskHandle;
@@ -276,6 +286,21 @@ void StartSamplingTask(void const * argument)
 		  }
 
 
+		  // Comparacion de tamaño para el DPP
+		  for (int i = PREEMPT_SIZE; i < PREEMPT_SIZE + 300; i++){
+			  int32_t diff = 1000;
+			  if (outpTrapz[i] > 200000) {
+				  diff = outpTrapz[i] - outpTrapz[i-1];
+				  if (diff < 0) {
+					  int dir = (uint32_t)outpTrapz[i]>>11;
+					  dppBuffer[dir]++;
+					  break;
+				  }
+			  }
+
+		  }
+
+
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
 		  osDelay(20);
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 0);
@@ -323,6 +348,28 @@ void StartSerialTask(void const * argument)
 
 
 	  }
+
+	  if (fl_dpp == 1){
+		  fl_dpp = 0;
+
+		  //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
+		  for (int i = 0; i < DPP_DEEP ; i++){
+			  sprintf(Tx_DPP, "%lu\r\n", dppBuffer[i]);
+			  HAL_UART_Transmit(&huart3, Tx_DPP, strlen(Tx_DPP), HAL_MAX_DELAY);
+		  }
+
+
+	  }
+
+	  if (fl_counter == 1){
+		  fl_counter = 0;
+
+		  //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
+		  sprintf(Tx_Count, "%lu\r\n", contador);
+		  HAL_UART_Transmit(&huart3, Tx_Count, strlen(Tx_Count), HAL_MAX_DELAY);
+
+
+	   }
 
     osDelay(1);
   }
@@ -383,7 +430,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	if (Rx_Data[0] == 'R'){
 		HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
 		fl_receive = 1;
+	} else if (Rx_Data[0] == 'H'){
+		HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+		fl_dpp = 1;
+	} else if (Rx_Data[0] == 'J'){
+		fl_counter = 1;
 	}
+
 	return;
 }
 /* USER CODE END Application */
