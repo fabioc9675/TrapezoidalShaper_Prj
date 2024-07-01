@@ -44,6 +44,10 @@
 #define PREEMPT_SIZE 1024
 
 #define FIR_TAP_NUM 31
+
+#define K_TRAPZ  29
+#define L_TRAPZ  50
+#define M_TRAPZ  20
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -56,7 +60,7 @@
 uint8_t Rx_Data[10];
 uint8_t fl_receive = 0;
 uint8_t fl_trigger = 0;
-char    Tx_Data[10];
+char    Tx_Data[30];
 
 uint32_t medicion[BUFFER_SIZE]; // Primer buffer para almacenar los valores del ADC
 uint32_t envio[BUFFER_SIZE]; // Segundo buffer para almacenar los valores del ADC
@@ -118,6 +122,9 @@ arm_fir_instance_q31 S;
 float32_t input[BUFFER_SIZE];
 float32_t output[BUFFER_SIZE];
 
+// Variables para el filtro Trapz
+float32_t outpTrapz[BUFFER_PRINT];
+float32_t trapzStateF32[BUFFER_PRINT];
 
 /* USER CODE END Variables */
 osThreadId mainTaskHandle;
@@ -248,6 +255,27 @@ void StartSamplingTask(void const * argument)
 			  }
 		  }
 
+		  // Copiar los datos del buffer ADC al buffer de entrada
+		  for (int i = 0; i < BUFFER_SIZE; i++) {
+			input[i] = (float32_t)sendBuffer[i];
+
+		  }
+
+		  // Aplicar el filtro FIR
+		  arm_fir_f32(&S, input, output, BUFFER_SIZE);
+
+
+		  // Calculo del trapz shaper
+		  for (int i = (K_TRAPZ + L_TRAPZ); i < BUFFER_PRINT; i++){
+			  float32_t Acc = output[(write_ptr + i) % BUFFER_SIZE] -
+							  output[((write_ptr + i - K_TRAPZ) % BUFFER_SIZE)] -
+							  output[((write_ptr + i - L_TRAPZ) % BUFFER_SIZE)] +
+							  output[((write_ptr + i - K_TRAPZ - L_TRAPZ) % BUFFER_SIZE)];
+			  trapzStateF32[i] = trapzStateF32[i - 1] + Acc;
+			  outpTrapz[i] = outpTrapz[i - 1] + trapzStateF32[i] + Acc * M_TRAPZ;
+		  }
+
+
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 1);
 		  osDelay(20);
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, 0);
@@ -281,20 +309,14 @@ void StartSerialTask(void const * argument)
 	  if (fl_receive == 1){
 		  fl_receive = 0;
 
-		  // Copiar los datos del buffer ADC al buffer de entrada
-		  for (int i = 0; i < BUFFER_SIZE; i++) {
-		    input[i] = (float32_t)sendBuffer[i];
-
-		  }
-
-		  // Aplicar el filtro FIR
-		  arm_fir_f32(&S, input, output, BUFFER_SIZE);
 
 
 		  //HAL_UART_Transmit_IT(&huart3, "HELLO FABIAN\n", 13);
 		  for (int i = 0; i < BUFFER_PRINT ; i++){
-			  sprintf(Tx_Data, "%lu,%lu\r\n", (uint32_t)output[(write_ptr + i) % BUFFER_SIZE],
-					                         *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
+			  sprintf(Tx_Data, "%lu,%lu,%lu\r\n", (uint32_t)outpTrapz[i],
+					  	  	  	  	  	  	  (uint32_t)output[(write_ptr + i) % BUFFER_SIZE],
+											  (uint32_t)input[(write_ptr + i) % BUFFER_SIZE]);
+					                         // *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
 			  // sprintf(Tx_Data, "%lu\r\n", *(sendBuffer + ((write_ptr + i) % BUFFER_SIZE)));
 			  HAL_UART_Transmit(&huart3, Tx_Data, strlen(Tx_Data), HAL_MAX_DELAY);
 		  }
@@ -356,9 +378,12 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
+
 	HAL_UART_Receive_IT(&huart3, Rx_Data, 1);
-	fl_receive = 1;
+	if (Rx_Data[0] == 'R'){
+		HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
+		fl_receive = 1;
+	}
 	return;
 }
 /* USER CODE END Application */
