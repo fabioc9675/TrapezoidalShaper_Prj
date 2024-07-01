@@ -292,7 +292,7 @@ void StartSamplingTask(void const * argument)
 			  if (outpTrapz[i] > 200000) {
 				  diff = outpTrapz[i] - outpTrapz[i-1];
 				  if (diff < 0) {
-					  int dir = (uint32_t)outpTrapz[i]>>11;
+					  int dir = ((uint32_t)outpTrapz[i]>>13 & 0x7FF);
 					  dppBuffer[dir]++;
 					  break;
 				  }
