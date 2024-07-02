@@ -1388,7 +1388,7 @@ void StartSamplingTask(void const * argument)
  8000cc0:	697b      	ldr	r3, [r7, #20]
  8000cc2:	2b00      	cmp	r3, #0
  8000cc4:	da17      	bge.n	8000cf6 <StartSamplingTask+0x222>
-					  int dir = ((uint32_t)outpTrapz[i]>>13 & 0x7FF);
+					  int dir = ((uint32_t)outpTrapz[i]>>11 & 0x7FF);
  8000cc6:	4a22      	ldr	r2, [pc, #136]	@ (8000d50 <StartSamplingTask+0x27c>)
  8000cc8:	69bb      	ldr	r3, [r7, #24]
  8000cca:	009b      	lsls	r3, r3, #2
@@ -1396,7 +1396,7 @@ void StartSamplingTask(void const * argument)
  8000cce:	edd3 7a00 	vldr	s15, [r3]
  8000cd2:	eefc 7ae7 	vcvt.u32.f32	s15, s15
  8000cd6:	ee17 3a90 	vmov	r3, s15
- 8000cda:	0b5b      	lsrs	r3, r3, #13
+ 8000cda:	0adb      	lsrs	r3, r3, #11
  8000cdc:	f3c3 030a 	ubfx	r3, r3, #0, #11
  8000ce0:	613b      	str	r3, [r7, #16]
 					  dppBuffer[dir]++;
