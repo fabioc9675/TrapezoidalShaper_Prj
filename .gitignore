@@ -52,10 +52,10 @@ unisims
 
 ## C-files
 *.elf
-*.a
+#*.a
 *.sa
 *.so
-*.lib
+#*.lib
 
 ## dirs
 vivado.cache/
@@ -108,7 +108,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+#lib/
 lib64/
 parts/
 sdist/
@@ -342,7 +342,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+#lib/
 lib64/
 parts/
 sdist/
@@ -515,8 +515,8 @@ tests/vectors
 *.pch
 
 # Libraries
-*.lib
-*.a
+#*.lib
+#*.a
 *.la
 *.lo
 
