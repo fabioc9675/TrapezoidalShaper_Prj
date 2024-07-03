@@ -1,0 +1,24 @@
+vhdl xil_defaultlib  \
+"../../../bd/pynq_bd/ip/pynq_bd_xadc_wiz_0_0/pynq_bd_xadc_wiz_0_0.vhd" \
+"../../../bd/pynq_bd/ipshared/fa58/hdl/AXI_DPP_Prepross_v1_0_S00_AXI.vhd" \
+"../../../bd/pynq_bd/ipshared/fa58/hdl/dpp_counter.vhd" \
+"../../../bd/pynq_bd/ipshared/fa58/hdl/fir_fab.vhd" \
+"../../../bd/pynq_bd/ipshared/fa58/hdl/greaterthan.vhd" \
+"../../../bd/pynq_bd/ipshared/fa58/hdl/signal_mux.vhd" \
+"../../../bd/pynq_bd/ipshared/fa58/hdl/slice_trapz.vhd" \
+"../../../bd/pynq_bd/ipshared/fa58/hdl/trapz_klm.vhd" \
+"../../../bd/pynq_bd/ipshared/fa58/hdl/xadc_buffer.vhd" \
+"../../../bd/pynq_bd/ipshared/fa58/hdl/AXI_DPP_Prepross_v1_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_AXI_DPP_Prepross_0_0/sim/pynq_bd_AXI_DPP_Prepross_0_0.vhd" \
+"../../../bd/pynq_bd/ipshared/4b41/hdl/AXI_DPP_BRam_v1_0_M00_AXIS.vhd" \
+"../../../bd/pynq_bd/ipshared/4b41/hdl/AXI_DPP_BRam_v1_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_AXI_DPP_BRam_0_0/sim/pynq_bd_AXI_DPP_BRam_0_0.vhd" \
+"../../../bd/pynq_bd/ipshared/6c0e/hdl/AXI_Data_Stream_v1_0_M00_AXIS.vhd" \
+"../../../bd/pynq_bd/ipshared/6c0e/hdl/AXI_Data_Stream_v1_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_AXI_Data_Stream_0_0/sim/pynq_bd_AXI_Data_Stream_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_dma_0_0/sim/pynq_bd_axi_dma_0_0.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_axi_dma_0_1/sim/pynq_bd_axi_dma_0_1.vhd" \
+"../../../bd/pynq_bd/ip/pynq_bd_rst_ps7_0_100M_0/sim/pynq_bd_rst_ps7_0_100M_0.vhd" \
+"../../../bd/pynq_bd/sim/pynq_bd.vhd" \
+
+nosort
