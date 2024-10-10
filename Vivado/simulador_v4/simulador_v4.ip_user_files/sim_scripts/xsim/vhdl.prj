@@ -1,0 +1,18 @@
+vhdl xbip_utils_v3_0_13  \
+"../../ipstatic/hdl/xbip_utils_v3_0_vh_rfs.vhd" \
+
+vhdl xbip_pipe_v3_0_9  \
+"../../ipstatic/hdl/xbip_pipe_v3_0_vh_rfs.vhd" \
+
+vhdl xbip_bram18k_v3_0_9  \
+"../../ipstatic/hdl/xbip_bram18k_v3_0_vh_rfs.vhd" \
+
+vhdl mult_gen_v12_0_21  \
+"../../ipstatic/hdl/mult_gen_v12_0_vh_rfs.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../simulador_v4.gen/sources_1/ip/x_mul/sim/x_mul.vhd" \
+"../../../simulador_v4.srcs/sources_1/new/modelo.vhd" \
+
+# Do not sort compile order
+nosort

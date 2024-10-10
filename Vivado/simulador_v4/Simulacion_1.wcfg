@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="modelo_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="modelo" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="71.656001 us"></ZoomEndTime>
+      <Cursor1Time time="0.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="340"></NameColumnWidth>
+      <ValueColumnWidth column_width="125"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="71" />
+   <wvobject fp_name="/modelo/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/xn" type="array">
+      <obj_property name="ElementShortName">xn[17:0]</obj_property>
+      <obj_property name="ObjectShortName">xn[17:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/yn" type="array">
+      <obj_property name="ElementShortName">yn[63:0]</obj_property>
+      <obj_property name="ObjectShortName">yn[63:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s1_0" type="array">
+      <obj_property name="ElementShortName">s1_0[42:0]</obj_property>
+      <obj_property name="ObjectShortName">s1_0[42:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s2_0" type="array">
+      <obj_property name="ElementShortName">s2_0[42:0]</obj_property>
+      <obj_property name="ObjectShortName">s2_0[42:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s3_0" type="array">
+      <obj_property name="ElementShortName">s3_0[42:0]</obj_property>
+      <obj_property name="ObjectShortName">s3_0[42:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s4_0" type="array">
+      <obj_property name="ElementShortName">s4_0[42:0]</obj_property>
+      <obj_property name="ObjectShortName">s4_0[42:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s5_0" type="array">
+      <obj_property name="ElementShortName">s5_0[42:0]</obj_property>
+      <obj_property name="ObjectShortName">s5_0[42:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s1_1" type="array">
+      <obj_property name="ElementShortName">s1_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s1_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s2_1" type="array">
+      <obj_property name="ElementShortName">s2_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s2_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s3_1" type="array">
+      <obj_property name="ElementShortName">s3_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s3_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s4_1" type="array">
+      <obj_property name="ElementShortName">s4_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s4_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s5_1" type="array">
+      <obj_property name="ElementShortName">s5_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s5_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s6_0" type="array">
+      <obj_property name="ElementShortName">s6_0[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s6_0[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s7_0" type="array">
+      <obj_property name="ElementShortName">s7_0[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s7_0[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s8_0" type="array">
+      <obj_property name="ElementShortName">s8_0[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s8_0[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s9_0" type="array">
+      <obj_property name="ElementShortName">s9_0[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s9_0[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s10_0" type="array">
+      <obj_property name="ElementShortName">s10_0[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s10_0[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s6_1" type="array">
+      <obj_property name="ElementShortName">s6_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s6_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s7_1" type="array">
+      <obj_property name="ElementShortName">s7_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s7_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s8_1" type="array">
+      <obj_property name="ElementShortName">s8_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s8_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s9_1" type="array">
+      <obj_property name="ElementShortName">s9_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s9_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s10_1" type="array">
+      <obj_property name="ElementShortName">s10_1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s10_1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/x_dsp" type="array">
+      <obj_property name="ElementShortName">x_dsp[88:0]</obj_property>
+      <obj_property name="ObjectShortName">x_dsp[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/y_dsp" type="array">
+      <obj_property name="ElementShortName">y_dsp[88:0]</obj_property>
+      <obj_property name="ObjectShortName">y_dsp[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/y_aux" type="array">
+      <obj_property name="ElementShortName">y_aux[88:0]</obj_property>
+      <obj_property name="ObjectShortName">y_aux[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/y" type="array">
+      <obj_property name="ElementShortName">y[63:0]</obj_property>
+      <obj_property name="ObjectShortName">y[63:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">SIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">48</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+      <obj_property name="WaveformStyle">STYLE_ANALOG</obj_property>
+      <obj_property name="CellHeight">100</obj_property>
+      <obj_property name="AnalogYRangeType">ANALOG_YRANGETYPE_AUTO</obj_property>
+      <obj_property name="AnalogYRangeMin">0.000000</obj_property>
+      <obj_property name="AnalogYRRangeMax">0.000000</obj_property>
+      <obj_property name="AnalogInterpolation">ANALOG_INTERPOLATION_HOLD</obj_property>
+      <obj_property name="AnalogOffscale">ANALOG_OFFSCALE_HIDE</obj_property>
+      <obj_property name="AnalogHorizLine">0.000000</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s1_r1" type="array">
+      <obj_property name="ElementShortName">s1_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s1_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s2_r1" type="array">
+      <obj_property name="ElementShortName">s2_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s2_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s2_r2" type="array">
+      <obj_property name="ElementShortName">s2_r2[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s2_r2[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s3_r1" type="array">
+      <obj_property name="ElementShortName">s3_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s3_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s3_r2" type="array">
+      <obj_property name="ElementShortName">s3_r2[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s3_r2[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s3_r3" type="array">
+      <obj_property name="ElementShortName">s3_r3[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s3_r3[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s4_r1" type="array">
+      <obj_property name="ElementShortName">s4_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s4_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s4_r2" type="array">
+      <obj_property name="ElementShortName">s4_r2[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s4_r2[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s4_r3" type="array">
+      <obj_property name="ElementShortName">s4_r3[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s4_r3[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s4_r4" type="array">
+      <obj_property name="ElementShortName">s4_r4[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s4_r4[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s5_r1" type="array">
+      <obj_property name="ElementShortName">s5_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s5_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s5_r2" type="array">
+      <obj_property name="ElementShortName">s5_r2[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s5_r2[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s5_r3" type="array">
+      <obj_property name="ElementShortName">s5_r3[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s5_r3[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s5_r4" type="array">
+      <obj_property name="ElementShortName">s5_r4[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s5_r4[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s5_r5" type="array">
+      <obj_property name="ElementShortName">s5_r5[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s5_r5[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s6_r1" type="array">
+      <obj_property name="ElementShortName">s6_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s6_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s7_r1" type="array">
+      <obj_property name="ElementShortName">s7_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s7_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s7_r2" type="array">
+      <obj_property name="ElementShortName">s7_r2[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s7_r2[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s8_r1" type="array">
+      <obj_property name="ElementShortName">s8_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s8_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s8_r2" type="array">
+      <obj_property name="ElementShortName">s8_r2[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s8_r2[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s8_r3" type="array">
+      <obj_property name="ElementShortName">s8_r3[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s8_r3[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s9_r1" type="array">
+      <obj_property name="ElementShortName">s9_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s9_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s9_r2" type="array">
+      <obj_property name="ElementShortName">s9_r2[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s9_r2[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s9_r3" type="array">
+      <obj_property name="ElementShortName">s9_r3[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s9_r3[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s9_r4" type="array">
+      <obj_property name="ElementShortName">s9_r4[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s9_r4[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s10_r1" type="array">
+      <obj_property name="ElementShortName">s10_r1[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s10_r1[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s10_r2" type="array">
+      <obj_property name="ElementShortName">s10_r2[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s10_r2[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s10_r3" type="array">
+      <obj_property name="ElementShortName">s10_r3[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s10_r3[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s10_r4" type="array">
+      <obj_property name="ElementShortName">s10_r4[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s10_r4[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/s10_r5" type="array">
+      <obj_property name="ElementShortName">s10_r5[88:0]</obj_property>
+      <obj_property name="ObjectShortName">s10_r5[88:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/ceros39" type="array">
+      <obj_property name="ElementShortName">ceros39[38:0]</obj_property>
+      <obj_property name="ObjectShortName">ceros39[38:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/ceros40" type="array">
+      <obj_property name="ElementShortName">ceros40[39:0]</obj_property>
+      <obj_property name="ObjectShortName">ceros40[39:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/ceros41" type="array">
+      <obj_property name="ElementShortName">ceros41[40:0]</obj_property>
+      <obj_property name="ObjectShortName">ceros41[40:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/a1" type="array">
+      <obj_property name="ElementShortName">a1[24:0]</obj_property>
+      <obj_property name="ObjectShortName">a1[24:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/a2" type="array">
+      <obj_property name="ElementShortName">a2[24:0]</obj_property>
+      <obj_property name="ObjectShortName">a2[24:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/a3" type="array">
+      <obj_property name="ElementShortName">a3[24:0]</obj_property>
+      <obj_property name="ObjectShortName">a3[24:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/a4" type="array">
+      <obj_property name="ElementShortName">a4[24:0]</obj_property>
+      <obj_property name="ObjectShortName">a4[24:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/a5" type="array">
+      <obj_property name="ElementShortName">a5[24:0]</obj_property>
+      <obj_property name="ObjectShortName">a5[24:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/b1" type="array">
+      <obj_property name="ElementShortName">b1[24:0]</obj_property>
+      <obj_property name="ObjectShortName">b1[24:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/b2" type="array">
+      <obj_property name="ElementShortName">b2[24:0]</obj_property>
+      <obj_property name="ObjectShortName">b2[24:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/b3" type="array">
+      <obj_property name="ElementShortName">b3[24:0]</obj_property>
+      <obj_property name="ObjectShortName">b3[24:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/b4" type="array">
+      <obj_property name="ElementShortName">b4[24:0]</obj_property>
+      <obj_property name="ObjectShortName">b4[24:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/modelo/b5" type="array">
+      <obj_property name="ElementShortName">b5[24:0]</obj_property>
+      <obj_property name="ObjectShortName">b5[24:0]</obj_property>
+   </wvobject>
+</wave_config>
