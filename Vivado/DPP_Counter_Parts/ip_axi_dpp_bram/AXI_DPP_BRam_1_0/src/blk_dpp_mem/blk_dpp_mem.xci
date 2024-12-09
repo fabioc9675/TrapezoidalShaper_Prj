@@ -5,7 +5,7 @@
     "cell_name": "AXI_DPP_BRam_v1_0_M00_AXIS_inst/bram_dpp_mem",
     "component_reference": "xilinx.com:ip:blk_mem_gen:8.4",
     "ip_revision": "5",
-    "gen_directory": "../../../../../../../../github/trapezoidalshaper_prj/vivado/dpp_project_ipcore/dpp_project_ipcore.tmp/axi_dpp_bram_v1_0_project/AXI_DPP_BRam_v1_0_project.gen/sources_1/ip/blk_dpp_mem",
+    "gen_directory": "../../../../../../../../github/trapezoidalshaper_prj/vivado/dpp_counter_parts/dpp_counter_parts.tmp/axi_dpp_bram_v1_0_project/AXI_DPP_BRam_v1_0_project.gen/sources_1/ip/blk_dpp_mem",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "blk_dpp_mem", "resolve_type": "user", "usage": "all" } ],
@@ -177,7 +177,7 @@
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
         "IPREVISION": [ { "value": "5" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../../../github/trapezoidalshaper_prj/vivado/dpp_project_ipcore/dpp_project_ipcore.tmp/axi_dpp_bram_v1_0_project/AXI_DPP_BRam_v1_0_project.gen/sources_1/ip/blk_dpp_mem" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../../../github/trapezoidalshaper_prj/vivado/dpp_counter_parts/dpp_counter_parts.tmp/axi_dpp_bram_v1_0_project/AXI_DPP_BRam_v1_0_project.gen/sources_1/ip/blk_dpp_mem" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
         "SWVERSION": [ { "value": "2022.2" } ],
