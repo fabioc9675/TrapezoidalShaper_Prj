@@ -65,7 +65,7 @@ main-build: Dpp_counter.elf secondary-outputs
 
 # Tool invocations
 Dpp_counter.elf Dpp_counter.map: $(OBJS) $(USER_OBJS) C:\GitHub\TrapezoidalShaper_Prj\Stm32\Dpp_counter\STM32H743ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Dpp_counter.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\GitHub\TrapezoidalShaper_Prj\Stm32\Dpp_counter\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Dpp_counter.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "Dpp_counter.elf" @"objects.list" $(USER_OBJS) -Wl,--start-group $(LIBS) -Wl,--end-group -mcpu=cortex-m7 -T"C:\GitHub\TrapezoidalShaper_Prj\Stm32\Dpp_counter\STM32H743ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Dpp_counter.map" -Wl,--gc-sections -static -L"C:\GitHub\TrapezoidalShaper_Prj\Stm32\Dpp_counter\Middlewares\ST\ARM\Lib\GCC" --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
